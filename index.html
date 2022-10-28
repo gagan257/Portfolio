@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Front Page</title>
+    <link rel="stylesheet" href="bootstrap-4.6.2-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="front-page.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <script>
+        $(function(){
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</head>
+<body data-spy="scroll" data-target="#MyNavBar" data-offset="60">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="MyNavBar">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item" data-placement="bottom" title="Profile" data-toggle="tooltip">
+                    <a class="nav-link mr-1" href="#S1">Profile</span></a>
+                </li>
+                <li class="nav-item mr-1" data-placement="bottom" title="About" data-toggle="tooltip">
+                    <a class="nav-link" href="#S2">About</a>
+                </li>
+                <li class="nav-item mr-1" data-placement="bottom" title="Download" data-toggle="tooltip">
+                    <a class="nav-link" href="#S3">Download Resume <span class="pl-1" id="download-sign"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                      </svg></span></a>
+                </li>
+                <li class="nav-item mr-1" data-placement="bottom" title="Contact" data-toggle="tooltip">
+                    <a class="nav-link" href="#S4">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row align-content-center" id="S1">
+            <div class="col-md-2"></div>
+            <div class="col-md-4" id="profile-img">
+                <img src="Images/img-4.avif" alt="" class="img-fluid rounded-circle shadow-lg mb-5">
+            </div>
+            <div class="col-md-4">
+                <div class="row"></div>
+                <div class="row">
+                    <h5 class="display-5 pt-5">I'M</h5>    
+                </div>
+                <div class="row">
+                    <h4 class="display-3" id="name">Gagan Arora</h4>
+                </div>
+                <hr>
+                <div class="row">
+                    <h5 class="display-4" id="sub-name">Web developer</h5>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row mb-0" id="S2">
+            <div class="col mb-0">
+                <div class="jumbotron mt-5 p-5 shadow-lg">
+                    <h5 class="display-3 text-center">About</h5>
+                    <hr id="hr-jumbo">
+                    <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, sapiente officiis. At perspiciatis reprehenderit unde dolorem suscipit laborum tenetur voluptas?</p>
+                    <hr class="my-3">
+                    <button class="btn btn-outline-primary">Read more</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="S3">
+            <div class="col">
+                <div class="jumbotron shadow-lg" id="s3-jumbotron">
+                    <h5 class="display-3 text-center">View Resume</h5>
+                    <hr>
+                    <h5 class="display-5"> Click to view</h5>
+                    <button class="btn btn-primary btn-lg" download>
+                        <a href="Sample pdf/Sample PDF.pdf" id="a-pdf">View
+                            <span class="ml-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid shadow-lg" id="S4">
+            <h3 class="display-3 text-center pt-5">Contact Me!</h3>
+            <hr>
+            <label class="display-5 ml-1 mt-2">NAME</label>
+            <div class="row" id="for-name">
+                <div class="col-md-6 mb-2 mt-3">
+                    <input type="text" class="form-control" placeholder="First Name" id="first-name">
+                </div>
+                <div class="col-md-6 mb-2 mt-3">
+                    <input type="text" class="form-control" placeholder="Last Name" id="last-name">
+                </div>
+            </div>
+            <label class="display-5 ml-1 mt-2">E-MAIL</label>
+            <div class="row" id="for-email">
+                <div class="col-md-6 mb-2 mt-3">
+                    <input type="text" class="form-control" placeholder="abc@xyz.com" id="email">
+                </div>
+            </div>
+            <label class="display-5 ml-1 mt-2">MESSAGE</label>
+            <div class="row" id="for-message">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea name="" class="form-control mb-3 mt-1">Message goes here...</textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 mt-4">
+                <button class="btn btn-outline-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

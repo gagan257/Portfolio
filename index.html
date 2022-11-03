@@ -21,7 +21,7 @@
         <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse-area">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+        <!-- FOR STARTING MENU ABOVE -->
         <div class="col-10">
             <div class="collapse navbar-collapse" id="collapse-area">
                 <ul class="navbar-nav">
@@ -31,18 +31,22 @@
                     <li class="nav-item mr-1" data-placement="bottom" title="About" data-toggle="tooltip">
                         <a class="nav-link" href="#S2">About</a>
                     </li>
+                    <li class="nav-item mr-1" data-placement="bottom" title="Projects" data-toggle="tooltip">
+                        <a class="nav-link" href="#S3">Projects</a>
+                    </li>
                     <li class="nav-item mr-1" data-placement="bottom" title="Download" data-toggle="tooltip">
-                        <a class="nav-link" href="#S3">Download Resume <span class="pl-1" id="download-sign"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <a class="nav-link" href="#S4">Download Resume <span class="pl-1" id="download-sign"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                             <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                         </svg></span></a>
                     </li>
                     <li class="nav-item mr-1" data-placement="bottom" title="Contact" data-toggle="tooltip">
-                        <a class="nav-link" href="#S4">Contact</a>
+                        <a class="nav-link" href="#S5">Contact</a>
                     </li>
                 </ul>
             </div>
         </div>
+        <!-- FOR GITHUB LINK & ICON -->
         <div class="col-2">
             <div class="collapse navbar-collapse" id="collapse-area">
                 <ul class="navbar-nav">
@@ -63,6 +67,7 @@
     </nav>
     <br>
     <br>
+    <!-- S1 STARTS HERE -->
     <div class="container-fluid shadow-lg">
         <div class="row align-content-center" id="S1">
             <div class="col-md-1"></div>
@@ -84,6 +89,9 @@
             </div>
             <div class="col-md-2"></div>
         </div>
+    </div>
+    <!-- S2 STARTS HERE -->
+    <div class="container-fluid">
         <div class="row mb-0" id="S2">
             <div class="col mb-0">
                 <div class="jumbotron mt-5 p-5 shadow-lg">
@@ -95,9 +103,60 @@
                 </div>
             </div>
         </div>
-        <div class="row" id="S3">
+    </div>
+    <!-- S3 STARTS HERE -->
+    <div class="container-fluid">
+        <div class="row mb-2" id="S3">
+            <div class="col mb-0" id="card-deck-col">
+                <div class="jumbotron mt-3 p-5 mb-3 shadow-lg" id="jumbotron-card-deck">
+                    <h5 class="display-3 text-center">Projects</h5>
+                    <hr class="hr-for-profile">
+                    <div class="card-deck">
+                        <div class="card shadow-lg px-5" id="card-deck-1">
+                            <img src="Images/meditation-1000062__340.webp" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title display-4">IQ TEST</h4>
+                                <div class="card-text"></div>
+                            </div>
+                            <button class="btn btn-danger mb-3 btn-lg" data-toggle="modal" data-target="#myModal3">Visit</button>
+                            <div class="modal fade" id="myModal3" data-backdrop="static"><!-- data-backdrop="static" is used for no background click close -->
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title">IQ Test</h3>
+                                            <button class="close" data-dismiss="modal">
+                                                <span>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Coming Soon!
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-danger" data-dismiss="modal">
+                                                close
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="background-color: azure; border: 0px;">
+                            <!-- <img src="Photo4.avif" class="card-img-top" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">Title</h4>
+                                <div class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae harum sequi commodi ad minus non praesentium enim corrupti fugiat expedita?</div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- S4 STARTS HERE -->
+    <div class="container-fluid">
+        <div class="row" id="S4">
             <div class="col">
-                <div class="jumbotron shadow-lg" id="s3-jumbotron">
+                <div class="jumbotron shadow-lg mt-5 mb-5" id="s3-jumbotron">
                     <h5 class="display-3 text-center">Download Resume</h5>
                     <hr>
                     <h5 class="display-5"> Click to Download</h5>
@@ -113,35 +172,36 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid shadow-lg" id="S4">
-            <h3 class="display-3 text-center pt-5">Contact Me!</h3>
-            <hr>
-            <label class="display-5 ml-1 mt-2">NAME</label>
-            <div class="row" id="for-name">
-                <div class="col-md-6 mb-2 mt-3">
-                    <input type="text" class="form-control" placeholder="First Name" id="first-name">
-                </div>
-                <div class="col-md-6 mb-2 mt-3">
-                    <input type="text" class="form-control" placeholder="Last Name" id="last-name">
+    </div>
+    <!-- S5 STARTS HERE -->
+    <div class="container-fluid shadow-lg" id="S5">
+        <h3 class="display-3 text-center pt-5">Contact Me!</h3>
+        <hr>
+        <label class="display-5 ml-1 mt-2">NAME</label>
+        <div class="row" id="for-name">
+            <div class="col-md-6 mb-2 mt-3">
+                <input type="text" class="form-control" placeholder="First Name" id="first-name">
+            </div>
+            <div class="col-md-6 mb-2 mt-3">
+                <input type="text" class="form-control" placeholder="Last Name" id="last-name">
+            </div>
+        </div>
+        <label class="display-5 ml-1 mt-2">E-MAIL</label>
+        <div class="row" id="for-email">
+            <div class="col-md-6 mb-2 mt-3">
+                <input type="text" class="form-control" placeholder="abc@xyz.com" id="email">
+            </div>
+        </div>
+        <label class="display-5 ml-1 mt-2">MESSAGE</label>
+        <div class="row" id="for-message">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea name="" class="form-control mb-3 mt-1">Message goes here...</textarea>
                 </div>
             </div>
-            <label class="display-5 ml-1 mt-2">E-MAIL</label>
-            <div class="row" id="for-email">
-                <div class="col-md-6 mb-2 mt-3">
-                    <input type="text" class="form-control" placeholder="abc@xyz.com" id="email">
-                </div>
-            </div>
-            <label class="display-5 ml-1 mt-2">MESSAGE</label>
-            <div class="row" id="for-message">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <textarea name="" class="form-control mb-3 mt-1">Message goes here...</textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2 mt-4">
-                <button class="btn btn-outline-primary">Submit</button>
-            </div>
+        </div>
+        <div class="col-2 mt-4">
+            <button class="btn btn-outline-primary">Submit</button>
         </div>
     </div>
 </body>

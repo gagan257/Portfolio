@@ -6,10 +6,10 @@
     height: 600px;
 }
 #S3{
-    height: 350px;
+    height: 750px;
 }
-#S4{
-    height: 600px;
+#S5{
+    height: 650px;
     background-color: aquamarine;
 }
 .navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
@@ -89,4 +89,8 @@ hr.hr-for-profile{
     cursor: pointer;
     border-radius: 16px;
     padding: 5px 5px;
+}
+#jumbotron-card-deck{
+    background-color: azure;
+    height: 700px;
 }

@@ -67,7 +67,6 @@ hr.hr-for-profile{
 }
 .typed-out{
     overflow: hidden;
-    border-right: .15em solid orange;
     white-space: nowrap;
     font-size: 20 rem;
     width: 0;
@@ -93,4 +92,7 @@ hr.hr-for-profile{
 #jumbotron-card-deck{
     background-color: azure;
     height: 700px;
+}
+.click-to-download:hover{
+    text-decoration: none;
 }

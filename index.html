@@ -177,32 +177,33 @@
     <div class="container-fluid shadow-lg" id="S5">
         <h3 class="display-3 text-center pt-5">Contact Me!</h3>
         <hr>
-        <label class="display-5 ml-1 mt-2">NAME</label>
-        <div class="row" id="for-name">
-            <div class="col-md-6 mb-2 mt-3">
-                <input type="text" class="form-control" placeholder="First Name" id="first-name">
-            </div>
-            <div class="col-md-6 mb-2 mt-3">
-                <input type="text" class="form-control" placeholder="Last Name" id="last-name">
-            </div>
-        </div>
-        <label class="display-5 ml-1 mt-2">E-MAIL</label>
-        <div class="row" id="for-email">
-            <div class="col-md-6 mb-2 mt-3">
-                <input type="text" class="form-control" placeholder="abc@xyz.com" id="email">
-            </div>
-        </div>
-        <label class="display-5 ml-1 mt-2">MESSAGE</label>
-        <div class="row" id="for-message">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <textarea name="" class="form-control mb-3 mt-1">Message goes here...</textarea>
+        <form>
+            <label class="display-5 ml-1 mt-2">NAME</label>
+            <div class="row" id="for-name">
+                <div class="col-md-6 mb-2 mt-3">
+                    <input type="text" class="form-control" placeholder="First Name" id="first-name">
+                </div>
+                <div class="col-md-6 mb-2 mt-3">
+                    <input type="text" class="form-control" placeholder="Last Name" id="last-name">
                 </div>
             </div>
-        </div>
-        <div class="col-2 mt-4">
-            <button class="btn btn-outline-primary">Submit</button>
-        </div>
+            <label class="display-5 ml-1 mt-2">E-MAIL</label>
+            <div class="row" id="for-email">
+                <div class="col-md-6 mb-2 mt-3">
+                    <input type="email" class="form-control" placeholder="abc@xyz.com" id="email">
+                </div>
+            </div>
+            <label class="display-5 ml-1 mt-2">MESSAGE</label>
+            <div class="row" id="for-message">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea name="" class="form-control mb-3 mt-1">Message goes here...</textarea>
+                    </div>
+                </div>
+            </div>
+            <input type="reset" class="btn btn-danger mr-2 btn-lg" value="Reset">
+            <input type="submit" class="btn btn-outline-primary btn-lg" value="Submit">
+        </form>
     </div>
 </body>
 </html>

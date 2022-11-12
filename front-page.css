@@ -2,12 +2,6 @@
     height: 700px;
     background-color: azure;
 }
-#S2{
-    height: 600px;
-}
-#S3{
-    height: 750px;
-}
 #S5{
     height: 650px;
     background-color: aquamarine;
@@ -29,7 +23,7 @@
     padding-top: 50px;
 }
 .jumbotron{
-    height: 500px;
+    /* removed height */
     background-color: aquamarine;
 }
 #s3-jumbotron{
@@ -91,7 +85,6 @@ hr.hr-for-profile{
 }
 #jumbotron-card-deck{
     background-color: azure;
-    height: 700px;
 }
 .click-to-download:hover{
     text-decoration: none;

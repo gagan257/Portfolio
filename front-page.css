@@ -86,6 +86,9 @@ hr.hr-for-profile{
 #jumbotron-card-deck{
     background-color: azure;
 }
-.click-to-download:hover{
+.click-to-download:hover,#visit-btn-a:hover{
     text-decoration: none;
+}
+#visit-btn-a{
+    color: white;
 }

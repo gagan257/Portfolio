@@ -1,5 +1,5 @@
 #S1{
-    height: 700px;
+    height: 600px;
     background-color: azure;
 }
 #S5{
@@ -91,4 +91,35 @@ hr.hr-for-profile{
 }
 #visit-btn-a{
     color: white;
+}
+.button-form{
+    transition: transform 0.2s ease;
+}
+.button-form:active{
+    transform: scale(0.96);
+}
+.carousel {
+    width:640px;
+    height:360px;
+}
+.p-project{
+    font-size: 20px;
+}
+.load {
+    background-color: black;
+    color: black;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    border-radius: 4px;
+    animation: rotate 3s linear infinite;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
 }

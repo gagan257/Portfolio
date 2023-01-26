@@ -123,3 +123,258 @@ hr.hr-for-profile{
         transform: rotate(359deg);
     }
 }
+
+
+/* ***************Extra code(NOT IN USE)***************** */
+
+
+/* #S1{
+    height: 600px;
+    background-color: azure;
+}
+#S5{
+    height: 650px;
+    background-color: aquamarine;
+}
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+}
+.img-fluid{
+    height: 300px;
+    width: 300px;
+}
+#profile-img{
+    padding-top: 50px;
+}
+.jumbotron{
+    /* removed height */
+    /* background-color: aquamarine;
+}
+#s3-jumbotron{
+    height: 300px;
+    background-color: azure;
+}
+#a-pdf{
+    color: white;
+}
+#s4-jumbotron{
+    height: 600px;
+}
+body{
+    background-image: url(Images/background_img_2.jpg);
+}
+#first-name{
+    height: 40px;
+}
+#last-name{
+    height: 40px;
+}
+#email{
+    height: 40px;
+}
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus{
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+}
+hr.hr-for-profile{
+    border-top: 1px dashed black;
+}
+.typed-out{
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 20 rem;
+    width: 0;
+    animation: typing 4s forwards;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+#github-icon{
+    color: white;
+    text-decoration: none;
+}
+#github-icon:hover{
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+    padding: 5px 5px;
+}
+#jumbotron-card-deck{
+    background-color: azure;
+}
+.click-to-download:hover,#visit-btn-a:hover{
+    text-decoration: none;
+}
+#visit-btn-a{
+    color: white;
+}
+.button-form{
+    transition: transform 0.2s ease;
+}
+.button-form:active{
+    transform: scale(0.96);
+}
+.carousel {
+    width:640px;
+    height:360px;
+}
+.p-project{
+    font-size: 20px;
+}
+.load {
+    background-color: black;
+    color: black;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    border-radius: 4px;
+    animation: rotate 3s linear infinite;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+} */
+/* #S1{
+    height: 600px;
+    background-color: azure;
+}
+#S5{
+    height: 650px;
+    background-color: aquamarine;
+}
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+}
+.img-fluid{
+    height: 300px;
+    width: 300px;
+}
+#profile-img{
+    padding-top: 50px;
+}
+.jumbotron{
+    /* removed height */
+    /* background-color: aquamarine;
+}
+#s3-jumbotron{
+    height: 300px;
+    background-color: azure;
+}
+#a-pdf{
+    color: white;
+}
+#s4-jumbotron{
+    height: 600px;
+}
+body{
+    background-image: url(Images/background_img_2.jpg);
+}
+#first-name{
+    height: 40px;
+}
+#last-name{
+    height: 40px;
+}
+#email{
+    height: 40px;
+}
+.navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus{
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+}
+hr.hr-for-profile{
+    border-top: 1px dashed black;
+}
+.typed-out{
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 20 rem;
+    width: 0;
+    animation: typing 4s forwards;
+}
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+#github-icon{
+    color: white;
+    text-decoration: none;
+}
+#github-icon:hover{
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 16px;
+    padding: 5px 5px;
+}
+#jumbotron-card-deck{
+    background-color: azure;
+}
+.click-to-download:hover,#visit-btn-a:hover{
+    text-decoration: none;
+}
+#visit-btn-a{
+    color: white;
+}
+.button-form{
+    transition: transform 0.2s ease;
+}
+.button-form:active{
+    transform: scale(0.96);
+}
+.carousel {
+    width:640px;
+    height:360px;
+}
+.p-project{
+    font-size: 20px;
+}
+.load {
+    background-color: black;
+    color: black;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    border-radius: 4px;
+    animation: rotate 3s linear infinite;
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+} */

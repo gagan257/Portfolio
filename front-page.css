@@ -37,7 +37,7 @@
     height: 600px;
 }
 body{
-    background-image: url(Images/background_img_2.jpg);
+    background-image: url(public/Images/background_img_2.jpg);
 }
 #first-name{
     height: 40px;

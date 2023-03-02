@@ -1,5 +1,5 @@
 (function redirect () {
-    setTimeout(myURL, 1200);
+    setTimeout(myURL, 2000);
 })();
 function myURL(){
     document.location.href = 'https://github.com/gagan257/To-Do-List-Using-JQuery';

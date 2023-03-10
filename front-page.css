@@ -3,7 +3,7 @@
     background-color: azure;
 }
 #S5{
-    height: 550px;
+    height: 750px;
     background-color: aquamarine;
 }
 .navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .nav-link.active {
@@ -260,6 +260,77 @@ hr.hr-for-profile{
       transform: translateY(-0.1em);
     }
   }
+
+/* Set the background color to green */
+body {
+    background-color: #32CD32;
+  }
+  
+  /* Style the form container */
+  form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 0px 10px 0px #888888;
+  }
+  
+  /* Style the form labels */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #444444;
+  }
+  
+  /* Style the form inputs */
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #F0F0F0;
+    box-shadow: inset 0px 0px 5px 0px #888888;
+  }
+  
+  /* Style the form buttons */
+  button {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .btn-primary {
+    background-color: #00BFFF;
+    color: #FFFFFF;
+  }
+  
+  .btn-danger {
+    background-color: #FF0000;
+    color: #FFFFFF;
+  }
+  
+  /* Add spacing to the form elements */
+  .ml-3 {
+    margin-left: 15px;
+  }
+  
+  .mt-5 {
+    margin-top: 25px;
+  }
+  
+  .mt-3 {
+    margin-top: 15px;
+  }
+  
+  .mb-5 {
+    margin-bottom: 25px;
+  }
+  
 /* ***************Extra code(NOT IN USE)***************** */
 
 

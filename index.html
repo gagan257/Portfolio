@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Portfolio</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="public/CSS/bootstrap-4.6.2-dist/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="front-page.css">
@@ -87,7 +88,7 @@
         </div>
     </div>
     <!-- S2 STARTS HERE -->
-    <div class="container-fluid">
+    <div class="container-fluid" data-aos="fade-in" data-aos-delay="100">
         <div class="row mb-0" id="S2">
             <div class="col mb-0">
                 <div class="jumbotron mt-5 p-5 shadow-lg">
@@ -101,7 +102,7 @@
         </div>
     </div>
     <!-- S3 STARTS HERE -->
-    <div class="container-fluid">
+    <div class="container-fluid" data-aos="fade-in" data-aos-delay="100">
         <div class="row mb-2" id="S3">
             <div class="col mb-0" id="card-deck-col">
                 <div class="jumbotron mt-3 p-5 mb-3 shadow-lg" id="jumbotron-card-deck">
@@ -117,7 +118,7 @@
                         </div>
                     </div>
                     <hr class="hr-for-profile">
-                    <div class="card mt-4">
+                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
                         <div class="row">
                             <div class="col-4">
                                 <img src="public/Images/meditation-1000062__340.webp"  class="card-img" alt="">
@@ -151,7 +152,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-4">
+                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
                         <div class="row">
                             <div class="col-4">
                                 <img src="public/Images/slot-machine-img-2.jpg"  class="card-img" alt="">
@@ -185,7 +186,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-4">
+                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
                         <div class="row">
                             <div class="col-4 pt-4">
                                 <img src="public/Images/to-do-list.png"  class="card-img" alt="">
@@ -219,7 +220,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-4">
+                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
                         <div class="row">
                             <div class="col-4">
                                 <img src="public/Images/shopping-cart.png"  class="card-img" alt="">
@@ -250,7 +251,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-4">
+                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
                         <div class="row">
                             <div class="col-4">
                                 <img src="public/Images/social-media-app.png"  class="card-img" alt="">
@@ -281,7 +282,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card mt-4">
+                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
                         <div class="row">
                             <div class="col-4">
                                 <img src="public/Images/realtime-chat.png"  class="card-img" alt="">
@@ -317,7 +318,7 @@
         </div>
     </div>
     <!-- S4 STARTS HERE -->
-    <div class="container-fluid">
+    <div class="container-fluid" data-aos="fade" data-aos-delay="50">
         <div class="row" id="S4">
             <div class="col">
                 <div class="jumbotron shadow-lg mt-5 mb-5" id="s3-jumbotron">
@@ -339,10 +340,10 @@
         </div>
     </div>
     <!-- S5 STARTS HERE -->
-    <div class="container-fluid shadow-lg" id="S5">
+    <div class="container-fluid shadow-lg" id="S5" data-aos="fade-in" data-aos-delay="80">
         <h3 class="display-3 text-center pt-5">Contact Me!</h3>
         <hr>
-        <form name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true">
+        <form name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true" data-aos="zoom-in" data-aos-delay="100">
             <label class="ml-3 mt-3" id="user-name">Your Name: <input type="text" name="name" required /></label>
             <label class="ml-3 mt-4" id="user-email">Your Email: <input type="email" name="email" required /></label>
             <br>
@@ -352,5 +353,13 @@
             <button type="reset" class="btn btn-danger mb-5" id="reset-btn-form">Reset</button>
         </form>
     </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 150,
+            duration:500
+        });
+    </script>
 </body>
 </html>

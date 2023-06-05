@@ -1,365 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Portfolio</title>
+  <head>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="public/CSS/bootstrap-4.6.2-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
-    <link rel="stylesheet" href="front-page.css">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
-    <script src="public/JS/script.js"></script>
-    <link rel="icon" href="public/Images/portfolio-title-image.jpg">
-</head>
-<body data-spy="scroll" data-target="#MyNavBar" data-offset="60">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="MyNavBar">        
-        <button class="navbar-toggler" data-toggle="collapse" data-target="#collapse-area">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- FOR STARTING MENU ABOVE -->
-        <div class="col-10">
-            <div class="collapse navbar-collapse" id="collapse-area">
-                <ul class="navbar-nav">
-                    <li class="nav-item" data-placement="bottom" title="Profile" data-toggle="tooltip">
-                        <a class="nav-link mr-1" href="#S1">Profile</span></a>
-                    </li>
-                    <li class="nav-item mr-1" data-placement="bottom" title="About" data-toggle="tooltip">
-                        <a class="nav-link" href="#S2">About</a>
-                    </li>
-                    <li class="nav-item mr-1" data-placement="bottom" title="Projects" data-toggle="tooltip">
-                        <a class="nav-link" href="#S3">Projects</a>
-                    </li>
-                    <li class="nav-item mr-1" data-placement="bottom" title="Download" data-toggle="tooltip">
-                        <a class="nav-link" href="#S4">Download Resume <span class="pl-1" id="download-sign"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-                            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-                            <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
-                        </svg></span></a>
-                    </li>
-                    <li class="nav-item mr-1" data-placement="bottom" title="Contact" data-toggle="tooltip">
-                        <a class="nav-link" href="#S5">Contact</a>
-                    </li>
-                </ul>
-            </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="public/Images/user-solid.svg">
+    <title>Portfolio</title>
+    <style>
+        li a {
+            color: #fff;
+        }
+        li a:hover{
+            color: #f1c40f;
+        }
+    </style>
+  </head>
+  <body data-offset="100">
+  <nav data-aos="fade-up" data-aos-delay="400" class="sticky">
+        <h1 id="logo" class="prevent-select">PORTFO<span class="logo-span">LIO</span></h1>
+    <div class="hamburger">
+        <span class="lines"></span>
+        <span class="lines"></span>
+        <span class="lines"></span>
+    </div>
+  
+    <ul id="nav-links" data-aos="zoom-in" data-aos-delay="1800" class="prevent-select">
+        <li><a href="#Home" class="links">Home</a></li>
+        <li><a href="#About" class="links">About</a></li>
+        <li><a href="#Skills" class="links">Skills</a></li>
+        <li><a href="#Projects" class="links">Projects</a></li>
+        <li><a href="#Contact" class="links">Contact</a></li>
+    </u>
+  </nav>
+  <div class="container" id="Home">
+    <div class="photo" data-aos="zoom-in" data-aos-delay="1000" data-aos-once="false"></div>
+        <div>
+            <div class="name prevent-select" data-aos="fade-up" data-aos-delay="1300" data-aos-once="false">Gagan Arora</div>
+            <hr class="Home-hr prevent-select">
+            <div id="typing-text" style="font-size: 34px; color: #f1c40f; margin-top: 10%;" class="prevent-select">Web Developer</div>
         </div>
-        <!-- FOR GITHUB LINK & ICON -->
-        <div class="col-2">
-            <div class="collapse navbar-collapse" id="collapse-area">
-                <ul class="navbar-nav">
-                    <li class="nav-item" data-placement="bottom" title="Github" data-toggle="tooltip">
-                        <a class="nav-link ml-5 pt-0 pb-1">
-                            <a href="https://github.com/gagan257" id="github-icon">Github
-                                <span class="ml-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-                                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                    </svg>
-                                </span>
-                            </a>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    </div>
+  <div id="About">
+    <h1 class="about-heading prevent-select" data-aos="fade-up" data-aos-delay="400" data-aos-once="false"><span class="about-span">ABOUT</span> ME</h1>
     <br>
+    <hr class="About-hr prevent-select" data-aos="fade-up" data-aos-delay="100" data-aos-once="false">
     <br>
-    <!-- S1 STARTS HERE -->
-    <div class="container-fluid shadow-lg">
-        <div class="row align-content-center" id="S1">
-            <div class="col-md-1"></div>
-            <div class="col-md-4" id="profile-img">
-                <img alt="No Image" src="public/Images/Profile-image.jpeg" alt="" class="img-fluid rounded-circle shadow-lg mb-5">
-            </div>
-            <div class="col-md-5">
-                <div class="row"></div>
-                <div class="row">
-                    <h5 class="display-5 pt-5">I'M</h5>    
-                </div>
-                <div class="row">
-                    <h4 class="display-3" id="name">Gagan Arora</h4>
-                </div>
-                <hr class="hr-for-profile">
-                <div class="row ml-2">
-                    <h5 class="display-4"><a href="" class="typewrite" style="text-decoration: none; color: red;" data-period="2000" data-type='[ "Web Developer", "Engineer", "Programmer", "Designer" ]'><span class="wrap"></span></a></h5>
-                </div>
-            </div>
-            <div class="col-md-2"></div>
-        </div>
-    </div>
-    <!-- S2 STARTS HERE -->
-    <div class="container-fluid" data-aos="fade-in" data-aos-delay="100">
-        <div class="row mb-0" id="S2">
-            <div class="col mb-0">
-                <div class="jumbotron mt-5 p-5 shadow-lg">
-                    <h5 class="display-3 text-center">About</h5>
-                    <hr id="hr-jumbo">
-                    <p class="lead">"Hello and welcome to my portfolio site! My name is Gagan Arora and I am a 21-year-old college student currently pursuing a B.Tech in Information Technology. With a strong interest in full-stack web development, I have been honing my skills in languages such as C, C++, HTML, CSS, JavaScript, jQuery, Node.js, Express.js, MySQL, MongoDB, Socket.io and Bootstrap. As a third-year student, I am excited to continue expanding my knowledge and experience in the field. Through my portfolio, I hope to showcase my passion for creating innovative and visually appealing web solutions. Thank you for taking the time to visit my site!"</p>
-                    <hr class="my-3">
-                    <!-- <button class="btn btn-outline-primary rounded-pill">Read more</button> -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- S3 STARTS HERE -->
-    <div class="container-fluid" data-aos="fade-in" data-aos-delay="100">
-        <div class="row mb-2" id="S3">
-            <div class="col mb-0" id="card-deck-col">
-                <div class="jumbotron mt-3 p-5 mb-3 shadow-lg" id="jumbotron-card-deck">
-                    <div class="row">
-                        <div class="col-3">
-                            <div class="load"></div>
-                        </div>
-                        <div class="col-6">
-                            <h5 class="display-3 text-center">Projects</h5>
-                        </div>
-                        <div class="col-3">
-                            <div class="load"></div>
-                        </div>
-                    </div>
-                    <hr class="hr-for-profile">
-                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="public/Images/meditation-1000062__340.webp"  class="card-img" alt="">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4 class="card-title display-4 text-center">IQ Test Website</h4>
-                                    </div>
-                                    <hr class="hr-for-profile">
-                                    <div class="card-text">
-                                        <div class="row">
-                                            <p class="text-center p-project">An IQ test is an assessment that measures a range of cognitive abilities and provides a score that is intended to serve as a measure of an individual's intellectual abilities and potential. IQ tests are among the most administered psychological tests.</p>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <a href="public/loading-pages/IQWeb.html" id="visit-btn-a"><button class="btn btn-outline-danger mt-5 btn-lg btn-block rounded-pill button-form">Visit</button></a>
-                                            </div>
-                                            <div class="col-md-2 pl-0 pb-0">
-                                                <a href="public/loading-pages/git-IQWeb.html" id="visit-btn-a">
-                                                    <button class="btn btn-outline-danger mt-5 btn-lg rounded-pill button-form">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor" class="bi bi-github ml-2 pb-0 mb-0" viewBox="0 0 20 20">
-                                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                                        </svg>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="public/Images/slot-machine-img-2.jpg"  class="card-img" alt="">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4 class="card-title display-4 text-center">Slot Machine Game</h4>
-                                    </div>
-                                    <hr class="hr-for-profile">
-                                    <div class="card-text">
-                                        <div class="row">
-                                            <p class="text-center p-project">Game of luck. In order to win, 3 identical Numbers must match in the row</p>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-10">
-                                                <a href="public/loading-pages/SlotM.html" id="visit-btn-a"><button class="btn btn-outline-danger mt-5 btn-lg btn-block rounded-pill button-form">Visit</button></a>
-                                            </div>
-                                            <div class="col-md-2 pl-0 pb-0">
-                                                <a href="public/loading-pages/git-SlotM.html" id="visit-btn-a">
-                                                    <button class="btn btn-outline-danger mt-5 btn-lg rounded-pill button-form">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor" class="bi bi-github ml-2 pb-0 mb-0" viewBox="0 0 20 20">
-                                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                                        </svg>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
-                        <div class="row">
-                            <div class="col-4 pt-4">
-                                <img src="public/Images/to-do-list.png"  class="card-img" alt="">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4 class="card-title display-4 text-center">Todo List Using jQuery</h4>
-                                    </div>
-                                    <hr class="hr-for-profile">
-                                    <div class="card-text">
-                                        <div class="row">
-                                            <p class="text-center p-project">To-do lists are a list of tasks that an individual needs to complete or accomplish.</p>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-10">
-                                                <a href="public/loading-pages/ToDo.html" id="visit-btn-a"><button class="btn btn-outline-danger mt-5 btn-lg btn-block rounded-pill button-form">Visit</button></a>
-                                            </div>
-                                            <div class="col-md-2 pl-0 pb-0">
-                                                <a href="public/loading-pages/git-ToDo.html" id="visit-btn-a">
-                                                    <button class="btn btn-outline-danger mt-5 btn-lg rounded-pill button-form">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor" class="bi bi-github ml-2 pb-0 mb-0" viewBox="0 0 20 20">
-                                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                                        </svg>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="public/Images/shopping-cart.png"  class="card-img" alt="">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4 class="card-title display-4 text-center">Shopping Cart API</h4>
-                                    </div>
-                                    <hr class="hr-for-profile">
-                                    <div class="card-text">
-                                        <div class="row">
-                                            <p class="text-center p-project">A shopping cart API created using Node.js, Express.js, Sequelize, and jQuery allows for easy management of products and orders, enabling smooth e-commerce transactions.</p>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-12 pl-0 pb-0">
-                                                <a href="public/loading-pages/git-Shopping-api.html" id="visit-btn-a">
-                                                    <button class="btn btn-outline-danger mt-5 btn-lg rounded-pill button-form btn-block">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor" class="bi bi-github ml-2 pb-0 mb-0" viewBox="0 0 20 20">
-                                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                                        </svg>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="public/Images/social-media-app.png"  class="card-img" alt="">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4 class="card-title display-4 text-center">Mock Social Media</h4>
-                                    </div>
-                                    <hr class="hr-for-profile">
-                                    <div class="card-text">
-                                        <div class="row">
-                                            <p class="text-center p-project">The social media app project was built using Node.js, Express.js, Sequelize, and Handlebars. It incorporated jQuery for client-side interactions and allowed users to engage in social media features.</p>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-12 pl-0 pb-0">
-                                                <a href="public/loading-pages/git-Social-Media.html" id="visit-btn-a">
-                                                    <button class="btn btn-outline-danger mt-5 btn-lg rounded-pill button-form btn-block">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor" class="bi bi-github ml-2 pb-0 mb-0" viewBox="0 0 20 20">
-                                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                                        </svg>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card mt-4" data-aos="slide-right" data-aos-delay="150">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="public/Images/realtime-chat.png"  class="card-img" alt="">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <div class="card-title">
-                                        <h4 class="card-title display-4 text-center">Realtime Chat</h4>
-                                    </div>
-                                    <hr class="hr-for-profile">
-                                    <div class="card-text">
-                                        <div class="row">
-                                            <p class="text-center p-project">I have developed a real-time chat application using web sockets, allowing users to engage in live conversations with other online users. This project enables seamless communication and interaction between individuals, facilitating instant messaging and fostering engaging discussions in a convenient and efficient manner.</p>
-                                        </div>
-                                        <div class="row mt-5">
-                                            <div class="col-md-12 pl-0 pb-0">
-                                                <a href="public/loading-pages/git-Realtime-Chat.html" id="visit-btn-a">
-                                                    <button class="btn btn-outline-danger mt-5 btn-lg rounded-pill button-form btn-block">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" fill="currentColor" class="bi bi-github ml-2 pb-0 mb-0" viewBox="0 0 20 20">
-                                                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                                                        </svg>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- S4 STARTS HERE -->
-    <div class="container-fluid" data-aos="fade" data-aos-delay="50">
-        <div class="row" id="S4">
-            <div class="col">
-                <div class="jumbotron shadow-lg mt-5 mb-5" id="s3-jumbotron">
-                    <h5 class="display-3 text-center">Download Resume</h5>
-                    <hr>
-                    <h5 class="display-5"> Click to Download</h5>
-                    <a href="public/Resume/Gagan Resume.pdf" class="click-to-download" id="a-pdf">
-                        <button class="btn btn-primary btn-lg rounded-pill button-form" download>
-                        Download
-                            <span class="ml-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
-                                    <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"/>
-                                </svg>
-                            </span>
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- S5 STARTS HERE -->
-    <div class="container-fluid shadow-lg" id="S5" data-aos="fade-in" data-aos-delay="80">
-        <h3 class="display-3 text-center pt-5">Contact Me!</h3>
-        <hr>
-        <form name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true" data-aos="zoom-in" data-aos-delay="100">
-            <label class="ml-3 mt-3" id="user-name">Your Name: <input type="text" name="name" required /></label>
-            <label class="ml-3 mt-4" id="user-email">Your Email: <input type="email" name="email" required /></label>
-            <br>
-            <label class="ml-3" id="user-message">Message: <textarea name="message" required></textarea></label>
-            <div data-netlify-recaptcha="true"></div>
-            <button type="submit" class="btn btn-primary ml-3 mb-5" id="submit-btn-form">Send</button>
-            <button type="reset" class="btn btn-danger mb-5" id="reset-btn-form">Reset</button>
-        </form>
-    </div>
+    <p class="prevent-select" data-aos="fade-up" data-aos-delay="400" data-aos-once="false">I am a B.Tech 3rd-year student. I have been pursuing my B.Tech degree in Information Technology, and my coursework has exposed me to various technical subjects, including programming, database management, and web development. Through these courses, I have developed strong analytical, problem-solving, and critical thinking skills, which I believe will be valuable asset in any company I work with.</p>
+  </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <div id="Skills">
+    <h1 class="skills-h1 prevent-select" data-aos="fade-up" data-aos-delay="600" data-aos-once="false">MY <span class="skill-span">SKILLS</span></h1>
+    <hr class="skills-hr prevent-select" data-aos="fade-up" data-aos-delay="400" data-aos-once="false">
+    <section id="technologies" class="prevent-select">
+      <div class="tech-icons prevent-select" data-aos="fade-up" data-aos-delay="400" data-aos-once="false">
+          <div class="tech-item">
+              <i class="fab fa-c" style="color: lightblue;"></i>
+              <span class="tech-span" style="color: white">C</span>
+          </div>
+          <div class="tech-item">
+              <img src="public/Images/cpp logo.png" class="prevent-select" alt="" height="40px" width="40px">
+              <span class="tech-span" style="color: white;">C++</span>
+          </div>
+          <div class="tech-item">
+              <i class="fab fa-html5" style="color: orangered;"></i>
+              <span class="tech-span" style="color: white">HTML5</span>
+          </div>
+          <div class="tech-item">
+              <i class="fab fa-css3-alt" style="color: blue;"></i>
+              <span class="tech-span" style="color: white">CSS3</span>
+          </div>
+          <div class="tech-item">
+              <i class="fab fa-js" style="color: yellow;"></i>
+              <span class="tech-span" style="color: white">JavaScript</span>
+          </div>
+          <div class="tech-item">
+              <i class="fab fa-bootstrap" style="color: purple;"></i>
+              <span class="tech-span" style="color: white">Bootstrap</span>
+          </div>
+          <div class="tech-item">
+              <img src="public/Images/jquery logo.png" alt="" height="40px" class="prevent-select" width="40px">
+              <span class="tech-span" style="color: white">JQuery</span>
+          </div>
+          <div class="tech-item">
+              <i class="fab fa-node-js" style="color: lightgreen;"></i>
+              <span class="tech-span" style="color: white">NodeJS</span>
+          </div>
+          <div class="tech-item">
+              <img src="public/Images/express logo.png" alt="" height="40px" width="40px" class="prevent-select">
+              <span class="tech-span" style="color: white">ExpressJS</span>
+          </div>
+          <div class="tech-item">
+              <i class="fas fa-database" style="color: aqua;"></i> <!-- MySQL -->
+              <span class="tech-span" style="color: white">MySQL</span>
+          </div>
+          <div class="tech-item">
+              <i class="fas fa-database" style="color: green;"></i> <!-- MongoDB -->
+              <span class="tech-span" style="color: white">MongoDB</span>
+          </div>
+          <div class="tech-item">
+              <i class="fas fa-plug" style="color: lightseagreen;"></i> <!-- Socket.io -->
+              <span class="tech-span" style="color: white">Socket.io</span>
+          </div>
+          <div class="tech-item">
+              <i class="fab fa-wordpress" style="color: blue;"></i>
+              <span style="color: white;">WordPress</span>
+          </div>
+          <div class="tech-item">
+              <i class="fab fa-git" style="color: orange;"></i>
+              <span style="color: white">Git</span>
+          </div>
+      </div>
+    </section>
+  </div>
+  <div style="background-color: #222222" id="Projects">
+    <h1 class="projects-heading prevent-select" data-aos="fade-up" data-aos-delay="600" data-aos-once="false">MY <span class="project-span">PROJECTS</span></h1>
+    <hr class="projects-hr prevent-select" data-aos="fade-up" data-aos-delay="300" data-aos-once="false">
+    <div class="accordion-container prevent-select" data-aos="fade-up" data-aos-delay="600" data-aos-once="false">
+        <div class="accordion-tab prevent-select">
+          <input class="prevent-select" type="checkbox" id="accordion-1" name="toggle" />
+          <label class="prevent-select" for="accordion-1" data-aos="zoom-in" data-aos-once="false">IQ TEST WEBSITE</label>
+          <div class="accordion-content prevent-select">
+            <h2 class="accordion-h2" data-aos="slide-right" data-aos-delay="800" data-aos-once="false">Project Description</h2>
+            <p class="prevent-select accordion-p" data-aos="slide-left" data-aos-delay="800" data-aos-once="false">
+                An IQ test is an assessment that measures a range of cognitive abilities and provides a score that is intended to serve as a measure of an individual's intellectual abilities and potential. IQ tests are among the most administered psychological tests.
+            </p>
+            <hr class="accordion-hr prevent-select">
+            <div class="button-container prevent-select">
+              <button class="custom-button prevent-select" onclick="window.location.href='https://theiqtest.netlify.app/'">Visit Site</button>
+              <button class="custom-button prevent-select" onclick="window.location.href='https://github.com/gagan257/Mini-Project'">
+                <i class="fab fa-github prevent-select"></i> Code
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-tab">
+          <input type="checkbox" id="accordion-2" name="toCSS" />
+          <label for="accordion-2" data-aos="zoom-in" data-aos-once="false">SLOT MACHINE GAME</label>
+          <div class="accordion-content">
+            <h2 class="accordion-h2" data-aos="slide-right" data-aos-delay="800" data-aos-once="false">Project Description</h2>
+            <p class="accordion-p" data-aos="slide-left" data-aos-delay="800" data-aos-once="false">
+                Game of luck. In order to win, 3 identical Numbers must match in the row
+            </p>
+            <hr class="accordion-hr prevent-select">
+            <div class="button-container prevent-select">
+              <button class="custom-button prevent-select" onclick="window.location.href='https://the-slot-machine.netlify.app/'">Visit Site</button>
+              <button class="custom-button prevent-select" onclick="window.location.href='https://github.com/gagan257/Slot-Machine-Game'">
+                <i class="fab fa-github prevent-select"></i> Code
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-tab">
+          <input type="checkbox" id="accordion-3" name="toggle" />
+          <label for="accordion-3" data-aos="zoom-in" data-aos-once="false">Todo List Using jQuery</label>
+          <div class="accordion-content">
+            <h2 class="accordion-h2" data-aos="slide-right" data-aos-delay="800" data-aos-once="false">Project Description</h2>
+            <p class="accordion-p" data-aos="slide-left" data-aos-delay="800" data-aos-once="false">
+                To-do lists are a list of tasks that an individual needs to complete or accomplish.
+            </p>
+            <hr class="accordion-hr prevent-select">
+            <div class="button-container prevent-select">
+              <button class="custom-button prevent-select" onclick="window.location.href='https://to-do-list-using-jquery.netlify.app/'">Visit Site</button>
+              <button class="custom-button prevent-select" onclick="window.location.href='https://github.com/gagan257/To-Do-List-Using-JQuery'">
+                <i class="fab fa-github prevent-select"></i> Code
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-tab">
+          <input type="checkbox" id="accordion-4" name="toggle" />
+          <label for="accordion-4" data-aos="zoom-in" data-aos-once="false">Shopping Cart API</label>
+          <div class="accordion-content">
+            <h2 class="accordion-h2" data-aos="slide-right" data-aos-delay="800" data-aos-once="false">Project Description</h2>
+            <p class="accordion-p" data-aos="slide-left" data-aos-delay="800" data-aos-once="false">
+                A shopping cart API created using Node.js, Express.js, Sequelize, and jQuery allows for easy management of products and orders, enabling smooth e-commerce transactions.
+            </p>
+            <hr class="accordion-hr prevent-select">
+            <div class="button-container prevent-select">
+              <button class="custom-button prevent-select" onclick="window.location.href='https://github.com/gagan257/shopping-cart-api'">
+                <i class="fab fa-github prevent-select"></i> Code
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-tab">
+          <input type="checkbox" id="accordion-5" name="toggle" />
+          <label for="accordion-5" data-aos="zoom-in" data-aos-once="false">Mock Social Media</label>
+          <div class="accordion-content">
+            <h2 class="accordion-h2" data-aos="slide-right" data-aos-delay="800" data-aos-once="false">Project Description</h2>
+            <p class="accordion-p" data-aos="slide-left" data-aos-delay="800" data-aos-once="false">
+                The social media app project was built using Node.js, Express.js, Sequelize, and Handlebars. It incorporated jQuery for client-side interactions and allowed users to engage in social media features.
+            </p>
+            <hr class="accordion-hr prevent-select">
+            <div class="button-container prevent-select">
+              <button class="custom-button prevent-select" onclick="window.location.href='https://github.com/gagan257/Mock-Social-Media'">
+                <i class="fab fa-github prevent-select"></i> Code
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-tab">
+            <input type="checkbox" id="accordion-6" name="toggle" />
+            <label for="accordion-6" data-aos="zoom-in" data-aos-once="false">Realtime Chat</label>
+            <div class="accordion-content">
+              <h2 class="accordion-h2" data-aos="slide-right" data-aos-delay="800" data-aos-once="false">Project Description</h2>
+                <p class="accordion-p" data-aos="slide-left" data-aos-delay="800" data-aos-once="false">
+                  I have developed a real-time chat application using web sockets, allowing users to engage in live conversations with other online users. This project enables seamless communication and interaction between individuals, facilitating instant messaging and fostering engaging discussions in a convenient and efficient manner.
+                </p>
+                <hr class="accordion-hr prevent-select">
+                <div class="button-container prevent-select">
+                  <button class="custom-button prevent-select" onclick="window.location.href='https://github.com/gagan257/Realtime-Chat'">
+                    <i class="fab fa-github prevent-select"></i> Code
+                  </button>
+                </div>
+            </div>
+          </div>
+    </div>
+  </h1></div>
+  <div id="Contact" class="prevent-select">
+    <h1 class="contact-h1 prevent-select" data-aos="fade-up" data-aos-delay="600" data-aos-once="false"><span class="contact-span">CONTACT</span> ME</h1>
+    <hr class="contact-hr prevent-select" data-aos="fade-up" data-aos-delay="200" data-aos-once="false">
+    <form class="form-container prevent-select" name="contact" netlify>
+      <input type="text" class="form-input prevent-select" data-aos="fade-up" data-aos-delay="500" data-aos-once="false" name="name" placeholder="Name" required>
+      <input type="email" class="form-input prevent-select" data-aos="fade-up" data-aos-delay="500" data-aos-once="false" name="email" placeholder="Email" required>
+      <textarea class="form-input prevent-select" data-aos="fade-up" data-aos-delay="500" data-aos-once="false" name="message" placeholder="Message" rows="4" required></textarea>
+      <button type="submit" class="submit-button prevent-select">Submit</button>
+    </form>
+  </div>  
+  
+  <footer>
+    <div class="footer-container prevent-select">
+      <div class="col-1 content-columns prevent-select">
+        <h2>Gagan Arora</h2>
+        <hr class="footer-hr">
+        <div>
+          <i class="fa-solid fa-map"></i> Noida, Uttar Pradesh, India <br>
+          <i class="fa-solid fa-phone"></i> +91-8743031531 <br>
+          <i class="fa-solid fa-envelope"></i> arorag2577@gmail.com <br>
+          <i class="fa-solid fa-globe"></i> www.gagan.click
+        </div>
+      </div>
+      <div class="col-2 content-columns">
+          <h3>Useful Links</h3>
+          <hr class="footer-hr">
+          <i class="fa-solid fa-link prevent-select"></i> <a href="public/feedback"> Site Feedback</a><br>
+          <i class="fa-solid fa-link prevent-select"></i> <a href="public/Resume/Gagan Resume.pdf" download> Download Resume</a>
+        </div>
+        <!-- COLUMNS 3 -->
+        <div class="col-3 content-columns">
+          <h3>Services</h3>
+          <hr class="footer-hr">
+          <i class="fa-solid fa-check"></i> Web Design <br>
+          <i class="fa-solid fa-check"></i> Frontend Development <br>
+          <i class="fa-solid fa-check"></i> Backend Development
+        </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/gagan_257"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.github.com/gagan257"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/gagan-arora-26343722a/"><i class="fab fa-linkedin"></i></a>
+      </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright prevent-select">
+      <p>&copy; <span id="year"></span> Gagan Arora. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+  <script src="script.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({
             offset: 150,
-            duration:500
+            duration:500,
         });
     </script>
-</body>
 </html>

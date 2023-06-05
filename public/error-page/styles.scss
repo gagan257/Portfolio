@@ -1,0 +1,36 @@
+body {
+background-color: #222222;
+margin: 0;
+font-family: Arial, sans-serif;
+}
+
+.container {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+text-align: center;
+}
+
+.error-code {
+color: white;
+font-size: 6rem;
+margin: 0;
+}
+
+.error-message {
+color: white;
+font-size: 2rem;
+margin-top: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+.error-code {
+    font-size: 4rem;
+}
+
+.error-message {
+    font-size: 1.5rem;
+}
+}

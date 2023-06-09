@@ -663,7 +663,6 @@ footer li::marker {
   }
 }
 
-/* For webkit-based browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -673,7 +672,6 @@ footer li::marker {
   border-radius: 4px;
 }
 
-/* For Firefox */
 ::-moz-scrollbar {
   width: 8px;
 }
@@ -683,7 +681,6 @@ footer li::marker {
   border-radius: 4px;
 }
 
-/* For Internet Explorer and Microsoft Edge */
 ::-ms-scrollbar {
   width: 8px;
 }
@@ -691,4 +688,8 @@ footer li::marker {
 ::-ms-scrollbar-thumb {
   background-color: yellow;
   border-radius: 4px;
+}
+
+img {
+  pointer-events: none;
 }

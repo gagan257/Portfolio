@@ -662,3 +662,33 @@ footer li::marker {
     width: 90%;
   }
 }
+
+/* For webkit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: yellow;
+  border-radius: 4px;
+}
+
+/* For Firefox */
+::-moz-scrollbar {
+  width: 8px;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: yellow;
+  border-radius: 4px;
+}
+
+/* For Internet Explorer and Microsoft Edge */
+::-ms-scrollbar {
+  width: 8px;
+}
+
+::-ms-scrollbar-thumb {
+  background-color: yellow;
+  border-radius: 4px;
+}

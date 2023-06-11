@@ -225,10 +225,11 @@
   <div id="Contact" class="prevent-select">
     <h1 class="contact-h1 prevent-select" data-aos="fade-up" data-aos-delay="600" data-aos-once="false"><span class="contact-span">CONTACT</span> ME</h1>
     <hr class="contact-hr prevent-select" data-aos="fade-up" data-aos-delay="200" data-aos-once="false">
-    <form class="form-container prevent-select" name="contact" netlify>
+    <form class="form-container prevent-select" name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true" netlify>
       <input type="text" class="form-input prevent-select" data-aos="fade-up" data-aos-delay="500" data-aos-once="false" name="name" placeholder="Name" required>
       <input type="email" class="form-input prevent-select" data-aos="fade-up" data-aos-delay="500" data-aos-once="false" name="email" placeholder="Email" required>
       <textarea class="form-input prevent-select" data-aos="fade-up" data-aos-delay="500" data-aos-once="false" name="message" placeholder="Message" rows="4" required></textarea>
+      <div data-netlify-recaptcha="true" class="recapcha-div"></div>
       <button type="submit" class="submit-button prevent-select">Submit</button>
     </form>
   </div>  
@@ -248,7 +249,7 @@
       <div class="col-2 content-columns">
           <h3>Useful Links</h3>
           <hr class="footer-hr">
-          <i class="fa-solid fa-link prevent-select"></i> <a href="public/feedback"> Site Feedback</a><br>
+          <i class="fa-solid fa-link prevent-select"></i> <a href="https://gagan-feedback.netlify.app"> Site Feedback</a><br>
           <i class="fa-solid fa-link prevent-select"></i> <a href="public/Resume/Gagan Resume.pdf" download> Download Resume</a>
         </div>
         <!-- COLUMNS 3 -->

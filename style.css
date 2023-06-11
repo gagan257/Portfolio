@@ -693,3 +693,10 @@ footer li::marker {
 img {
   pointer-events: none;
 }
+
+.recapcha-div{
+  justify-content: center;
+  text-align: center;
+  background-color: #222222;
+  color: white;
+}

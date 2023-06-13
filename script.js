@@ -34,3 +34,9 @@ for (let i = 0; i < links.length; i++) {
 let year = document.getElementById('year');
 let dynamicYear = new Date().getFullYear();
 year.innerHTML = dynamicYear;
+
+// dark theme
+document.addEventListener('DOMContentLoaded', (event) => {
+  const recaptcha = document.querySelector('.g-recaptcha');
+  recaptcha.setAttribute("data-theme", "dark");
+});

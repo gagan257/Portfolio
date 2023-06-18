@@ -297,6 +297,9 @@ body {
 }
 .tech-span{
   color: white;
+  margin-left: 3%;
+  margin-right: 3%;
+  flex-wrap: wrap;
 }
 
 .tech-icons span {

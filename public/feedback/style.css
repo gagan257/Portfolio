@@ -1,72 +1,81 @@
-body {
-background-color: #222222;
-font-family: Arial, sans-serif;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
+* {
+box-sizing: border-box;
 margin: 0;
+padding: 0;
+font-family: 'Segoe UI', sans-serif;
 }
 
-.container {
-    background-color: #222222;
-    padding: 2rem;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+body {
+width: 100vw;
+height: 100vh;
+background-image: url('https://i.postimg.cc/D09jSxfj/pexels-tyler-lastovich-1616516.jpg');
+background-size: cover;
+overflow: hidden;
 }
+
+.form-container {
+width: 350px;
+background-color: rgba(22, 22, 22, 0.096);
+padding: 20px;
+margin: 40px auto;
+display: flex;
+flex-direction: column;
+gap: 20px;
+border-radius: 10px;
+color: white;
+}
+input,
+textarea,
+button {
+padding: 9px;
+border: none;
+border-radius: 5px;
+outline: none;
+}
+
+textarea {
+resize: vertical;
+}
+
+button {
+cursor: pointer;
+font-weight: 500;
+background-color: rgb(127, 255, 195);
+}
+
+button:hover {
+background-color: rgb(69, 240, 183);
+}
+
+button:active {
+background-color: rgb(149, 241, 210);
+}
+
+i {
+color: rgb(59, 59, 59);
+margin-left: 10px;
+}
+
+footer {
+text-align: center;
+}
+
+footer a {
+text-decoration: none;
+color: whitesmoke;
+}
+
+.heading-h2{
+    text-align: center;
+}
+
+.recapcha-div{
+    text-align: center;
+    justify-content: center;
+}
+
 .prevent-select {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-}
-
-h1{
-    text-align: center;
-    color: #f1c40f;
-    font-size: 40px;
-}
-h2{
-    text-align: center;
-    color: white;
-    font-size: 30px;
-}
-
-.form-group {
-margin-bottom: 1rem;
-}
-
-label {
-display: block;
-margin-bottom: 0.5rem;
-color: #ffffff;
-}
-
-input, textarea {
-width: 100%;
-padding: 0.5rem;
-border: 1px solid #ffffff;
-border-radius: 5px;
-background-color: #222222;
-color: #ffffff;
-}
-
-textarea {
-resize: none;
-height: 100px;
-}
-
-button {
-display: block;
-width: 100%;
-padding: 0.5rem;
-border: none;
-border-radius: 5px;
-background-color: #ffffff;
-color: #222222;
-cursor: pointer;
-transition: background-color 0.3s;
-}
-
-button:hover {
-background-color: #cccccc;
 }

@@ -1,33 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-  <title>Feedback Form</title>
-</head>
-<body>
-  <div class="container prevent-select">
-    <h1 data-aos="fade-up" data-aos-delay="600" data-aos-once="false">Site Feedback</h1>
-    <h2  data-aos="fade-up" data-aos-delay="1000" data-aos-once="false">"Thank you for taking the time to share your feedback with me. Your input is greatly appreciated"</h2>
-    <form id="feedback-form" name="feedback-form" netlify>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <label for="message">Feedback message:</label>
-      <textarea id="message" name="message" required></textarea>
-      <button type="submit">Submit</button>
+  <head>
+    <script src="script.js"></script>
+    <title>Site Feedback</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/81d73e8e4d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <form class="form-container prevent-select" name="SiteFeedback" method="POST" data-netlify-recaptcha="true" data-netlify="true" netlify>
+      <h2 class="heading-h2">SITE FEEDBACK</h2>
+      <input type="text" placeholder="Your Name" name="name" required />
+      <input type="email" id="email" placeholder="Email" name="email" required />
+      <textarea name="feedback" rows="7" placeholder="FEEDBACK" required></textarea>
+      <div data-netlify-recaptcha="true" class="recapcha-div"></div>
+      <button>Send Message <i class="fa-solid fa-paper-plane"></i></button>
     </form>
-  </div>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            offset: 150,
-            duration:500,
-        });
-    </script>
-</body>
+  </body>
 </html>

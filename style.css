@@ -695,6 +695,7 @@ footer li::marker {
 
 img {
   pointer-events: none;
+  /* mix-blend-mode: multiply; */
 }
 
 .recapcha-div{

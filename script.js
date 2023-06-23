@@ -17,7 +17,7 @@ setInterval(() => {
     typingDiv.style.marginTop = "10%" ;
     word = words[wordIndex];
     typingDiv.innerHTML = word;
-},2000);
+},2500);
 hamburger.addEventListener('click', () => {
   navLinks.classList.toggle('hide');
   hamburger.classList.toggle('lines-rotate');
@@ -40,3 +40,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
   const recaptcha = document.querySelector('.g-recaptcha');
   recaptcha.setAttribute("data-theme", "dark");
 });
+
+
+// for multi title
+let alertShow = false;
+
+setInterval(()=>{
+  document.title = 
+  alertShow ? "Portfolio"
+            : "Gagan Arora";
+  alertShow = !alertShow;
+},3000);

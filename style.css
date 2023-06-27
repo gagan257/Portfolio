@@ -261,6 +261,10 @@ body {
   margin: 0 auto; 
 }
 
+#About > p{
+  padding-right: 3%;
+  padding-left: 3%;
+}
 
 #technologies {
   text-align: center;
@@ -423,7 +427,7 @@ footer p {
 
 footer a {
   text-decoration: none;
-  color: lightgray;
+  color: white;
 }
 
 footer li::marker {
@@ -668,29 +672,16 @@ footer li::marker {
 
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: yellow;
-  border-radius: 4px;
+  background-color: #f1c40f;
+  border-radius: 6px;
 }
 
-::-moz-scrollbar {
-  width: 8px;
-}
-
-::-moz-scrollbar-thumb {
-  background-color: yellow;
-  border-radius: 4px;
-}
-
-::-ms-scrollbar {
-  width: 8px;
-}
-
-::-ms-scrollbar-thumb {
-  background-color: yellow;
-  border-radius: 4px;
+::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
 img {

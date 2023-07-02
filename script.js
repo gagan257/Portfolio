@@ -51,3 +51,14 @@ setInterval(()=>{
             : "Gagan Arora";
   alertShow = !alertShow;
 },3000);
+
+
+//current time
+function displayCurrentTime() {
+  var date = new Date();
+  var time = date.toLocaleTimeString();
+  document.getElementById("current-time").innerHTML = time;
+}
+
+// Update the time every second
+setInterval(displayCurrentTime, 1000);

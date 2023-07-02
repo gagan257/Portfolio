@@ -695,3 +695,8 @@ img {
   background-color: #222222;
   color: white;
 }
+
+.current-time-div{
+  margin-top: 5%;
+  justify-content: center;
+}

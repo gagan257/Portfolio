@@ -353,7 +353,7 @@ body {
 }
 
 .accordion-tab label::after {
-  content: '+';
+  content: '⧉';
   position: absolute;
   top: 12px;
   right: 20px;
@@ -363,12 +363,20 @@ body {
 }
 
 .accordion-tab input:checked ~ label::after {
-  content: '-';
+  content: '⬓';
   font-weight: 600;
   font-size: xx-large;
   top: 0;
 }
 
+@media (max-width: 768px) {
+  .accordion-tab label::after {
+    content: '+';
+  }
+  .accordion-tab input:checked ~ label::after {
+    content: '-';
+  }
+}
 .accordion-tab input {
   display: none;
 }

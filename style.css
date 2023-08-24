@@ -15,6 +15,12 @@
   color: white;
 }
 
+.prevent-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 body {
   position: relative;
   height: 100vh;
@@ -42,11 +48,11 @@ nav ul {
   list-style-type: none;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
 }
 
 li {
-  width: 70px;
+  width: 80px;
 }
 
 li a {
@@ -145,7 +151,7 @@ body {
   color: white;
   font-family: Arial, sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
 }
@@ -206,6 +212,18 @@ body {
   }
 }
 
+@media (max-width: 1190px) {
+  #Skills {
+    padding-top: 8%;
+  }
+  #About {
+    padding-top: 8%;
+  }
+  #Projects {
+    padding-top: 8%;
+  }
+}
+
 .Home-hr {
   margin-top: 15%;
   border: none;
@@ -219,12 +237,6 @@ body {
   font-size: 34px;
   color: #f1c40f;
   margin-top: 10%;
-}
-
-.prevent-select {
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .about-span {
@@ -314,7 +326,7 @@ body {
 .projects-heading {
   font-size: 50px;
   margin-bottom: 1.5%;
-  padding-top: 10%;
+  padding-top: 6%;
 }
 @media (max-width: 768px) {
   .projects-heading {
@@ -613,6 +625,7 @@ footer li::marker {
 
 .submit-button:hover {
   color: #f1c40f;
+  border: 1px solid #f1c40f;
 }
 
 @media (max-width: 480px) {
@@ -685,6 +698,7 @@ footer li::marker {
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -694,11 +708,11 @@ footer li::marker {
 
 ::-webkit-scrollbar-track {
   background-color: transparent;
+  background: transparent;
 }
 
 img {
   pointer-events: none;
-  /* mix-blend-mode: multiply; */
 }
 
 .recapcha-div {
@@ -711,4 +725,27 @@ img {
 .current-time-div {
   margin-top: 5%;
   justify-content: center;
+}
+
+#back-to-top {
+  bottom: 20px;
+  right: 20px;
+  z-index: 5;
+  margin-top: 5%;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background-color: #191e24;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+
+#back-to-top:hover {
+  opacity: 1;
+  background-color: #f1c40f;
+  transform: scale(1.1);
 }

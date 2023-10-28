@@ -19,7 +19,7 @@
         }
     </style>
   </head>
-  <body data-offset="100">
+  <body data-offset="100" class="prevent-select">
   <nav data-aos="fade-up" data-aos-delay="400" class="sticky">
         <h1 id="logo" class="prevent-select">PORTFO<span class="logo-span">LIO.</span></h1>
     <div class="hamburger">
@@ -321,17 +321,35 @@
               </div>
           </div>
         </div>
+        <div class="accordion-tab">
+          <input type="checkbox" id="accordion-12" name="toggle" />
+          <label for="accordion-12" data-aos="zoom-in" data-aos-once="false">Github Explorer</label>
+          <div class="accordion-content">
+            <h2 class="accordion-h2" data-aos="slide-right" data-aos-delay="800" data-aos-once="false">Project Description</h2>
+              <p class="accordion-p" data-aos="slide-left" data-aos-delay="800" data-aos-once="false">
+                Explore Your GitHub with my simple ReactJS Github Explorer App.
+              </p>
+              <hr class="accordion-hr prevent-select">
+              <div class="button-container prevent-select">
+                <button class="custom-button prevent-select" onclick="window.location.href='https://gagan-github-explorer.netlify.app/'">Visit Site</button>
+                <button class="custom-button prevent-select" onclick="window.location.href='https://github.com/gagan257/Github-Explorer-App'">
+                  <i class="fab fa-github prevent-select"></i> Code
+                </button>
+              </div>
+          </div>
+        </div>
     </div>
   </div>
   <div id="Contact" class="prevent-select">
     <h1 class="contact-h1 prevent-select" data-aos="fade-up" data-aos-delay="600" data-aos-once="false"><span class="contact-span">CONTACT</span> ME</h1>
     <hr class="contact-hr prevent-select" data-aos="fade-up" data-aos-delay="200" data-aos-once="false">
     <form class="form-container prevent-select" name="contact" method="POST" data-netlify-recaptcha="true" data-netlify="true" netlify>
-      <input type="text" class="form-input prevent-select" data-aos="zoom-in" data-aos-delay="500" data-aos-once="false" name="name" placeholder="Name" required>
-      <input type="email" class="form-input prevent-select" data-aos="zoom-in" data-aos-delay="500" data-aos-once="false" name="email" placeholder="Email" required>
-      <textarea class="form-input prevent-select" data-aos="zoom-in" data-aos-delay="500" data-aos-once="false" name="message" placeholder="Message" rows="4" required></textarea>
+      <input type="text" class="form-input prevent-select" data-aos="zoom-in" data-aos-delay="500" data-aos-once="false" name="name" placeholder="Full Name" required>
+      <input type="email" class="form-input prevent-select" data-aos="zoom-in" data-aos-delay="500" data-aos-once="false" name="email" placeholder="Your Email" required>
+      <textarea class="form-input prevent-select" data-aos="zoom-in" data-aos-delay="500" data-aos-once="false" name="message" placeholder="Your Message" rows="4" required></textarea>
       <div data-netlify-recaptcha="true" class="recapcha-div" data-aos="zoom-in" data-aos-delay="1000" data-aos-once="true"></div>
       <button type="submit" class="submit-button prevent-select">Submit</button>
+      <h4 class="form-not-working">Form not working?<span><a href="https://contact-gagan.netlify.app">Click here</Click></a></span></h4>
     </form>
   </div>  
   

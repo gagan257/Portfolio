@@ -749,3 +749,14 @@ img {
   background-color: #f1c40f;
   transform: scale(1.1);
 }
+
+.form-not-working {
+  display: flex;
+  margin-top: 5%;
+}
+.form-not-working > span {
+  margin-left: 2px;
+  border-radius: 5px;
+  background-color: #f1c40f;
+  padding: 1px;
+}

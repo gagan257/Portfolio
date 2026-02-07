@@ -1,0 +1,342 @@
+/* ============================================
+   3D Scene Styles - Portfolio Enhancement
+   ============================================ */
+
+/* Canvas container - Full viewport background */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+#canvas-container.canvas-visible {
+    opacity: 1;
+}
+
+#canvas-container canvas {
+    display: block;
+}
+
+/* Enable pointer events only when needed */
+#canvas-container.interactive {
+    pointer-events: auto;
+}
+
+/* Loading screen */
+.scene-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.scene-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+}
+
+.loader-ring {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(0, 200, 218, 0.1);
+    border-top: 3px solid #00c8da;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loader-text {
+    color: #00c8da;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.loader-progress {
+    width: 200px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 20px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.loader-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00c8da, #ffc454);
+    transition: width 0.3s ease;
+}
+
+/* Floating 3D card effect for sections */
+.section-3d {
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card-3d {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+}
+
+.card-3d:hover {
+    transform: translateZ(30px) rotateX(5deg) rotateY(-5deg);
+}
+
+/* Glassmorphism overlay for content */
+.glass-overlay {
+    background: rgba(10, 10, 10, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+}
+
+/* Glowing text effect */
+.glow-text {
+    text-shadow: 0 0 20px rgba(0, 200, 218, 0.5),
+        0 0 40px rgba(0, 200, 218, 0.3),
+        0 0 60px rgba(0, 200, 218, 0.1);
+}
+
+/* Floating animation for 3D elements */
+.float-animation {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotateX(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotateX(5deg);
+    }
+}
+
+/* Particle glow effect */
+.particle-glow {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #00c8da;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00c8da, 0 0 20px #00c8da;
+    animation: particlePulse 2s ease-in-out infinite;
+}
+
+@keyframes particlePulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+}
+
+/* Section transition overlay */
+.section-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #0a0a0a;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.section-transition.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Smooth scroll indicator */
+.scroll-indicator {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    letter-spacing: 2px;
+    animation: fadeInUp 1s ease 2s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+    }
+}
+
+.scroll-indicator .mouse {
+    width: 24px;
+    height: 38px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.scroll-indicator .wheel {
+    width: 4px;
+    height: 8px;
+    background: #00c8da;
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scrollWheel 2s ease-in-out infinite;
+}
+
+@keyframes scrollWheel {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(-50%) translateY(10px);
+        opacity: 0.3;
+    }
+}
+
+/* 3D Navigation enhancement */
+.nav-3d {
+    backdrop-filter: blur(10px);
+    background: rgba(10, 10, 10, 0.8) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-3d .nav-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-3d .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #00c8da, #ffc454);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.nav-3d .nav-link:hover::after,
+.nav-3d .nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Hero 3D enhancement */
+.hero-3d {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-3d::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 200, 218, 0.1) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: pulseGlow 4s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card-3d:hover {
+        transform: translateZ(15px);
+    }
+
+    .hero-3d::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* Performance: Reduce animations on low-power devices */
+@media (prefers-reduced-motion: reduce) {
+
+    .float-animation,
+    .particle-glow,
+    .scroll-indicator .wheel {
+        animation: none;
+    }
+
+    .card-3d {
+        transition: none;
+    }
+}

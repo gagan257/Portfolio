@@ -1,0 +1,1181 @@
+/*--------------------- Dark Theme Styles --------------------------
+   Portfolio Dark Theme - Premium Dark Mode Design
+   TOGGLE VERSION - Applied only when body has 'dark-mode' class
+   ------------------------------------------------------------------- */
+
+/* ============================================
+   Dark Mode Toggle Button
+   ============================================ */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    /* Desktop: Right side */
+    z-index: 9999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Light mode button */
+.theme-toggle {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Dark mode button */
+body.dark-mode .theme-toggle {
+    background: linear-gradient(135deg, #ffc454 0%, #ff754a 100%);
+    color: #1a1a25;
+}
+
+body.dark-mode .theme-toggle:hover {
+    box-shadow: 0 6px 20px rgba(255, 196, 84, 0.4);
+}
+
+
+
+/* ============================================
+   CSS Variables for Dark Theme
+   ============================================ */
+body.dark-mode {
+    /* Primary Dark Backgrounds */
+    --dark-bg-primary: #0a0a0f;
+    --dark-bg-secondary: #12121a;
+    --dark-bg-tertiary: #1a1a25;
+    --dark-bg-card: #16161f;
+    --dark-bg-card-hover: #1e1e2a;
+
+    /* Accent Colors (keeping your brand colors) */
+    --accent-cyan: #00c8da;
+    --accent-yellow: #ffc454;
+    --accent-pink: #ff517e;
+    --accent-orange: #ff754a;
+
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #b8b8c8;
+    --text-muted: #8888a0;
+
+    /* Border & Shadow */
+    --border-dark: rgba(255, 255, 255, 0.08);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --glow-cyan: 0 0 30px rgba(0, 200, 218, 0.3);
+    --glow-yellow: 0 0 30px rgba(255, 196, 84, 0.3);
+    --glow-pink: 0 0 30px rgba(255, 81, 126, 0.3);
+}
+
+/* ============================================
+   Base Dark Styles (only when dark-mode class is present)
+   ============================================ */
+body.dark-mode {
+    background-color: var(--dark-bg-primary) !important;
+    color: var(--text-secondary) !important;
+    background-image:
+        radial-gradient(circle at 20% 50%, rgba(0, 200, 218, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 196, 84, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 81, 126, 0.02) 0%, transparent 50%);
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode p {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode a {
+    color: var(--accent-cyan);
+    transition: color 0.3s ease;
+}
+
+body.dark-mode a:hover {
+    color: var(--accent-yellow);
+}
+
+/* ============================================
+   Preloader Dark
+   ============================================ */
+body.dark-mode .preloader {
+    background: linear-gradient(135deg, var(--dark-bg-primary) 0%, var(--dark-bg-secondary) 100%) !important;
+}
+
+/* ============================================
+   Sidebar Dark Theme
+   ============================================ */
+body.dark-mode .port_sidebar_wrapper {
+    background: var(--dark-bg-secondary) !important;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5),
+        inset -1px 0 0 var(--border-dark) !important;
+    border-right: 1px solid var(--border-dark);
+}
+
+body.dark-mode .port_sidebar_wrapper .profile_circle {
+    background: var(--dark-bg-tertiary) !important;
+    border: 2px solid var(--border-dark);
+    box-shadow: var(--glow-cyan);
+}
+
+body.dark-mode .port_navigation .nav_list li:after {
+    background: var(--border-dark) !important;
+}
+
+body.dark-mode .port_navigation .nav_list li:before {
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+body.dark-mode .port_navigation .nav_list li .tooltip_box span.menu_tooltip {
+    text-shadow: 0 0 10px currentColor;
+}
+
+body.dark-mode .port__social_box p {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .port__social_box p:after {
+    background: var(--border-dark) !important;
+}
+
+/* ============================================
+   Banner Section Dark
+   ============================================ */
+body.dark-mode .port_bannerbg_wrapper {
+    background: linear-gradient(135deg, var(--dark-bg-primary) 0%, var(--dark-bg-secondary) 100%) !important;
+}
+
+body.dark-mode .port_banner_wrapper .banner_content {
+    background: transparent !important;
+    position: relative;
+}
+
+body.dark-mode .port_banner_wrapper .banner_content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, rgba(0, 200, 218, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+body.dark-mode .bannner_leftpart h2.stranger {
+    color: #ffffff !important;
+}
+
+/* Stranger! text should be WHITE in dark mode (visible on yellow bg) */
+body.dark-mode .bannner_leftpart span.stran {
+    color: #ffffff !important;
+}
+
+body.dark-mode .bannner_leftpart .banner_name {
+    color: var(--accent-cyan) !important;
+    text-shadow: 0 0 60px rgba(0, 200, 218, 0.4);
+}
+
+body.dark-mode p.banner_pera {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .banner_typingtext {
+    color: var(--accent-pink) !important;
+}
+
+/* ============================================
+   About Section Dark
+   ============================================ */
+body.dark-mode .port_about_setions {
+    background: linear-gradient(180deg, var(--dark-bg-secondary) 0%, var(--dark-bg-primary) 100%) !important;
+}
+
+body.dark-mode .selfintro_section .about_leftsection:after {
+    border-color: var(--accent-pink) !important;
+    background: transparent !important;
+}
+
+body.dark-mode .right_section h2.about_tophead {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .right_section .about_deatils {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .signature_box .name h2 {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .signature_box .name p {
+    color: var(--text-muted) !important;
+}
+
+/* Personal Details Overlay */
+body.dark-mode .selfintro_section .left_deatils {
+    background: rgba(10, 10, 15, 0.95) !important;
+    backdrop-filter: blur(10px);
+}
+
+body.dark-mode .personal_details h1.ps_name {
+    color: var(--text-primary) !important;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .personal_details p.ps_designation {
+    color: var(--text-muted) !important;
+}
+
+body.dark-mode span.title {
+    color: var(--accent-yellow) !important;
+}
+
+body.dark-mode span.value,
+body.dark-mode span.value a {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode span.value a:hover {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .personal_details a.social-button {
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, #00a0b0 100%) !important;
+    box-shadow: var(--glow-cyan) !important;
+}
+
+body.dark-mode .personal_details a.social-button:hover {
+    background: linear-gradient(135deg, var(--accent-pink) 0%, #e04060 100%) !important;
+    box-shadow: var(--glow-pink) !important;
+}
+
+/* ============================================
+   Heading Styles Dark
+   ============================================ */
+body.dark-mode .port_heading_wrapper .port_heading {
+    color: var(--accent-cyan) !important;
+    text-shadow: 0 0 30px rgba(0, 200, 218, 0.3);
+}
+
+/* Sub headings like Learning, Involvement, About Me - WHITE text in dark mode */
+body.dark-mode .port_heading_wrapper .port_sub_heading {
+    color: #ffffff !important;
+}
+
+body.dark-mode .port_heading_wrapper .port_sub_heading:after {
+    background: var(--accent-yellow) !important;
+}
+
+body.dark-mode .port_heading_wrapper .port_sub_heading:before {
+    background: var(--accent-yellow) !important;
+}
+
+body.dark-mode .port_heading_wrapper .port_sub_heading:hover {
+    color: #ffffff !important;
+}
+
+body.dark-mode .port_hadding_style_sec .port_head_wrapper {
+    color: var(--accent-cyan) !important;
+}
+
+/* ============================================
+   Education Section Dark
+   ============================================ */
+body.dark-mode .port_education_setions,
+body.dark-mode .education_section {
+    background: var(--dark-bg-primary) !important;
+}
+
+body.dark-mode .education_main_wrapper {
+    position: relative;
+}
+
+body.dark-mode .education_main_wrapper:after {
+    background: linear-gradient(180deg, var(--accent-pink) 0%, var(--accent-cyan) 100%) !important;
+    box-shadow: 0 0 20px rgba(255, 81, 126, 0.3);
+}
+
+body.dark-mode .education_section .edu_mainyear h1 {
+    background: var(--dark-bg-secondary) !important;
+    color: var(--text-secondary) !important;
+    border-color: var(--border-light) !important;
+}
+
+body.dark-mode .education_box:hover .edu_mainyear h1 {
+    border-color: var(--accent-cyan) !important;
+    color: var(--accent-cyan) !important;
+    box-shadow: var(--glow-cyan);
+}
+
+/* Education Cards Dark */
+body.dark-mode .education_mright .education_rinfo {
+    background: var(--dark-bg-card) !important;
+    border: 1px solid var(--border-dark) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .education_mright:hover .education_rinfo {
+    border-color: rgba(0, 200, 218, 0.3) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(0, 200, 218, 0.1) !important;
+}
+
+body.dark-mode .prt_rightside_title {
+    background: var(--dark-bg-tertiary) !important;
+    border: 1px solid var(--border-dark) !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .prt_rightside_title .left_title h4 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode h3.education_place {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode h3.education_place span.data_hover {
+    color: var(--accent-pink) !important;
+}
+
+body.dark-mode .education_rinfo p {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .education_mright .left_title_box:before {
+    border-right-color: var(--dark-bg-tertiary) !important;
+}
+
+body.dark-mode .education_secondbox .left_title_box:before {
+    border-left-color: var(--dark-bg-tertiary) !important;
+    border-right-color: transparent !important;
+}
+
+body.dark-mode .education_left .prt_rightside_title {
+    box-shadow: none !important;
+}
+
+body.dark-mode .education_right .prt_rightside_title {
+    box-shadow: none !important;
+}
+
+/* ============================================
+   Experience Section Dark
+   ============================================ */
+body.dark-mode .port_experience_setions,
+body.dark-mode .experience_section {
+    background: linear-gradient(180deg, var(--dark-bg-primary) 0%, var(--dark-bg-secondary) 100%) !important;
+}
+
+body.dark-mode .exprince_box {
+    background: transparent !important;
+    border: none !important;
+}
+
+body.dark-mode .port_experience_setions .ex_leftside {
+    box-shadow: 0 5px 20px rgba(255, 81, 126, 0.3) !important;
+}
+
+body.dark-mode .ex_leftside h1 {
+    color: #ffffff !important;
+}
+
+body.dark-mode .ex_leftside h4 {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.dark-mode .port_experience_setions .ex_rightside,
+body.dark-mode .ex_rightside {
+    background: var(--dark-bg-card) !important;
+    border: 1px solid var(--border-dark) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .ex_rightside:hover {
+    border-color: rgba(0, 200, 218, 0.3) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(0, 200, 218, 0.1) !important;
+}
+
+body.dark-mode .ex_rightside h4 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .ex_rightside span {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .ex_rightside p.ex_details,
+body.dark-mode .ex_rightside p.more_content {
+    color: var(--text-secondary) !important;
+    border-top-color: var(--border-dark) !important;
+}
+
+body.dark-mode .ex_rightside .ex_details {
+    border-top: 1px solid var(--border-dark) !important;
+}
+
+body.dark-mode .ex_btn {
+    color: var(--accent-cyan) !important;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .ex_btn:hover {
+    color: var(--accent-yellow) !important;
+    text-shadow: 0 0 10px rgba(255, 196, 84, 0.5);
+}
+
+/* ============================================
+   Services Section Dark
+   ============================================ */
+body.dark-mode .port_services_setions,
+body.dark-mode .services_section {
+    background: var(--dark-bg-secondary) !important;
+}
+
+body.dark-mode .port_services_setions .port_services_box {
+    background: var(--dark-bg-card) !important;
+    border: 1px solid var(--border-dark) !important;
+}
+
+body.dark-mode .port_services_setions .port_services_box:hover {
+    border-color: rgba(0, 200, 218, 0.3) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(0, 200, 218, 0.15) !important;
+}
+
+body.dark-mode .port_services_setions .port_services_box h2 {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .port_services_setions .port_services_box p {
+    color: var(--text-secondary) !important;
+}
+
+/* ============================================
+   Projects/Portfolio Section Dark
+   ============================================ */
+body.dark-mode .port_projects_setions {
+    background: var(--dark-bg-primary) !important;
+}
+
+body.dark-mode .projects_grid .card {
+    background: var(--dark-bg-card) !important;
+    border: 1px solid var(--border-dark) !important;
+}
+
+body.dark-mode .projects_grid .card:hover {
+    border-color: rgba(0, 200, 218, 0.3) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(0, 200, 218, 0.15) !important;
+}
+
+body.dark-mode .projects_grid .card-title {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .projects_grid .card:hover .card-title {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .projects_grid .card-text {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .port_project_gallery .gallery_nav ul li {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .port_project_gallery .gallery_nav ul li .gallery_active {
+    color: var(--accent-pink) !important;
+}
+
+/* ============================================
+   Testimonials Section Dark
+   ============================================ */
+body.dark-mode .port_testimonial_setions,
+body.dark-mode .testimonial_section {
+    background: var(--dark-bg-secondary) !important;
+}
+
+body.dark-mode .port_testimonial_setions:before,
+body.dark-mode .port_testimonial_setions:after {
+    opacity: 0.3 !important;
+}
+
+body.dark-mode .port_testimonial_setions .testimonial_details_box {
+    background: var(--dark-bg-card) !important;
+    border: 1px solid var(--border-dark) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .port_testimonial_setions .testimonial_details_box h3 {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .port_testimonial_setions .testimonial_details_box h4 {
+    color: var(--text-muted) !important;
+}
+
+body.dark-mode .port_testimonial_setions .testimonial_icon {
+    background: var(--dark-bg-card) !important;
+    border-color: var(--accent-cyan) !important;
+}
+
+/* ============================================
+   Blog Section Dark
+   ============================================ */
+body.dark-mode .port_blog_setions,
+body.dark-mode .blog_section {
+    background: var(--dark-bg-secondary) !important;
+}
+
+body.dark-mode .port_blog_setions .port_blog_mainbox {
+    background: var(--dark-bg-card) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .port_blog_setions .port_blog_contentbox {
+    background: var(--dark-bg-card) !important;
+}
+
+body.dark-mode .port_blog_setions .port_blog_contentbox span.date_span {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .port_blog_setions h4.blog_heading a {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .port_blog_setions h4.blog_heading a:hover {
+    color: var(--accent-cyan) !important;
+}
+
+/* ============================================
+   Contact Section Dark
+   ============================================ */
+body.dark-mode .port_contact_wrapper,
+body.dark-mode .port_contact_setions {
+    background: var(--dark-bg-primary) !important;
+}
+
+body.dark-mode .port_contact_setions .port_contact_mainbox {
+    background: var(--dark-bg-card) !important;
+    border: 1px solid var(--border-dark) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5) !important;
+}
+
+body.dark-mode .port_contact_form .form-control {
+    background: transparent !important;
+    border-bottom: 1px solid var(--border-light) !important;
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .port_contact_form .form-control:focus {
+    border-bottom-color: var(--accent-cyan) !important;
+    box-shadow: 0 2px 0 0 var(--accent-cyan) !important;
+}
+
+body.dark-mode .port_contact_form .form-control::placeholder {
+    color: var(--text-muted) !important;
+}
+
+body.dark-mode .footer_contact_info {
+    background: transparent !important;
+}
+
+body.dark-mode .contact_info {
+    background: transparent !important;
+}
+
+body.dark-mode .contact_info p,
+body.dark-mode .contact_info p a {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .contact_info p a:hover {
+    color: var(--accent-cyan) !important;
+}
+
+/* ============================================
+   Map Section Dark
+   ============================================ */
+body.dark-mode .port_map_setions {
+    background: var(--dark-bg-primary) !important;
+}
+
+body.dark-mode .port_map_setions .map_box,
+body.dark-mode .port_map_setions #world-map {
+    filter: invert(90%) hue-rotate(180deg) saturate(0.8) brightness(0.9) !important;
+}
+
+/* ============================================
+   Footer Dark
+   ============================================ */
+body.dark-mode .port_footer_setions,
+body.dark-mode footer {
+    background: var(--dark-bg-secondary) !important;
+    border-top: 1px solid var(--border-dark);
+}
+
+body.dark-mode .port_footer_setions .footer_heading {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .copy_right_wrapper {
+    background: var(--dark-bg-tertiary) !important;
+}
+
+body.dark-mode .copy_right_wrapper p {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .copy_right_wrapper p a {
+    color: var(--accent-yellow) !important;
+}
+
+/* ============================================
+   Single Blog Page Dark
+   ============================================ */
+body.dark-mode .port_singleblog_wrapper {
+    background: var(--dark-bg-primary) !important;
+}
+
+body.dark-mode .blog_wrapper .blog_data {
+    background: var(--dark-bg-card) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .blog_data .blog_content {
+    background: var(--dark-bg-card) !important;
+}
+
+body.dark-mode .blog_content h4.blog_heading {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .blog_postinfo ul li a {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .blog_postinfo ul li a:hover {
+    color: var(--accent-pink) !important;
+}
+
+body.dark-mode .blog_postinfo ul li:after {
+    background: var(--border-dark) !important;
+}
+
+body.dark-mode .blog_content blockquote {
+    background: var(--dark-bg-tertiary) !important;
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .blog_shareinfo {
+    border-top-color: var(--border-dark) !important;
+}
+
+body.dark-mode .blog_shareinfo .blog_tag a {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .blog_comment ul li {
+    border-bottom-color: var(--border-dark) !important;
+}
+
+body.dark-mode .comment_data .client_name h5 {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .comment_data p {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .comment_reply {
+    color: var(--text-secondary) !important;
+    border-color: var(--border-light) !important;
+}
+
+body.dark-mode .comment_reply:hover {
+    background: var(--accent-pink) !important;
+    border-color: var(--accent-pink) !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .port_singleblog_wrapper .widget {
+    background: var(--dark-bg-card) !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .widget .widget_title {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .widget .widget_title:after {
+    background: var(--border-dark) !important;
+}
+
+body.dark-mode .widget .widget_title:before {
+    background: var(--accent-pink) !important;
+}
+
+body.dark-mode .blogsidebar_wrapper .widget .form-control {
+    background: transparent !important;
+    color: var(--text-primary) !important;
+    border-bottom-color: var(--border-light) !important;
+}
+
+body.dark-mode .widget .widget_rp .rp_heading {
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode .widget .widget_rp .rp_heading:hover {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .widget.repost_widget .widget_rp ul li {
+    border-bottom-color: var(--border-dark) !important;
+}
+
+body.dark-mode .widget.categroies_widget ul li {
+    border-bottom-color: var(--border-dark) !important;
+}
+
+body.dark-mode .widget.categroies_widget ul li a {
+    color: var(--text-secondary) !important;
+}
+
+body.dark-mode .widget.categroies_widget ul li a:hover {
+    color: var(--accent-cyan) !important;
+}
+
+body.dark-mode .widget.tag_widget .comment_reply {
+    background: var(--dark-bg-tertiary) !important;
+}
+
+/* ============================================
+   Buttons Dark Theme
+   ============================================ */
+body.dark-mode .portfolio_btn,
+body.dark-mode .port_btn {
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-mode .portfolio_btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+body.dark-mode .portfolio_btn:hover::before {
+    left: 100%;
+}
+
+body.dark-mode .portfolio_btn.btn_yellow {
+    box-shadow: 0 8px 30px rgba(255, 196, 85, 0.3),
+        0 0 20px rgba(255, 196, 85, 0.1) !important;
+}
+
+body.dark-mode .portfolio_btn.btn_red {
+    box-shadow: 0 8px 30px rgba(255, 81, 126, 0.3),
+        0 0 20px rgba(255, 81, 126, 0.1) !important;
+}
+
+/* ============================================
+   Progress Bar Dark
+   ============================================ */
+body.dark-mode .port_progress_setions {
+    background: var(--accent-yellow) !important;
+}
+
+/* ============================================
+   Sponsor Section Dark
+   ============================================ */
+body.dark-mode .port_responsor_setions {
+    background: var(--dark-bg-secondary) !important;
+}
+
+/* ============================================
+   Scrollbar Dark Theme
+   ============================================ */
+body.dark-mode::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body.dark-mode::-webkit-scrollbar-track {
+    background: var(--dark-bg-secondary);
+}
+
+body.dark-mode::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--accent-cyan), var(--accent-pink));
+    border-radius: 4px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #00d8ea, #ff6190);
+}
+
+/* ============================================
+   Go to Top Button Dark
+   ============================================ */
+body.dark-mode .bottom_top {
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-pink)) !important;
+    box-shadow: 0 8px 30px rgba(0, 200, 218, 0.4) !important;
+}
+
+body.dark-mode .bottom_top:hover {
+    box-shadow: 0 12px 40px rgba(0, 200, 218, 0.6) !important;
+    transform: translateY(-3px);
+}
+
+/* ============================================
+   Mobile Menu Dark
+   ============================================ */
+body.dark-mode .port_togglebox span {
+    background: var(--text-secondary) !important;
+}
+
+body.dark-mode .port_togglebox:hover span {
+    background: var(--accent-cyan) !important;
+}
+
+/* ============================================
+   Selection Color
+   ============================================ */
+body.dark-mode::selection {
+    background: var(--accent-cyan);
+    color: var(--dark-bg-primary);
+}
+
+body.dark-mode::-moz-selection {
+    background: var(--accent-cyan);
+    color: var(--dark-bg-primary);
+}
+
+/* ============================================
+   Form Elements Global Dark
+   ============================================ */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+    background: var(--dark-bg-tertiary) !important;
+    border: 1px solid var(--border-dark) !important;
+    color: var(--text-primary) !important;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+    border-color: var(--accent-cyan) !important;
+    box-shadow: 0 0 0 2px rgba(0, 200, 218, 0.2) !important;
+    outline: none !important;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+    color: var(--text-muted) !important;
+}
+
+/* ============================================
+   Responsive Adjustments
+   ============================================ */
+@media (max-width: 991px) {
+    body.dark-mode .port_sidebar_wrapper {
+        background: var(--dark-bg-secondary) !important;
+    }
+
+    /* Hide floating toggle on mobile/tablet since it's in the sidebar now */
+    .theme-toggle.floating-toggle {
+        display: none !important;
+    }
+}
+
+/* Sidebar Theme Toggle Custom Styles */
+.theme-toggle-custom svg {
+    fill: currentColor;
+    width: 26px;
+    height: 26px;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-custom {
+    color: #556d91;
+    /* Default sidebar icon color */
+    display: block;
+    line-height: 0;
+    margin-top: 15px;
+    /* Added top spacing for better alignment */
+}
+
+
+.theme-toggle-custom:hover {
+    color: #ffc454;
+    /* Yellow on hover */
+}
+
+body.dark-mode .theme-toggle-custom {
+    color: var(--text-secondary);
+}
+
+body.dark-mode .theme-toggle-custom:hover {
+    color: #00c8da;
+    /* Cyan on hover in dark mode */
+}
+
+/* Visibility Logic for Theme Icons */
+/* Default (Light Mode): Show First (Moon), Hide Second (Sun) */
+.theme-toggle-custom .second_micon {
+    display: none;
+    position: static;
+    /* Override absolute positioning */
+    transform: none;
+}
+
+.theme-toggle-custom .first_micon {
+    display: inline-block;
+}
+
+/* Dark Mode: Hide First (Moon), Show Second (Sun) */
+body.dark-mode .theme-toggle-custom .first_micon {
+    display: none;
+}
+
+body.dark-mode .theme-toggle-custom .second_micon {
+    display: inline-block;
+}
+
+/* Disable standard sidebar hover slide effect for this specific item */
+.theme-toggle-custom:hover .first_micon,
+.theme-toggle-custom:hover .second_micon {
+    transform: none !important;
+    top: auto !important;
+}
+
+@media (max-width: 768px) {
+    body.dark-mode .ex_rightside {
+        background: var(--dark-bg-card) !important;
+    }
+
+    body.dark-mode .education_mright .education_rinfo {
+        background: var(--dark-bg-card) !important;
+    }
+
+    /* Theme Toggle styles inherit from 991px block above now */
+
+
+    /*
+       =========================================
+       Education Timeline - Mobile - EXPERIENCE STYLE
+       Strictly mimicking the Experience section layout
+       Visible in BOTH Dark and Light modes
+       =========================================
+    */
+
+    /* Main wrapper acting as the timeline container */
+    .education_main_wrapper {
+        padding-left: 0 !important;
+        text-align: left !important;
+        position: relative;
+    }
+
+    /* Hiding the zig-zag central line */
+    .education_main_wrapper:after {
+        display: none !important;
+    }
+
+    /* Creating a new LEFT vertical line (cyan) */
+    .education_main_wrapper:before {
+        content: '';
+        position: absolute;
+        left: 30px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        /* Use HEX #00c8da so it works in light mode too */
+        background: radial-gradient(ellipse at center, #00c8da 0%, rgba(255, 255, 255, 0) 100%);
+        z-index: 1;
+        display: block !important;
+    }
+
+    /* Reset Box Layout to stack vertically */
+    .education_box {
+        display: flex;
+        flex-direction: column !important;
+        margin-bottom: 40px !important;
+        position: relative;
+        padding-left: 60px !important;
+        /* Space for line and bullet */
+        background: transparent !important;
+        border: none !important;
+    }
+
+    /* BULLET POINT on the line (Pink border) */
+    .education_box:before {
+        content: '';
+        position: absolute;
+        left: 23px;
+        /* Center on the 30px line */
+        top: 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #fff;
+        /* White center for light mode */
+        border: 2px solid #ff517e;
+        /* Pink border hex */
+        z-index: 2;
+        box-shadow: 0 0 10px rgba(255, 81, 126, 0.5);
+    }
+
+    body.dark-mode .education_box:before {
+        background: var(--dark-bg-card);
+        /* Dark center for dark mode */
+    }
+
+    /* Hide old Year Bubbles that were in the center */
+    .edu_mainyear {
+        display: none !important;
+    }
+
+    /* Reset columns width */
+    .education_mleft,
+    .education_mright {
+        width: 100% !important;
+        text-align: left !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        float: none !important;
+    }
+
+    /* Showing Year as a simple text/tag above the card */
+    .education_mleft {
+        margin-bottom: 10px !important;
+        order: -1;
+        /* Ensure year/title comes first */
+    }
+
+    /* Style the year text - Hex colors for light mode compatibility */
+    .education_mleft h2,
+    .education_mleft span {
+        font-size: 14px !important;
+        color: #ffc454 !important;
+        /* Yellow hex */
+        font-weight: bold;
+        display: inline-block;
+        background: rgba(255, 196, 84, 0.1);
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+    }
+
+    /* Card Content Box */
+    .education_rinfo {
+        margin: 0 !important;
+        width: 100% !important;
+        padding: 25px !important;
+        border-radius: 10px;
+        position: relative;
+
+        /* Light Mode Defaults */
+        background: #ffffff !important;
+        border: 1px solid #eee;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Dark Mode Override for Card */
+    body.dark-mode .education_rinfo {
+        background: var(--dark-bg-card) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+    }
+
+    .education_rinfo:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Remove old arrows */
+    .education_mright .left_title_box:before,
+    .education_secondbox .left_title_box:before,
+    .education_rinfo:before {
+        display: none !important;
+    }
+
+    /* Fixing the second box specific reversals */
+    .education_secondbox .education_mright {
+        order: unset !important;
+    }
+
+    .education_secondbox .education_mleft {
+        order: unset !important;
+    }
+}
+
+@media (max-width: 576px) {
+
+    /* Adjust for smaller screens */
+    .theme-toggle {
+        top: 32px !important;
+        bottom: auto !important;
+        /* Keep aligned with hamburger */
+        right: 80px !important;
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .education_box {
+        padding-left: 50px !important;
+    }
+
+    .education_main_wrapper:before {
+        left: 20px;
+    }
+
+    .education_box:before {
+        left: 13px;
+    }
+
+    .port_heading_wrapper .port_sub_heading {
+        font-size: 14px !important;
+    }
+}
+
+/* ============================================
+   Smooth Theme Transition
+   ============================================ */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}

@@ -1258,8 +1258,8 @@ h3.inline-icon {
 .hero-inner {
   position: relative;
   display: grid;
-  gap: 3rem;
-  padding-block: 3.5rem 4rem;
+  gap: 2.5rem;
+  padding-block: 2.5rem 3.5rem;
   text-align: center;
 }
 
@@ -1270,11 +1270,12 @@ h3.inline-icon {
   align-items: center;
 }
 
+/* The bottom margin leaves room for the badge that hangs below the photo */
 .hero-media {
   position: relative;
   order: -1;
-  width: min(100%, 15rem);
-  margin: 0 auto;
+  width: min(100%, 13rem);
+  margin: 0 auto 1.5rem;
 }
 
 .hero-photo {
@@ -1286,19 +1287,21 @@ h3.inline-icon {
     0 24px 48px rgba(0, 0, 0, 0.18);
 }
 
+/* Zoomed in from the bottom edge: closer on the person, with less sky above */
 .hero-photo > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 18%;
+  transform: scale(1.28);
+  transform-origin: 50% 100%;
 }
 
-/* Current role, pinned over the photo's edge */
+/* Current role: hangs from the photo's lower edge, mostly below it, so it hides little of the picture */
 .hero-badge {
   position: absolute;
-  bottom: -1.25rem;
+  bottom: 0;
   left: 50%;
-  translate: -50% 0;
+  translate: -50% 68%;
   display: flex;
   width: max-content;
   max-width: calc(100% + 4rem);
@@ -1410,17 +1413,50 @@ h3.inline-icon {
   transform: translateY(-100%);
 }
 
-.hero-skills {
+.hero-pitch {
+  max-width: 32rem;
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--muted);
+}
+
+/* One row per layer of the stack: a short label, then its technologies */
+.hero-stack {
+  display: grid;
+  gap: 0.625rem;
+  margin-top: 1.5rem;
+}
+
+.hero-stack > li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.hero-stack-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   gap: 0.75rem;
   margin-top: 2rem;
+}
+
+.hero-social {
+  display: inline-flex;
+  gap: 0.625rem;
 }
 
 .hero-reveal {
@@ -1484,7 +1520,7 @@ html.hero-seen .hero-highlight {
   .hero-media {
     order: 0;
     width: min(100%, 24rem);
-    margin: 0 0 0 auto;
+    margin: 0 0 1.5rem auto;
   }
 
   /* Flush with the text column, so the highlight only overhangs a little */
@@ -1497,15 +1533,19 @@ html.hero-seen .hero-highlight {
     left: -0.15em;
   }
 
-  .hero-skills,
+  .hero-stack > li,
   .hero-actions {
     justify-content: flex-start;
   }
 
+  /* Equal-width labels, so the three rows of technologies start on one line */
+  .hero-stack-label {
+    width: 3.75rem;
+  }
+
   .hero-badge {
-    bottom: 2rem;
     left: -2rem;
-    translate: none;
+    translate: 0 55%;
     max-width: 100%;
   }
 }
@@ -1636,7 +1676,7 @@ html.hero-seen .hero-highlight {
 
 /*
  * Beside the profile panel the two share one height: the text keeps to the top
- * and takes up the slack, so the signature stays on the card's bottom edge.
+ * and takes up the slack, so the three points stay on the card's bottom edge.
  */
 .about-card,
 .about-card .card-body {
@@ -1656,28 +1696,72 @@ html.hero-seen .hero-highlight {
 
 .about-text {
   flex: 1;
-  margin-top: 1rem;
-  padding-bottom: 1.5rem;
+  margin-top: 1.25rem;
+  padding-bottom: 1.75rem;
 }
 
-.about-text .card-text + .card-text {
+/* The opening sentence carries the summary, so it reads a size up from the rest */
+.about-lead {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+}
+
+.about-text .card-text {
   margin-top: 1rem;
 }
 
-.signature {
+/*
+ * Three strengths under the text. On a phone each is a row with its icon on
+ * the left; with more room they sit side by side, icon on top.
+ */
+.about-points {
+  display: grid;
+  gap: 1.25rem;
   border-top: 1px solid var(--border-subtle);
-  padding-top: 1.25rem;
+  padding-top: 1.5rem;
 }
 
-.signature-name {
-  font-size: 1.125rem;
+.about-points > li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  column-gap: 0.875rem;
+}
+
+.about-points .icon-badge {
+  grid-row: span 2;
+}
+
+.about-point-title {
+  font-size: 1rem;
   font-weight: 700;
+  line-height: 1.3;
   color: var(--heading);
 }
 
-.signature-role {
+.about-point-text {
+  margin-top: 0.25rem;
   font-size: 0.875rem;
+  line-height: 1.55;
   color: var(--muted);
+}
+
+@media (min-width: 640px) {
+  .about-points {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .about-points > li {
+    display: block;
+  }
+
+  .about-point-title {
+    margin-top: 0.75rem;
+  }
 }
 
 /* Headline numbers under the introduction */

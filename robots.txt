@@ -1,0 +1,7 @@
+# Everything on the site may be crawled, including its CSS, JavaScript and images.
+# Pages that should stay out of search results say so themselves with a
+# "noindex" robots meta tag; blocking them here would hide that tag from crawlers.
+User-agent: *
+Allow: /
+
+Sitemap: https://gagandev.in/sitemap.xml

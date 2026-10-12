@@ -1,0 +1,3149 @@
+/*
+ * Gagan Arora — portfolio.
+ * Shares its design system (theme tokens, glass surfaces, buttons, motion
+ * scale) with the Mobile Apps site, so both read as one family.
+ */
+
+/* Register theme tokens so they interpolate in sync on <html> */
+@property --background {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --foreground {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #222222;
+}
+
+@property --muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #6b6b70;
+}
+
+@property --heading {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #556d91;
+}
+
+@property --heading-hover {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #445a78;
+}
+
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffc454;
+}
+
+@property --surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --surface-hover {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fff9ef;
+}
+
+@property --border-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #00000014;
+}
+
+@property --border-subtle {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0000000d;
+}
+
+@property --on-heading {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --hero-from {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffff;
+}
+
+@property --hero-to {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fff9ef;
+}
+
+@property --glass-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffffae;
+}
+
+@property --glass-bg-strong {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffffd1;
+}
+
+@property --glass-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffffbf;
+}
+
+@property --glass-highlight {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #fffffff2;
+}
+
+@property --ambient-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #556d9124;
+}
+
+@property --ambient-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffc4542e;
+}
+
+@property --ambient-3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #556d9114;
+}
+
+@property --header-shadow {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #556d910a;
+}
+
+/* Glass shadow colours are registered too, so shadows fade with the theme instead of jumping */
+@property --shadow-near {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1e2d4b0a;
+}
+
+@property --shadow-far {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #1e2d4b12;
+}
+
+@property --shadow-rim {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #ffffffe6;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #222222;
+  --muted: #6b6b70;
+  --heading: #556d91;
+  --heading-hover: #445a78;
+  --accent: #ffc454;
+  --surface: #ffffff;
+  --surface-hover: #fff9ef;
+  --border-color: #00000014;
+  --border-subtle: #0000000d;
+  --on-heading: #ffffff;
+  --hero-from: #ffffff;
+  --hero-to: #fff9ef;
+  --glass-bg: rgba(255, 255, 255, 0.68);
+  --glass-bg-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(255, 255, 255, 0.75);
+  --glass-highlight: rgba(255, 255, 255, 0.95);
+  --shadow-near: rgba(30, 45, 75, 0.04);
+  --shadow-far: rgba(30, 45, 75, 0.07);
+  --shadow-rim: rgba(255, 255, 255, 0.9);
+  --glass-shadow:
+    0 2px 6px var(--shadow-near),
+    0 8px 30px var(--shadow-far),
+    inset 0 1px 0 var(--shadow-rim);
+  --ambient-1: rgba(85, 109, 145, 0.14);
+  --ambient-2: rgba(255, 196, 84, 0.18);
+  --ambient-3: rgba(85, 109, 145, 0.08);
+  --header-shadow: rgba(85, 109, 145, 0.04);
+  --success: #16a34a;
+  --danger: #dc2626;
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  /* Damped spring (about 8% overshoot) for things settling back after a press */
+  --ease-spring: linear(0, 0.057 4.2%, 0.194 8.3%, 0.368 12.5%, 0.545 16.7%, 0.706 20.8%, 0.84 25%, 0.942 29.2%, 1.013 33.3%, 1.056 37.5%, 1.078 41.7%, 1.084 45.8%, 1.078 50%, 1.066 54.2%, 1.052 58.3%, 1.037 62.5%, 1.024 66.7%, 1.013 70.8%, 1.004 75%, 0.999 79.2%, 0.995 83.3%, 0.993 87.5%, 0.993 91.7%, 0.994 95.8%, 1);
+  /* Motion scale: micro-interactions, presses, and overlays */
+  --duration-micro: 160ms;
+  --duration-press: 90ms;
+  --duration-spring: 420ms;
+  --duration-overlay: 180ms;
+  --radius-card: 1.5rem;
+  --radius-icon: 22.37%; /* iOS app-icon continuous corner ratio */
+  --theme-duration: 200ms;
+  --theme-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --page-width: 72rem;
+  --page-gutter: 1.5rem;
+  --header-height: 4.75rem;
+}
+
+.dark {
+  --background: #0c0f14;
+  --foreground: #e6e8ec;
+  --muted: #949aa6;
+  --heading: #9cb4d4;
+  --heading-hover: #b0c5e3;
+  --surface: #151a24;
+  --surface-hover: #1c2330;
+  --border-color: #ffffff14;
+  --border-subtle: #ffffff0d;
+  --on-heading: #0c0f14;
+  --hero-from: #0c0f14;
+  --hero-to: #151a24;
+  --glass-bg: rgba(21, 26, 36, 0.62);
+  --glass-bg-strong: rgba(21, 26, 36, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.06);
+  --shadow-near: rgba(0, 0, 0, 0.2);
+  --shadow-far: rgba(0, 0, 0, 0.35);
+  --shadow-rim: rgba(255, 255, 255, 0.06);
+  --ambient-1: rgba(156, 180, 212, 0.12);
+  --ambient-2: rgba(255, 196, 84, 0.08);
+  --ambient-3: rgba(156, 180, 212, 0.06);
+  --header-shadow: rgba(0, 0, 0, 0.2);
+  --success: #86efac;
+  --danger: #fca5a5;
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  transition:
+    --background var(--theme-duration) var(--theme-ease),
+    --foreground var(--theme-duration) var(--theme-ease),
+    --muted var(--theme-duration) var(--theme-ease),
+    --heading var(--theme-duration) var(--theme-ease),
+    --heading-hover var(--theme-duration) var(--theme-ease),
+    --accent var(--theme-duration) var(--theme-ease),
+    --surface var(--theme-duration) var(--theme-ease),
+    --surface-hover var(--theme-duration) var(--theme-ease),
+    --border-color var(--theme-duration) var(--theme-ease),
+    --border-subtle var(--theme-duration) var(--theme-ease),
+    --on-heading var(--theme-duration) var(--theme-ease),
+    --hero-from var(--theme-duration) var(--theme-ease),
+    --hero-to var(--theme-duration) var(--theme-ease),
+    --glass-bg var(--theme-duration) var(--theme-ease),
+    --glass-bg-strong var(--theme-duration) var(--theme-ease),
+    --glass-border var(--theme-duration) var(--theme-ease),
+    --glass-highlight var(--theme-duration) var(--theme-ease),
+    --ambient-1 var(--theme-duration) var(--theme-ease),
+    --ambient-2 var(--theme-duration) var(--theme-ease),
+    --ambient-3 var(--theme-duration) var(--theme-ease),
+    --header-shadow var(--theme-duration) var(--theme-ease),
+    --shadow-near var(--theme-duration) var(--theme-ease),
+    --shadow-far var(--theme-duration) var(--theme-ease),
+    --shadow-rim var(--theme-duration) var(--theme-ease);
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/*
+ * While theme tokens interpolate on <html>, every colour and shadow follows them
+ * in sync. Per-element colour transitions would lag behind, so only transform
+ * and opacity transitions (such as the theme toggle's icon swap) stay active.
+ */
+html.theme-switching *,
+html.theme-switching *::before,
+html.theme-switching *::after {
+  transition-property: transform, opacity, translate, rotate, scale !important;
+}
+
+/*
+ * Where the browser supports view transitions, the new theme instead opens in a
+ * circle from the toggle (the script animates the clip). The tokens then change
+ * at once, so the circle's edge is a clean line between the two themes.
+ */
+html.theme-reveal {
+  transition: none;
+}
+
+html.theme-reveal::view-transition-old(root),
+html.theme-reveal::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  letter-spacing: -0.015em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  border: 0;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Visible, consistent keyboard focus */
+:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--heading) 75%, transparent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 45%, var(--background));
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.icon-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon-xs {
+  width: 0.875rem;
+  height: 0.875rem;
+}
+
+.icon-lg {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.icon-xl {
+  width: 2rem;
+  height: 2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--page-width);
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.eyebrow {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.eyebrow-sm {
+  font-size: 0.75rem;
+}
+
+/* Page backdrop */
+.page-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.ambient-bg {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Static on purpose: no looping background motion */
+.ambient-bg::before,
+.ambient-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+}
+
+.ambient-bg::before {
+  top: -8%;
+  left: -6%;
+  width: 42vw;
+  height: 42vw;
+  background: radial-gradient(circle, var(--ambient-1) 0%, transparent 70%);
+}
+
+.ambient-bg::after {
+  right: -8%;
+  bottom: 10%;
+  width: 36vw;
+  height: 36vw;
+  background: radial-gradient(circle, var(--ambient-2) 0%, transparent 70%);
+}
+
+.hero-gradient {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--hero-from) 0%, var(--hero-to) 100%);
+}
+
+.hero-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    var(--ambient-3) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Glass surfaces */
+.glass-panel {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/* Content-free glass layer behind the profile panel */
+.glass-surface {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-card);
+  background:
+    linear-gradient(
+      125deg,
+      color-mix(in srgb, var(--glass-highlight) 55%, transparent) 0%,
+      transparent 42%
+    ),
+    var(--glass-bg);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+/*
+ * The project grid can show two dozen cards at once. A backdrop blur on each
+ * would be re-run for every scrolled frame, so these use the denser glass
+ * colour without the blur; over the soft page backdrop they look the same.
+ */
+.glass-card-lite {
+  background: var(--glass-bg-strong);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+@media (max-width: 768px) {
+  .glass-card:not(.glass-card-lite),
+  .glass-panel,
+  .glass-surface {
+    backdrop-filter: blur(10px) saturate(140%);
+    -webkit-backdrop-filter: blur(10px) saturate(140%);
+  }
+}
+
+.glass-shine {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    var(--glass-highlight) 0%,
+    transparent 42%,
+    transparent 100%
+  );
+  opacity: 0.55;
+}
+
+/*
+ * Spotlight: with a mouse, a soft glow follows the pointer across a card (the
+ * script keeps --mx and --my at the pointer's position inside it).
+ */
+@media (hover: hover) and (pointer: fine) {
+  .glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      20rem circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in srgb, var(--accent) 18%, transparent) 0%,
+      transparent 65%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 320ms ease-out;
+  }
+
+  .glass-card:hover::before {
+    opacity: 1;
+  }
+}
+
+/* Card content sits above the shine layer */
+.card-body {
+  position: relative;
+  padding: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .card-body-lg {
+    padding: 2rem;
+  }
+}
+
+/*
+ * Tappable cards. Pointer hover: a 3px lift and an edge glow (an opacity-only
+ * layer, so no shadow or border animates). Touch: a quick press to 0.98 that
+ * springs back. Pure CSS, so it never delays the click or navigation.
+ */
+.card-interactive {
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--duration-spring) var(--ease-spring);
+}
+
+.card-interactive::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--heading) 38%, transparent),
+    inset 0 0 28px color-mix(in srgb, var(--heading) 9%, transparent);
+  opacity: 0;
+  transition: opacity var(--duration-micro) ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-interactive:hover {
+    transform: translateY(-3px);
+    transition: transform var(--duration-micro) var(--ease-out-quart);
+  }
+
+  .card-interactive:hover::after {
+    opacity: 1;
+  }
+}
+
+.card-interactive:focus-visible::after {
+  opacity: 1;
+}
+
+.card-interactive:active {
+  transform: scale(0.98);
+  transition: transform var(--duration-press) ease-out;
+}
+
+/* Photos — iOS-style continuous corners with a hairline edge, like the app icons */
+.app-icon {
+  overflow: hidden;
+  border-radius: var(--radius-icon);
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.12),
+    0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.app-icon > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Small chevrons that nudge toward where a hovered row or card leads */
+.chevron-nudge {
+  transition: translate var(--duration-micro) var(--ease-out-quart);
+}
+
+.group:hover .chevron-nudge {
+  translate: 2px 0;
+}
+
+/* Round glass buttons (theme, menu, social links, back to top) */
+.icon-button {
+  display: inline-flex;
+  height: 2.75rem;
+  width: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  color: var(--heading);
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform var(--duration-micro) var(--ease-out-quart),
+    color var(--duration-micro) ease-out;
+}
+
+.icon-button:hover {
+  color: var(--foreground);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .icon-button:hover {
+    transform: scale(1.05);
+  }
+}
+
+.icon-button:active {
+  transform: scale(0.94);
+  transition-duration: var(--duration-press);
+}
+
+/* Theme toggle: both icons are rendered; <html class="dark"> picks one and switching crossfades them */
+.theme-toggle {
+  position: relative;
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  transition:
+    opacity var(--theme-duration) var(--theme-ease),
+    transform var(--theme-duration) var(--theme-ease);
+}
+
+/* Both icons turn the same way: the outgoing one leaves as the incoming one arrives */
+.theme-toggle-sun {
+  opacity: 0;
+  transform: rotate(45deg) scale(0.7);
+}
+
+html.dark .theme-toggle-moon {
+  opacity: 0;
+  transform: rotate(-45deg) scale(0.7);
+}
+
+html.dark .theme-toggle-sun {
+  opacity: 1;
+  transform: none;
+}
+
+.icon-badge {
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--heading) 12%, transparent);
+  color: var(--heading);
+}
+
+.icon-badge-lg {
+  height: 2.75rem;
+  width: 2.75rem;
+}
+
+.group:hover .icon-badge {
+  background: color-mix(in srgb, var(--heading) 18%, transparent);
+  color: var(--foreground);
+}
+
+.inline-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+h2.inline-icon,
+h3.inline-icon {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.text-icon-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.section-icon {
+  display: inline-flex;
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  color: var(--heading);
+}
+
+/* Small pills: skills in the hero, tech tags on project cards */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--heading) 16%, transparent);
+  background: color-mix(in srgb, var(--heading) 9%, transparent);
+  padding: 0.3125rem 0.625rem 0.1875rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: var(--heading);
+}
+
+.chip-lg {
+  background: var(--glass-bg);
+  padding: 0.5rem 1rem 0.375rem;
+  font-size: 0.875rem;
+}
+
+.chip-md {
+  padding: 0.4375rem 0.75rem 0.3125rem;
+  font-size: 0.8125rem;
+}
+
+.chip-accent {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 24%, transparent);
+  color: var(--foreground);
+}
+
+/* Buttons */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    145deg,
+    var(--heading) 0%,
+    color-mix(in srgb, var(--heading) 85%, #000) 100%
+  );
+  min-height: 2.75rem;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  color: var(--on-heading);
+  position: relative;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow:
+    0 4px 14px color-mix(in srgb, var(--heading) 35%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: transform var(--duration-spring) var(--ease-spring);
+}
+
+/* Deeper hover shadow on its own layer, so hovering fades opacity instead of animating box-shadow */
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--heading) 40%, transparent);
+  opacity: 0;
+  transition: opacity var(--duration-micro) ease-out;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    transition: transform var(--duration-micro) var(--ease-out-quart);
+  }
+
+  .btn-primary:hover:not(:disabled)::after {
+    opacity: 1;
+  }
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: scale(0.97);
+  transition: transform var(--duration-press) ease-out;
+}
+
+.btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--heading) 22%, transparent);
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  min-height: 2.75rem;
+  padding: 0.625rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  color: var(--heading);
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform var(--duration-spring) var(--ease-spring),
+    background-color var(--duration-micro) ease-out,
+    border-color var(--duration-micro) ease-out;
+}
+
+.btn-ghost:hover {
+  border-color: color-mix(in srgb, var(--heading) 40%, transparent);
+  background-color: var(--glass-bg-strong);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-ghost:hover {
+    transform: translateY(-2px);
+    transition:
+      transform var(--duration-micro) var(--ease-out-quart),
+      background-color var(--duration-micro) ease-out,
+      border-color var(--duration-micro) ease-out;
+  }
+}
+
+.btn-ghost:active {
+  transform: scale(0.97);
+  transition-duration: var(--duration-press);
+}
+
+/* Compact button for a card's corner action */
+.btn-sm {
+  min-height: 2.25rem;
+  padding: 0.375rem 1rem;
+  font-size: 0.875rem;
+}
+
+/* Header */
+.glass-header {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 1px 0 var(--header-shadow);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.875rem;
+}
+
+.brand {
+  display: inline-flex;
+  min-width: 0;
+  flex-direction: column;
+}
+
+.brand-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.brand-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.025em;
+  color: var(--heading);
+  transition: color var(--duration-micro) ease-out;
+}
+
+.brand:hover .brand-name {
+  color: var(--foreground);
+}
+
+.site-header-actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-nav {
+  display: none;
+  align-items: center;
+  gap: 1.5rem;
+  margin-right: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+
+.site-nav a {
+  position: relative;
+  padding-block: 0.5rem;
+  line-height: 1;
+  transition: color var(--duration-micro) ease-out;
+}
+
+/* Marks the section currently in view */
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  border-radius: 9999px;
+  background: var(--accent);
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition:
+    opacity var(--duration-micro) ease-out,
+    transform var(--duration-micro) var(--ease-out-quart);
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="true"] {
+  color: var(--foreground);
+}
+
+.site-nav a[aria-current="true"]::after {
+  opacity: 1;
+  transform: none;
+}
+
+@media (min-width: 1024px) {
+  .site-nav {
+    display: flex;
+  }
+
+  .menu-button {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .site-nav {
+    gap: 2rem;
+  }
+}
+
+/* Reading progress: fills along the header's bottom edge (the script sets its scale) */
+.scroll-progress {
+  position: absolute;
+  inset: auto 0 -1px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--heading) 0%, var(--accent) 100%);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+}
+
+/* Mobile full-page menu */
+.mobile-menu-root {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  overflow-y: auto;
+}
+
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--background) 30%, #000);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity var(--duration-overlay) ease-out;
+}
+
+.mobile-menu-panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  background: color-mix(in srgb, var(--background) 92%, transparent);
+  outline: none;
+  transition:
+    opacity 200ms var(--ease-out-quart),
+    transform 200ms var(--ease-out-quart);
+}
+
+.mobile-menu-panel-inner {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 36rem;
+  padding: 1.25rem 1.5rem 2rem;
+}
+
+.mobile-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Items follow the panel in, slightly staggered (enter only) */
+.mobile-menu-item {
+  --enter-delay: 0ms;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  border: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--surface) 60%, transparent);
+  padding: 1rem 1.25rem;
+  text-align: left;
+  transition:
+    opacity 220ms var(--ease-out-quart) var(--enter-delay),
+    transform 220ms var(--ease-out-quart) var(--enter-delay),
+    background-color var(--duration-micro) ease-out,
+    border-color var(--duration-micro) ease-out;
+}
+
+.mobile-menu-item:hover {
+  border-color: color-mix(in srgb, var(--heading) 25%, transparent);
+  background-color: var(--surface-hover);
+}
+
+.mobile-menu-item:nth-child(1) {
+  --enter-delay: 40ms;
+}
+
+.mobile-menu-item:nth-child(2) {
+  --enter-delay: 70ms;
+}
+
+.mobile-menu-item:nth-child(3) {
+  --enter-delay: 100ms;
+}
+
+.mobile-menu-item:nth-child(4) {
+  --enter-delay: 130ms;
+}
+
+.mobile-menu-item:nth-child(5) {
+  --enter-delay: 160ms;
+}
+
+.mobile-menu-item:nth-child(6) {
+  --enter-delay: 190ms;
+}
+
+.mobile-menu-item:nth-child(7) {
+  --enter-delay: 220ms;
+}
+
+.mobile-menu-item-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.mobile-menu-item-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.mobile-menu-item-title {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  color: var(--heading);
+  transition: color var(--duration-micro) ease-out;
+}
+
+.mobile-menu-item:hover .mobile-menu-item-title {
+  color: var(--foreground);
+}
+
+.mobile-menu-item > .icon {
+  color: var(--muted);
+}
+
+.mobile-menu-root[data-state="closed"] .mobile-menu-backdrop {
+  opacity: 0;
+  transition-duration: 160ms;
+}
+
+.mobile-menu-root[data-state="closed"] .mobile-menu-panel {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition-duration: 160ms;
+  transition-timing-function: ease-in;
+}
+
+.mobile-menu-root[data-state="closed"] .mobile-menu-item {
+  --enter-delay: 0ms;
+}
+
+@starting-style {
+  .mobile-menu-root[data-state="open"] .mobile-menu-backdrop {
+    opacity: 0;
+  }
+
+  .mobile-menu-root[data-state="open"] .mobile-menu-panel {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+
+  .mobile-menu-root[data-state="open"] .mobile-menu-item {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.dialog-close {
+  display: inline-flex;
+  height: 2.25rem;
+  width: 2.25rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--heading) 18%, transparent);
+  background: var(--glass-bg);
+  color: var(--heading);
+}
+
+.dialog-close:hover {
+  border-color: color-mix(in srgb, var(--heading) 35%, transparent);
+  background: var(--glass-bg-strong);
+  color: var(--foreground);
+}
+
+/*
+ * Hero: the introduction beside the banner photo (stacked, photo first, on
+ * small screens).
+ *
+ * Reveal: eyebrow, name, photo and the rest fade and rise in turn, then the
+ * highlight draws in once. It plays once per session: <html class="hero-seen">
+ * (set by the script in <head>) turns it off.
+ */
+.hero-inner {
+  position: relative;
+  display: grid;
+  gap: 3rem;
+  padding-block: 3.5rem 4rem;
+  text-align: center;
+}
+
+.hero-copy {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-media {
+  position: relative;
+  order: -1;
+  width: min(100%, 15rem);
+  margin: 0 auto;
+}
+
+.hero-photo {
+  overflow: hidden;
+  aspect-ratio: 1;
+  border-radius: 2rem;
+  box-shadow:
+    0 0 0 1px var(--glass-border),
+    0 24px 48px rgba(0, 0, 0, 0.18);
+}
+
+.hero-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 18%;
+}
+
+/* Current role, pinned over the photo's edge */
+.hero-badge {
+  position: absolute;
+  bottom: -1.25rem;
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  width: max-content;
+  max-width: calc(100% + 4rem);
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 1rem;
+  padding: 0.625rem 1rem;
+  text-align: left;
+}
+
+.hero-badge .eyebrow {
+  display: block;
+  font-size: 0.6875rem;
+}
+
+.hero-badge-text {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--heading);
+}
+
+/* Static on purpose: no pulsing */
+.status-dot {
+  height: 0.625rem;
+  width: 0.625rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: #22c55e;
+  box-shadow: 0 0 0 4px color-mix(in srgb, #22c55e 22%, transparent);
+}
+
+.hero-title {
+  position: relative;
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding-inline: 0.5rem;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+}
+
+.hero-title-text {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-highlight {
+  position: absolute;
+  inset: 0.28em -12% 0.3em;
+  border-radius: 0.125rem;
+  background: color-mix(in srgb, var(--accent) 90%, transparent);
+  box-shadow: 0 4px 20px rgba(255, 196, 84, 0.35);
+  transform-origin: 0 50%;
+  animation: hero-highlight 480ms var(--ease-out-quart) 380ms both;
+}
+
+.hero-subtitle {
+  max-width: 34rem;
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.625;
+  color: var(--muted);
+}
+
+.hero-role {
+  display: block;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/*
+ * Rotating word in the hero sentence. The script stacks the words in one line
+ * box and resizes it to the current word, so the sentence closes up around it.
+ */
+.rotator.is-ready {
+  position: relative;
+  display: inline-block;
+  height: 1lh;
+  overflow: hidden;
+  vertical-align: bottom;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--heading);
+  transition: width 380ms var(--ease-out-quart);
+}
+
+.rotator-word {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition:
+    opacity 380ms var(--ease-out-quart),
+    transform 380ms var(--ease-out-quart);
+}
+
+.rotator-word.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+.rotator-word.is-leaving {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.hero-skills {
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.hero-reveal {
+  animation: hero-reveal 520ms var(--ease-out-quart) both;
+  animation-delay: calc(60ms + var(--i, 0) * 80ms);
+}
+
+html.hero-seen .hero-reveal,
+html.hero-seen .hero-highlight {
+  animation: none;
+}
+
+@keyframes hero-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-highlight {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-media {
+    width: min(100%, 18rem);
+  }
+
+  .hero-title {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    gap: 4rem;
+    padding-block: 5rem 5.5rem;
+    text-align: left;
+  }
+
+  .hero-copy {
+    align-items: flex-start;
+  }
+
+  .hero-media {
+    order: 0;
+    width: min(100%, 24rem);
+    margin: 0 0 0 auto;
+  }
+
+  /* Flush with the text column, so the highlight only overhangs a little */
+  .hero-title {
+    padding-inline: 0;
+  }
+
+  .hero-highlight {
+    right: -0.3em;
+    left: -0.15em;
+  }
+
+  .hero-skills,
+  .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .hero-badge {
+    bottom: 2rem;
+    left: -2rem;
+    translate: none;
+    max-width: 100%;
+  }
+}
+
+/* Sections */
+.section {
+  padding-block: 2.5rem;
+  scroll-margin-top: var(--header-height);
+}
+
+.section:last-of-type {
+  padding-bottom: 5rem;
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Kept on one line: on a narrow screen the count drops below instead of squeezing it */
+.section-title {
+  margin-top: 0.5rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.15;
+  white-space: nowrap;
+  color: var(--heading);
+}
+
+.section-count {
+  flex-shrink: 0;
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--heading);
+}
+
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 2.25rem;
+  }
+
+  .section-count {
+    font-size: 1.5rem;
+  }
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--heading);
+}
+
+.card-text {
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--muted);
+}
+
+/* About: profile panel beside the introduction, like an app's detail page */
+.about-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.profile-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+}
+
+.profile-panel-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.profile-photo {
+  width: 11rem;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  border-radius: 1.5rem;
+}
+
+.profile-details {
+  min-width: 0;
+}
+
+.profile-name {
+  margin-top: 0.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--heading);
+}
+
+.profile-location {
+  justify-content: center;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+/*
+ * Beside the profile panel the two share one height: the text keeps to the top
+ * and takes up the slack, so the signature stays on the card's bottom edge.
+ */
+.about-card,
+.about-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-card .card-body {
+  flex: 1;
+}
+
+.about-card h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+
+.about-text {
+  flex: 1;
+  margin-top: 1rem;
+  padding-bottom: 1.5rem;
+}
+
+.about-text .card-text + .card-text {
+  margin-top: 1rem;
+}
+
+.signature {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+}
+
+.signature-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--heading);
+}
+
+.signature-role {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* Headline numbers under the introduction */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.stat-card {
+  padding: 1.25rem 1.5rem;
+}
+
+.stat-card > :not(.glass-shine) {
+  position: relative;
+}
+
+/* Even-width digits, so the number does not jitter while it counts up */
+.stat-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--heading);
+}
+
+.stat-card .eyebrow {
+  margin-top: 0.5rem;
+  letter-spacing: 0.14em;
+}
+
+@media (min-width: 900px) {
+  .stat-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 2rem;
+  }
+}
+
+/* What I build: a bento grid, wide and narrow tiles alternating row by row */
+.bento {
+  display: grid;
+  gap: 1rem;
+}
+
+.bento-card .card-body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bento-card .card-title {
+  margin-top: 1rem;
+}
+
+.bento-card .card-text {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+}
+
+/* Tags and links keep to the tile's bottom edge */
+.bento-card .chip-row,
+.bento-link {
+  margin-top: auto;
+  padding-top: 1.25rem;
+}
+
+.bento-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--heading);
+  transition: color var(--duration-micro) ease-out;
+}
+
+.bento-link:hover {
+  color: var(--foreground);
+}
+
+@media (min-width: 640px) {
+  .bento {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+  }
+
+  /* In two columns the last tile would sit alone, so it takes the row */
+  .bento-wide,
+  .bento > :last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .bento > :last-child:not(.bento-wide) {
+    grid-column: auto;
+  }
+}
+
+/* Skills: one row per group, its name beside its technologies */
+.skill-list {
+  margin: 0;
+}
+
+/* Tags arrive one after another once the card is on screen (classes set by the script) */
+.chips-pending .chip {
+  opacity: 0;
+}
+
+.chips-in .chip {
+  animation: chip-in 320ms var(--ease-out-quart) both;
+  animation-delay: calc(var(--n, 0) * 18ms);
+}
+
+@keyframes chip-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.skill-row {
+  display: grid;
+  gap: 0.875rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-block: 1.25rem;
+}
+
+.skill-row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.skill-row:last-child {
+  padding-bottom: 0;
+}
+
+.skill-row dt {
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--heading);
+}
+
+.skill-row dd {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .skill-row {
+    grid-template-columns: 16rem minmax(0, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+/* Achievement bullets (experience, featured projects) */
+.bullet-list {
+  display: grid;
+  gap: 0.625rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  line-height: 1.625;
+  color: var(--muted);
+}
+
+.bullet-list > li {
+  position: relative;
+  padding-left: 1.1875rem;
+}
+
+.bullet-list > li::before {
+  content: "";
+  position: absolute;
+  top: 0.6em;
+  left: 0;
+  height: 0.4375rem;
+  width: 0.4375rem;
+  border-radius: 9999px;
+  background: var(--heading);
+}
+
+@media (min-width: 640px) {
+  .profile-panel {
+    padding: 2rem;
+  }
+
+  .profile-panel-body {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    text-align: left;
+  }
+
+  .profile-location,
+  .social-row {
+    justify-content: flex-start;
+  }
+
+  .profile-actions {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 20rem minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .profile-panel-body {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 100%;
+  }
+
+  .profile-details {
+    width: 100%;
+  }
+
+  .profile-location,
+  .social-row {
+    justify-content: center;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+  }
+}
+
+/* Education and experience share one card: a headline row, then the details */
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.timeline-card {
+  height: 100%;
+}
+
+.timeline-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.timeline-year {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--heading);
+}
+
+.timeline-org {
+  margin-top: 0.375rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--foreground);
+}
+
+.timeline-date {
+  margin-top: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.timeline-card .eyebrow {
+  margin-top: 1.25rem;
+}
+
+.timeline-card .eyebrow + .card-title {
+  margin-top: 0.375rem;
+}
+
+.timeline-card .card-text {
+  margin-top: 1rem;
+}
+
+/*
+ * Side by side, equal rows keep every card in a grid the same height whatever
+ * its text. Stacked in one column, each card simply fits its own content.
+ */
+@media (min-width: 900px) {
+  .card-grid {
+    grid-auto-rows: 1fr;
+  }
+
+  .education-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .experience-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile apps: the cards from the apps site, three across on a wide screen */
+.app-card {
+  height: 100%;
+}
+
+.app-card-body {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.5rem;
+}
+
+.app-tile {
+  height: 5rem;
+  width: 5rem;
+  flex-shrink: 0;
+  margin-bottom: 1.25rem;
+}
+
+.app-card .card-text {
+  margin-top: 0.75rem;
+  font-size: 0.9375rem;
+}
+
+.app-card .chip-row {
+  margin-top: 1.25rem;
+}
+
+.app-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.5rem;
+}
+
+.chip-live {
+  border-color: color-mix(in srgb, #22c55e 45%, transparent);
+  background: color-mix(in srgb, #22c55e 14%, transparent);
+  color: var(--success);
+}
+
+/* Diagonal corner ribbon: clips itself to the card's corner */
+.status-ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  height: 8rem;
+  width: 8rem;
+  overflow: hidden;
+  border-top-right-radius: inherit;
+  pointer-events: none;
+}
+
+.status-ribbon > span {
+  position: absolute;
+  top: 2.5rem;
+  right: -1.875rem;
+  width: 10rem;
+  rotate: 45deg;
+  background: var(--accent);
+  padding-block: 0.25rem;
+  text-align: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #171717;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Stand-in for a name that is not public yet */
+.blurred-placeholder {
+  display: inline-block;
+  opacity: 0.7;
+  filter: blur(5px);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* With room to spare the icon sits beside the details */
+@media (min-width: 640px) {
+  .app-card-body {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-content: start;
+    column-gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .app-card-body > :not(.app-tile) {
+    grid-column: 2;
+  }
+
+  .app-tile {
+    grid-row: 1 / span 6;
+    margin-bottom: 0;
+  }
+}
+
+/*
+ * Showcase: a phone held at a fixed 3D angle beside the selected app's card.
+ * The phone's screen and the floating icons follow the selection; nothing
+ * here reacts to hovering.
+ */
+.app-showcase {
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.phone-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding-block: 2rem 3.5rem;
+  perspective: 1500px;
+}
+
+.phone {
+  position: relative;
+  width: min(13rem, 54vw);
+  aspect-ratio: 9 / 19;
+  transform: rotateX(8deg) rotateY(-20deg);
+  transform-style: preserve-3d;
+}
+
+/* Front, middle and back plates of the same shape, a few pixels apart, read as the phone's thickness */
+.phone-frame,
+.phone-side,
+.phone-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 2.4rem;
+}
+
+.phone-back {
+  background: #05070a;
+  box-shadow: 0 0 0 1px #1b212b;
+  transform: translateZ(-16px);
+}
+
+.phone-side {
+  background: linear-gradient(90deg, #3a4352 0%, #0d1117 28%, #0d1117 72%, #3a4352 100%);
+  transform: translateZ(-8px);
+}
+
+.phone-frame {
+  background: linear-gradient(150deg, #39414e 0%, #12161d 45%, #0a0d12 100%);
+  padding: 0.5rem;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.14),
+    inset 0 0 0 4px #0a0d12;
+}
+
+.phone-screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1.95rem;
+  background: #000;
+}
+
+/* Glass glare across the top-left of the screen */
+.phone-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    118deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.04) 26%,
+    transparent 42%
+  );
+  pointer-events: none;
+}
+
+.phone-island {
+  position: absolute;
+  top: 1.05rem;
+  left: 50%;
+  z-index: 3;
+  height: 1.15rem;
+  width: 4.25rem;
+  translate: -50% 0;
+  border-radius: 9999px;
+  background: #000;
+}
+
+/* One layer per app; the selected one fades up over the last */
+.phone-app {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 520ms var(--ease-out-quart),
+    transform 520ms var(--ease-out-quart);
+}
+
+.phone-app.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+.phone-app > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.phone-app-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  background: radial-gradient(120% 80% at 50% 20%, #ffa24d 0%, #fc8019 45%, #b9530a 100%);
+  text-align: center;
+  color: #fff;
+}
+
+.phone-app-icon {
+  height: 4.5rem;
+  width: 4.5rem;
+}
+
+.phone-app-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.phone-app-note {
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.22);
+  padding: 0.4375rem 0.75rem 0.3125rem;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Icons in front of the phone: --depth lifts each off the glass, and the selected one comes forward */
+.float-icon {
+  --depth: 60px;
+  position: absolute;
+  height: 3.5rem;
+  width: 3.5rem;
+  opacity: 0.9;
+  transform: translateZ(var(--depth));
+  transition:
+    transform 620ms var(--ease-spring),
+    opacity var(--duration-micro) ease-out,
+    box-shadow 320ms ease-out;
+}
+
+/*
+ * How far each icon hangs off the phone's edge is kept small on narrow screens:
+ * perspective pushes anything lifted toward the viewer further out, and the
+ * selected icon must still clear the edge of the screen.
+ */
+.float-icon-1 {
+  --depth: 90px;
+  top: 12%;
+  left: -1rem;
+}
+
+.float-icon-2 {
+  --depth: 60px;
+  top: 44%;
+  right: -1.25rem;
+}
+
+.float-icon-3 {
+  --depth: 40px;
+  bottom: 12%;
+  left: -0.75rem;
+}
+
+.float-icon.is-active {
+  opacity: 1;
+  transform: translateZ(calc(var(--depth) + 30px)) scale(1.1);
+  box-shadow:
+    0 0 0 3px var(--accent),
+    0 18px 34px rgba(0, 0, 0, 0.3);
+}
+
+.phone-shadow {
+  position: absolute;
+  bottom: 1.25rem;
+  height: 1.75rem;
+  width: 11rem;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.34) 0%, transparent 100%);
+  filter: blur(6px);
+}
+
+.app-detail {
+  min-width: 0;
+}
+
+/* The tabs need the script; without it every card below is simply listed */
+.app-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+html:not(.js) .app-tabs {
+  display: none;
+}
+
+.app-tab {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.625rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  padding: 0.375rem 1rem 0.375rem 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--heading);
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--duration-micro) ease-out,
+    border-color var(--duration-micro) ease-out,
+    color var(--duration-micro) ease-out,
+    transform var(--duration-spring) var(--ease-spring);
+}
+
+.app-tab:hover {
+  background-color: var(--glass-bg-strong);
+  color: var(--foreground);
+}
+
+.app-tab:active {
+  transform: scale(0.96);
+  transition-duration: var(--duration-press);
+}
+
+.app-tab[aria-selected="true"] {
+  background-color: color-mix(in srgb, var(--accent) 24%, var(--glass-bg));
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--foreground);
+}
+
+.app-tab-icon {
+  height: 2rem;
+  width: 2rem;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12);
+}
+
+.app-panels {
+  display: grid;
+  gap: 1rem;
+}
+
+/*
+ * With the script, the cards share one grid cell and only the selected one
+ * shows. The cell is as tall as the tallest card, so switching (or the
+ * automatic cycle) never moves the page.
+ */
+html.js .app-panels > .app-card {
+  grid-area: 1 / 1;
+  visibility: hidden;
+  opacity: 0;
+  translate: 0 8px;
+  transition:
+    opacity 420ms var(--ease-out-quart),
+    translate 420ms var(--ease-out-quart),
+    visibility 0s linear 420ms;
+}
+
+html.js .app-panels > .app-card.is-active {
+  visibility: visible;
+  opacity: 1;
+  translate: none;
+  transition-delay: 0s;
+}
+
+@media (min-width: 640px) {
+  .phone {
+    width: 14.5rem;
+  }
+
+  .float-icon {
+    height: 4.25rem;
+    width: 4.25rem;
+  }
+
+  .float-icon-1 {
+    left: -2.25rem;
+  }
+
+  .float-icon-2 {
+    right: -2.75rem;
+  }
+
+  .float-icon-3 {
+    left: -1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-showcase {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem;
+  }
+}
+
+/* Honors: one wide card under the education cards */
+.award-card {
+  margin-top: 1rem;
+}
+
+.award-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.award-content .card-text {
+  margin-top: 0.5rem;
+}
+
+/* Projects: search and filter */
+.project-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+/* It works through the script, so without JavaScript it is not offered */
+html:not(.js) .project-toolbar {
+  display: none;
+}
+
+.search-field {
+  position: relative;
+  min-width: 0;
+  flex: 1 1 16rem;
+}
+
+.search-field > .icon {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  translate: 0 -50%;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* Scoped to the field, to win over the general .form-input rules further down */
+.search-field .form-input {
+  border-radius: 9999px;
+  padding-block: 0.625rem;
+  padding-left: 2.625rem;
+}
+
+.filter-toggle {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border-color);
+  background: var(--glass-bg);
+  padding: 0.625rem 1.125rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--heading);
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    background-color var(--duration-micro) ease-out,
+    border-color var(--duration-micro) ease-out,
+    color var(--duration-micro) ease-out,
+    transform var(--duration-spring) var(--ease-spring);
+}
+
+.filter-toggle:hover {
+  background-color: var(--glass-bg-strong);
+  color: var(--foreground);
+}
+
+.filter-toggle:active {
+  transform: scale(0.96);
+  transition-duration: var(--duration-press);
+}
+
+.filter-toggle[aria-pressed="true"] {
+  background-color: color-mix(in srgb, var(--accent) 24%, var(--glass-bg));
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  color: var(--foreground);
+}
+
+.project-group + .project-group {
+  margin-top: 2.5rem;
+}
+
+.subhead {
+  margin-bottom: 1rem;
+}
+
+.project-empty {
+  padding: 3.5rem 1.5rem;
+  text-align: center;
+}
+
+.project-empty > :not(.glass-shine) {
+  position: relative;
+}
+
+.project-empty .card-text {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.project-empty .btn-primary {
+  margin-top: 1.5rem;
+}
+
+/*
+ * Featured projects (and the award): wide cards like an app's listing, with an
+ * icon tile beside the details.
+ */
+.featured-card {
+  height: 100%;
+}
+
+.featured-body,
+.award-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+.featured-icon {
+  display: inline-flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-icon);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--heading) 16%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 24%, transparent) 100%
+  );
+  color: var(--heading);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--heading) 14%, transparent);
+}
+
+.featured-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.featured-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.featured-title {
+  margin-top: 0.25rem;
+  overflow-wrap: anywhere;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--heading);
+}
+
+.featured-content .chip-row {
+  margin-top: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .featured-body,
+  .award-body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .award-body {
+    align-items: center;
+  }
+
+  .featured-icon {
+    height: 4.5rem;
+    width: 4.5rem;
+  }
+}
+
+/* Projects: the full list */
+.project-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+/*
+ * Until "View more" reveals them (without JavaScript the whole list shows).
+ * A search or filter looks through every project, so it lifts this too.
+ */
+html.js #projects:not(.is-filtering) .project-extra:not(.is-shown) {
+  display: none;
+}
+
+.project-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 1.5rem;
+}
+
+.project-card > :not(.glass-shine) {
+  position: relative;
+}
+
+.project-card .card-title {
+  transition: color var(--duration-micro) ease-out;
+}
+
+a.project-card:hover .card-title {
+  color: var(--foreground);
+}
+
+/* Room for two lines, so tags line up across a row whatever the description length */
+.project-text {
+  min-height: 2lh;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--muted);
+}
+
+.project-card .chip-row {
+  margin-top: 1rem;
+}
+
+/* Pinned to the bottom edge of the card */
+.project-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--heading);
+}
+
+.project-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+html:not(.js) .project-more {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/*
+ * Scroll reveal: sections below the fold fade and rise once as they come into
+ * view. The script adds .reveal only where it will also remove it, so nothing
+ * stays hidden without JavaScript or with reduced motion.
+ */
+.reveal {
+  opacity: 0;
+  translate: 0 14px;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  translate: none;
+  transition:
+    opacity 480ms var(--ease-out-quart) var(--reveal-delay, 0ms),
+    translate 480ms var(--ease-out-quart) var(--reveal-delay, 0ms);
+}
+
+/* A printout (or "Save as PDF") includes sections that were never scrolled to */
+@media print {
+  .reveal {
+    opacity: 1;
+    translate: none;
+  }
+}
+
+/* Cards settling in after "View more" */
+.list-enter {
+  animation: list-enter 280ms var(--ease-out-quart) both;
+  animation-delay: calc(var(--i, 0) * 40ms);
+}
+
+@keyframes list-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Contact */
+.contact-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.contact-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contact-option {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--heading) 16%, var(--border-color));
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  padding: 1rem 1.125rem;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform var(--duration-spring) var(--ease-spring),
+    background-color var(--duration-micro) ease-out,
+    border-color var(--duration-micro) ease-out;
+}
+
+a.contact-option:hover {
+  border-color: color-mix(in srgb, var(--heading) 30%, var(--border-color));
+  background-color: var(--surface-hover);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.contact-option:hover {
+    transform: translateY(-1px);
+  }
+}
+
+a.contact-option:active {
+  transform: scale(0.98);
+  transition-duration: var(--duration-press);
+}
+
+.contact-option-text {
+  min-width: 0;
+  flex: 1;
+}
+
+.contact-option-value {
+  display: block;
+  margin-top: 0.25rem;
+  overflow-wrap: anywhere;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--heading);
+}
+
+.contact-option > .icon {
+  color: var(--muted);
+}
+
+.contact-follow {
+  margin-top: 1.5rem;
+}
+
+.contact-follow .social-row {
+  justify-content: flex-start;
+  margin-top: 0.75rem;
+}
+
+@media (min-width: 900px) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+    gap: 2rem;
+  }
+}
+
+/* Form fields */
+.form-header {
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1.5rem;
+}
+
+.form-header .card-text {
+  margin-top: 0.5rem;
+}
+
+.form-fields {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .form-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-field-wide {
+    grid-column: 1 / -1;
+  }
+}
+
+.form-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--heading);
+}
+
+.form-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  appearance: none;
+  border-radius: 0.875rem;
+  border: 1px solid color-mix(in srgb, var(--heading) 28%, var(--border-color));
+  background: var(--surface);
+  padding: 0.8125rem 1rem;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--foreground);
+  box-shadow: inset 0 1px 2px color-mix(in srgb, var(--foreground) 4%, transparent);
+}
+
+.form-input::placeholder {
+  color: color-mix(in srgb, var(--muted) 85%, transparent);
+}
+
+.form-input:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--heading) 40%, var(--border-color));
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--heading) 55%, transparent);
+  background: var(--surface-hover);
+  box-shadow:
+    inset 0 1px 2px color-mix(in srgb, var(--foreground) 4%, transparent),
+    0 0 0 3px color-mix(in srgb, var(--heading) 14%, transparent);
+}
+
+.form-input:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.form-input-invalid {
+  border-color: color-mix(in srgb, #f87171 70%, var(--border-color));
+}
+
+.form-input-invalid:focus {
+  border-color: #f87171;
+  box-shadow:
+    inset 0 1px 2px color-mix(in srgb, var(--foreground) 4%, transparent),
+    0 0 0 3px color-mix(in srgb, #f87171 20%, transparent);
+}
+
+.form-error {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--danger);
+}
+
+.form-textarea {
+  min-height: 9.5rem;
+  resize: vertical;
+}
+
+/* Netlify fills this in on the deployed site; until then it takes no row */
+.form-captcha:empty {
+  display: none;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.form-footer .btn-primary {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .form-footer .btn-primary {
+    width: auto;
+  }
+}
+
+/* Form submit feedback */
+.form-status-enter {
+  animation: form-status-in 0.28s var(--ease-out-quart) both;
+}
+
+.form-status-icon-pop {
+  animation: form-status-pop 0.36s var(--ease-spring) 0.06s both;
+}
+
+.form-status-banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  border-radius: 0.875rem;
+  border: 1px solid transparent;
+  padding: 0.875rem 1rem;
+  outline: none;
+}
+
+.form-status-banner-error {
+  border-color: color-mix(in srgb, #f87171 45%, transparent);
+  background: color-mix(in srgb, #f87171 10%, var(--surface));
+  color: var(--danger);
+}
+
+.form-status-title {
+  font-weight: 600;
+  color: var(--heading);
+}
+
+.form-status-text {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: var(--muted);
+}
+
+.form-success {
+  padding: 2rem;
+  text-align: center;
+}
+
+.form-success > :not(.glass-shine) {
+  position: relative;
+}
+
+.form-success h3 {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--heading);
+  outline: none;
+}
+
+.form-success .card-text {
+  margin-top: 0.75rem;
+}
+
+.form-status-icon-success {
+  display: inline-flex;
+  height: 3.5rem;
+  width: 3.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: color-mix(in srgb, #4ade80 18%, transparent);
+  color: var(--success);
+  box-shadow: 0 0 0 1px color-mix(in srgb, #4ade80 28%, transparent);
+}
+
+@keyframes form-status-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes form-status-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Footer */
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.site-footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-block: 2rem;
+  font-size: 0.875rem;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.site-footer a {
+  font-weight: 600;
+  color: var(--heading);
+  transition: color var(--duration-micro) ease-out;
+}
+
+.site-footer a:hover {
+  color: var(--foreground);
+}
+
+@media (min-width: 640px) {
+  .site-footer-inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Back to top: appears once the hero has scrolled away */
+.back-to-top {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 8px;
+  transition:
+    opacity var(--duration-overlay) ease-out,
+    translate var(--duration-overlay) var(--ease-out-quart),
+    visibility 0s linear var(--duration-overlay),
+    transform var(--duration-micro) var(--ease-out-quart),
+    color var(--duration-micro) ease-out;
+}
+
+.back-to-top[data-visible="true"] {
+  opacity: 1;
+  visibility: visible;
+  translate: none;
+  transition-delay: 0s;
+}
+
+/*
+ * Reduced motion: nothing moves. Entrances are skipped and overlays keep only
+ * a short opacity fade. Colour and glow changes (hover, focus, selection)
+ * still show state.
+ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+    transition: none;
+  }
+
+  .hero-reveal,
+  .hero-highlight,
+  .list-enter,
+  .form-status-enter,
+  .form-status-icon-pop {
+    animation: none !important;
+  }
+
+  /* No lifts, presses or slides, in any state */
+  .card-interactive,
+  .btn-primary,
+  .btn-ghost,
+  .contact-option,
+  .filter-toggle,
+  .app-tab,
+  .icon-button,
+  .theme-toggle-icon,
+  .mobile-menu-panel,
+  .mobile-menu-item {
+    transform: none !important;
+  }
+
+  .chevron-nudge,
+  .back-to-top,
+  .app-panels > .app-card {
+    translate: none !important;
+  }
+
+  /* The phone keeps its 3D pose; its screen and icons change without moving */
+  .phone-app {
+    transform: none !important;
+  }
+
+  .float-icon {
+    transition: none !important;
+  }
+}

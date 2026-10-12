@@ -1569,13 +1569,20 @@ html.hero-seen .hero-highlight {
   margin-bottom: 1.5rem;
 }
 
-/* Kept on one line: on a narrow screen the count drops below instead of squeezing it */
+/*
+ * The head wraps as a row, so on a narrow screen whatever sits beside the
+ * title (a count, a button) drops below it instead of squeezing it. A title
+ * too long for the screen by itself still wraps.
+ */
+.section-head > div {
+  min-width: 0;
+}
+
 .section-title {
   margin-top: 0.5rem;
   font-size: 1.875rem;
   font-weight: 700;
   line-height: 1.15;
-  white-space: nowrap;
   color: var(--heading);
 }
 
@@ -2661,6 +2668,12 @@ html:not(.js) .project-toolbar {
   gap: 0.75rem 1rem;
 }
 
+.featured-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .featured-title {
   margin-top: 0.25rem;
   overflow-wrap: anywhere;
@@ -2722,7 +2735,7 @@ html.js #projects:not(.is-filtering) .project-extra:not(.is-shown) {
   transition: color var(--duration-micro) ease-out;
 }
 
-a.project-card:hover .card-title {
+.project-card.card-interactive:hover .card-title {
   color: var(--foreground);
 }
 
@@ -2750,6 +2763,81 @@ a.project-card:hover .card-title {
   font-weight: 600;
   line-height: 1;
   color: var(--heading);
+}
+
+/*
+ * A card with two destinations (live site and code). The first link's
+ * ::after covers the whole card, so the card still opens it; the second link
+ * sits above that layer. The row is left unpositioned so the ::after measures
+ * from the card, not from the row.
+ */
+.project-card > .project-actions {
+  position: static;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+.project-actions .project-action {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.project-action-extra {
+  position: relative;
+  z-index: 2;
+  transition: color var(--duration-micro) ease-out;
+}
+
+.project-action-extra:hover {
+  color: var(--foreground);
+}
+
+.card-interactive:has(.stretched-link:focus-visible)::after {
+  opacity: 1;
+}
+
+/* Small print: the confidentiality note under the featured work, the privacy line by the form */
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.note > .icon {
+  margin-top: 0.2em;
+  color: var(--heading);
+}
+
+.note a {
+  font-weight: 600;
+  color: var(--heading);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--heading) 40%, transparent);
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-micro) ease-out;
+}
+
+.note a:hover {
+  color: var(--foreground);
+}
+
+.project-group > .note {
+  margin-top: 1.25rem;
 }
 
 .project-more {
@@ -2815,6 +2903,356 @@ html:not(.js) .project-more {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/*
+ * Project pages (projects/<name>/): a smaller hero with the project's facts,
+ * then sections built from the same cards as the home page.
+ */
+.page-hero {
+  position: relative;
+  padding-block: 2rem 3rem;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--heading);
+  transition: color var(--duration-micro) ease-out;
+}
+
+.back-link:hover {
+  color: var(--foreground);
+}
+
+.back-link .icon {
+  transition: translate var(--duration-micro) var(--ease-out-quart);
+}
+
+.back-link:hover .icon {
+  translate: -2px 0;
+}
+
+.page-hero .eyebrow {
+  margin-top: 1.75rem;
+}
+
+/* A domain name has no spaces to wrap at: the markup offers breaks after its dots, and this is the last resort */
+.page-title {
+  margin-top: 0.75rem;
+  overflow-wrap: break-word;
+  font-size: clamp(1.75rem, 1rem + 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--foreground);
+}
+
+.page-lead {
+  max-width: 40rem;
+  margin-top: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+/* The project's facts: role, company, dates, stack */
+.meta-grid {
+  display: grid;
+  gap: 1rem;
+  margin: 2.5rem 0 0;
+}
+
+.meta-item {
+  padding: 1.25rem 1.5rem;
+}
+
+.meta-item dd {
+  margin: 0.5rem 0 0;
+}
+
+.meta-value {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--heading);
+}
+
+@media (min-width: 640px) {
+  .meta-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .meta-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Running text on a project page */
+.prose {
+  max-width: 44rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.prose + .prose {
+  margin-top: 1rem;
+}
+
+/* Screenshots: a browser window (or a phone) around the capture, with a caption */
+.shot {
+  margin: 0;
+}
+
+.browser-frame {
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  background: var(--surface);
+  box-shadow:
+    var(--glass-shadow),
+    0 24px 48px rgba(0, 0, 0, 0.1);
+}
+
+.browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  border-bottom: 1px solid var(--border-subtle);
+  background: color-mix(in srgb, var(--heading) 6%, var(--surface));
+  padding: 0.625rem 0.875rem;
+}
+
+.browser-dot {
+  height: 0.5625rem;
+  width: 0.5625rem;
+  flex-shrink: 0;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--muted) 45%, transparent);
+}
+
+.browser-url {
+  min-width: 0;
+  flex: 1;
+  margin-left: 0.5rem;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--heading) 8%, transparent);
+  padding: 0.3125rem 0.75rem 0.125rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.browser-frame > img,
+.device-frame > img {
+  width: 100%;
+  height: auto;
+}
+
+.device-frame {
+  width: min(100%, 15rem);
+  margin-inline: auto;
+  overflow: hidden;
+  border: 0.5rem solid #0d1117;
+  border-radius: 2rem;
+  background: #000;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 24px 48px rgba(0, 0, 0, 0.2);
+}
+
+.shot-caption {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.shot-device .shot-caption {
+  text-align: center;
+}
+
+/* minmax(0, 1fr): a long address in a browser bar must not widen the column past the screen */
+.shot-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.shot-note {
+  margin-top: 1.5rem;
+}
+
+/* Text beside a phone capture */
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .shot-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .split {
+    grid-template-columns: minmax(0, 1fr) 17rem;
+    align-items: start;
+    gap: 3.5rem;
+  }
+}
+
+/* What I built: two wide tiles over three narrower ones */
+.build-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .build-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr;
+  }
+
+  .build-grid > :last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .build-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .build-grid > li,
+  .build-grid > :last-child {
+    grid-column: span 2;
+  }
+
+  .build-grid > :nth-child(-n + 2) {
+    grid-column: span 3;
+  }
+}
+
+/* Architecture: three columns read left to right (top to bottom on a phone), joined by arrows */
+.flow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.flow-col {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.flow-node {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--heading) 16%, var(--border-color));
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  padding: 1rem 1.125rem;
+}
+
+/* The piece everything else connects to */
+.flow-node-main {
+  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--surface));
+}
+
+.flow-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--heading);
+}
+
+.flow-text {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.flow-arrow {
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  rotate: 90deg;
+}
+
+.flow-note {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.25rem;
+}
+
+@media (min-width: 900px) {
+  .flow {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.1fr) auto minmax(0, 1fr);
+  }
+
+  /* Centred on the boxes, which start below each column's label */
+  .flow-arrow {
+    padding-top: 1.75rem;
+    rotate: none;
+  }
+}
+
+/* Closing call to action */
+.cta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+.cta .card-text {
+  margin-top: 0.5rem;
+}
+
+.cta-actions {
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
   }
 }
 
@@ -3016,17 +3454,30 @@ a.contact-option:active {
   display: none;
 }
 
+/* The privacy line, then the button: stacked on a phone, side by side with more room */
 .form-footer {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 1.25rem;
   margin-top: 1.5rem;
 }
 
 .form-footer .btn-primary {
   width: 100%;
+  flex-shrink: 0;
 }
 
 @media (min-width: 640px) {
+  .form-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .form-footer .note {
+    max-width: 24rem;
+  }
+
   .form-footer .btn-primary {
     width: auto;
   }
@@ -3217,6 +3668,7 @@ a.contact-option:active {
   }
 
   .chevron-nudge,
+  .back-link .icon,
   .back-to-top,
   .app-panels > .app-card {
     translate: none !important;

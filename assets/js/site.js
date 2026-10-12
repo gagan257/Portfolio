@@ -340,7 +340,7 @@
     const moreButton = projects.querySelector("[data-projects-more]");
     const moreRow = moreButton.parentElement;
     const search = projects.querySelector("[data-project-search]");
-    const liveToggle = projects.querySelector("[data-project-live]");
+    const toggles = Array.from(projects.querySelectorAll("[data-project-filter]"));
     const count = projects.querySelector("[data-project-count]");
     const emptyState = projects.querySelector("[data-project-empty]");
     const groups = Array.from(projects.querySelectorAll("[data-project-group]"));
@@ -352,18 +352,24 @@
     const hiddenExtras = () =>
       Array.from(projects.querySelectorAll(".project-extra:not(.is-shown)"));
 
-    const liveOnly = () => liveToggle.getAttribute("aria-pressed") === "true";
+    /** What each filter button looks for on a project: a live site, or a link to its code. */
+    const FILTERS = {
+      live: (item) => item.querySelector("a[href^='http']:not([href*='github.com'])") !== null,
+      code: (item) => item.querySelector("a[href*='github.com']") !== null,
+    };
+
+    const isPressed = (toggle) => toggle.getAttribute("aria-pressed") === "true";
 
     function update() {
       const terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
-      const filtering = terms.length > 0 || liveOnly();
+      const active = toggles.filter(isPressed).map((toggle) => FILTERS[toggle.dataset.projectFilter]);
+      const filtering = terms.length > 0 || active.length > 0;
       let matches = 0;
 
       items.forEach((item) => {
         const text = searchText.get(item);
         const match =
-          terms.every((term) => text.includes(term)) &&
-          (!liveOnly() || item.querySelector("a[href^='http']") !== null);
+          terms.every((term) => text.includes(term)) && active.every((test) => test(item));
 
         item.hidden = filtering && !match;
         if (match) matches += 1;
@@ -402,14 +408,16 @@
 
     search.addEventListener("input", update);
 
-    liveToggle.addEventListener("click", () => {
-      liveToggle.setAttribute("aria-pressed", String(!liveOnly()));
-      update();
+    toggles.forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        toggle.setAttribute("aria-pressed", String(!isPressed(toggle)));
+        update();
+      });
     });
 
     projects.querySelector("[data-project-clear]").addEventListener("click", () => {
       search.value = "";
-      liveToggle.setAttribute("aria-pressed", "false");
+      toggles.forEach((toggle) => toggle.setAttribute("aria-pressed", "false"));
       update();
       search.focus();
     });

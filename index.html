@@ -224,6 +224,16 @@
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
     </symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="11" width="14" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z" />
+      <path d="M9 12l2 2 4-4" />
+    </symbol>
     <symbol id="i-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
       stroke-linecap="round" stroke-linejoin="round">
       <rect x="7" y="2.5" width="10" height="19" rx="2" />
@@ -1019,9 +1029,13 @@
             <input id="project-search" type="search" class="form-input"
               placeholder="Search projects — try React, Stripe or AI" autocomplete="off" data-project-search />
           </div>
-          <button type="button" class="filter-toggle" aria-pressed="false" data-project-live>
+          <button type="button" class="filter-toggle" aria-pressed="false" data-project-filter="live">
             <svg class="icon icon-sm" aria-hidden="true"><use href="#i-external" /></svg>
             Live sites
+          </button>
+          <button type="button" class="filter-toggle" aria-pressed="false" data-project-filter="code">
+            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
+            Source code
           </button>
         </div>
 
@@ -1110,11 +1124,17 @@
                         <p class="eyebrow eyebrow-sm">E-commerce Platform</p>
                         <h3 class="featured-title">store.prempackaging.com</h3>
                       </div>
-                      <a href="https://store.prempackaging.com" class="btn-ghost btn-sm group" target="_blank"
-                        rel="noopener noreferrer">
-                        View live
-                        <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-                      </a>
+                      <div class="featured-actions">
+                        <a href="projects/prem-packaging-store/" class="btn-primary btn-sm group">
+                          Project details
+                          <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+                        </a>
+                        <a href="https://store.prempackaging.com" class="btn-ghost btn-sm group" target="_blank"
+                          rel="noopener noreferrer">
+                          View live
+                          <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                        </a>
+                      </div>
                     </div>
                     <ul class="bullet-list">
                       <li>
@@ -1138,6 +1158,14 @@
               </article>
             </li>
           </ul>
+
+          <p class="note">
+            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-lock" /></svg>
+            <span>
+              Some of this work was built for employers and their clients, so its source code and internal
+              screens are not public. I'm glad to <a href="#contact">walk through the details</a>.
+            </span>
+          </p>
         </div>
 
         <div class="project-group" data-project-group>
@@ -1261,9 +1289,8 @@
               </article>
             </li>
             <li class="project-extra">
-              <a href="https://gagan-qrcode.vercel.app/"
-                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
-                rel="noopener noreferrer">
+              <!-- Two destinations: the whole card opens the live site, and "Code" sits above that link -->
+              <article class="project-card glass-card glass-card-lite card-interactive group">
                 <span class="glass-shine" aria-hidden="true"></span>
                 <h3 class="card-title">QR Code Generator</h3>
                 <p class="project-text">Generate downloadable QR codes from URLs or text.</p>
@@ -1271,11 +1298,19 @@
                   <span class="chip">React</span>
                   <span class="chip">Canvas</span>
                 </span>
-                <span class="project-action">
-                  View live
-                  <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                <span class="project-actions">
+                  <a href="https://gagan-qrcode.vercel.app/" class="project-action stretched-link" target="_blank"
+                    rel="noopener noreferrer">
+                    View live
+                    <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                  </a>
+                  <a href="https://github.com/gagan257/QR-Code-Generator" class="project-action project-action-extra"
+                    target="_blank" rel="noopener noreferrer">
+                    <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
+                    Code
+                  </a>
                 </span>
-              </a>
+              </article>
             </li>
             <li class="project-extra">
               <article class="project-card glass-card glass-card-lite">
@@ -1332,7 +1367,9 @@
               </article>
             </li>
             <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
+              <a href="https://github.com/gagan257/Orbit"
+                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
+                rel="noopener noreferrer">
                 <span class="glass-shine" aria-hidden="true"></span>
                 <h3 class="card-title">Orbit (Educative platform)</h3>
                 <p class="project-text">Platform with login, courses and video streaming support.</p>
@@ -1340,10 +1377,16 @@
                   <span class="chip">Next.js</span>
                   <span class="chip">Streaming</span>
                 </span>
-              </article>
+                <span class="project-action">
+                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
+                  View code
+                </span>
+              </a>
             </li>
             <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
+              <a href="https://github.com/gagan257/Brain-Flows"
+                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
+                rel="noopener noreferrer">
                 <span class="glass-shine" aria-hidden="true"></span>
                 <h3 class="card-title">Brain Flows</h3>
                 <p class="project-text">Notes webapp with AI-powered search and organisation.</p>
@@ -1351,10 +1394,16 @@
                   <span class="chip">AI</span>
                   <span class="chip">Notes</span>
                 </span>
-              </article>
+                <span class="project-action">
+                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
+                  View code
+                </span>
+              </a>
             </li>
             <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
+              <a href="https://github.com/gagan257/Github-Explorer-App"
+                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
+                rel="noopener noreferrer">
                 <span class="glass-shine" aria-hidden="true"></span>
                 <h3 class="card-title">GitHub Explorer</h3>
                 <p class="project-text">Explore GitHub users, repos and activity with clean UI.</p>
@@ -1362,7 +1411,11 @@
                   <span class="chip">React</span>
                   <span class="chip">REST</span>
                 </span>
-              </article>
+                <span class="project-action">
+                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
+                  View code
+                </span>
+              </a>
             </li>
             <li class="project-extra">
               <article class="project-card glass-card glass-card-lite">
@@ -1385,27 +1438,41 @@
               </article>
             </li>
             <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
+              <a href="https://github.com/gagan257/TicTacToe"
+                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
+                rel="noopener noreferrer">
                 <span class="glass-shine" aria-hidden="true"></span>
                 <h3 class="card-title">TicTacToe (React)</h3>
                 <p class="project-text">Classic TicTacToe implemented in React with local multiplayer.</p>
                 <span class="chip-row">
                   <span class="chip">React</span>
                 </span>
-              </article>
+                <span class="project-action">
+                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
+                  View code
+                </span>
+              </a>
             </li>
             <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
+              <a href="https://github.com/gagan257/IQ-Test-Website"
+                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
+                rel="noopener noreferrer">
                 <span class="glass-shine" aria-hidden="true"></span>
                 <h3 class="card-title">IQ Test Website</h3>
                 <p class="project-text">Timed IQ tests with scoring and question randomisation.</p>
                 <span class="chip-row">
                   <span class="chip">Vanilla JS</span>
                 </span>
-              </article>
+                <span class="project-action">
+                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
+                  View code
+                </span>
+              </a>
             </li>
             <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
+              <a href="https://github.com/gagan257/Slot-Machine-Game"
+                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
+                rel="noopener noreferrer">
                 <span class="glass-shine" aria-hidden="true"></span>
                 <h3 class="card-title">Slot Machine Mini Game</h3>
                 <p class="project-text">Simple 3-reel slot game — match 3 to win.</p>
@@ -1413,7 +1480,11 @@
                   <span class="chip">Game</span>
                   <span class="chip">JS</span>
                 </span>
-              </article>
+                <span class="project-action">
+                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
+                  View code
+                </span>
+              </a>
             </li>
           </ul>
 
@@ -1844,6 +1915,16 @@
                 </div>
 
                 <div class="form-footer">
+                  <p class="note">
+                    <svg class="icon icon-sm" aria-hidden="true"><use href="#i-shield" /></svg>
+                    <span>
+                      Your name, email and message are used only to reply to you. The form is processed by
+                      <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify</a>
+                      and protected by
+                      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google
+                        reCAPTCHA</a>.
+                    </span>
+                  </p>
                   <button type="submit" class="btn-primary">Send message</button>
                 </div>
               </div>

@@ -66,7 +66,7 @@
           "url": "https://gagandev.in/",
           "name": "Gagan Arora | Full Stack Software Engineer in Noida, India",
           "inLanguage": "en",
-          "dateModified": "2026-10-13",
+          "dateModified": "2026-10-14",
           "isPartOf": { "@id": "https://gagandev.in/#website" },
           "about": { "@id": "https://gagandev.in/#person" },
           "mainEntity": { "@id": "https://gagandev.in/#person" }
@@ -95,7 +95,7 @@
           },
           "knowsAbout": [
             "Full stack web development", "Node.js", "Express.js", "React", "Next.js", "TypeScript",
-            "Retrieval-augmented generation", "Claude API", "Vector search", "MongoDB", "MySQL",
+            "Retrieval-augmented generation", "Large language models", "Vector search", "MongoDB", "MySQL",
             "Amazon Web Services", "Microsoft Azure", "Stripe", "Android app development"
           ],
           "sameAs": [
@@ -260,6 +260,11 @@
       stroke-linecap="round" stroke-linejoin="round">
       <circle cx="11" cy="11" r="6.5" />
       <path d="M16 16l4 4" />
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
     </symbol>
     <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
       stroke-linecap="round" stroke-linejoin="round">
@@ -465,29 +470,17 @@
             applications.
           </p>
           <p class="hero-pitch hero-reveal" style="--i: 3">
-            I ship RAG and Claude-powered features, OTT platforms, payments and e-commerce systems end to end.
+            I ship RAG and AI-powered features, OTT platforms, payments and e-commerce systems end to end.
           </p>
 
-          <!-- The stack at a glance, by layer; the Skills section has the full list -->
-          <ul class="hero-stack hero-reveal" style="--i: 4">
-            <li>
-              <span class="hero-stack-label">AI</span>
-              <span class="chip chip-lg">Claude API</span>
-              <span class="chip chip-lg">RAG</span>
-              <span class="chip chip-lg">Vector Search</span>
-            </li>
-            <li>
-              <span class="hero-stack-label">Web</span>
-              <span class="chip chip-lg">Node.js</span>
-              <span class="chip chip-lg">Next.js</span>
-              <span class="chip chip-lg">TypeScript</span>
-            </li>
-            <li>
-              <span class="hero-stack-label">Cloud</span>
-              <span class="chip chip-lg">AWS</span>
-              <span class="chip chip-lg">Azure</span>
-              <span class="chip chip-lg">Firebase</span>
-            </li>
+          <!-- The stack at a glance: AI, web and both clouds; the Skills section has the full list -->
+          <ul class="chip-row hero-chips hero-reveal" style="--i: 4">
+            <li class="chip chip-lg">LLM APIs</li>
+            <li class="chip chip-lg">RAG</li>
+            <li class="chip chip-lg">Node.js</li>
+            <li class="chip chip-lg">Next.js</li>
+            <li class="chip chip-lg">AWS</li>
+            <li class="chip chip-lg">Azure</li>
           </ul>
 
           <div class="hero-actions hero-reveal" style="--i: 5">
@@ -617,7 +610,7 @@
                     <svg class="icon" aria-hidden="true"><use href="#i-sparkles" /></svg>
                   </span>
                   <p class="about-point-title">AI in real products</p>
-                  <p class="about-point-text">RAG, embeddings and Claude-powered features that ship.</p>
+                  <p class="about-point-text">RAG, embeddings and AI-powered features that ship.</p>
                 </li>
                 <li>
                   <span class="icon-badge">
@@ -686,11 +679,11 @@
               </span>
               <h3 class="card-title">AI &amp; LLM applications</h3>
               <p class="card-text">
-                RAG systems with embeddings and vector search, prompt engineering and streaming responses on the
-                Claude API, and AI video avatars with Tavus AI.
+                RAG systems with embeddings and vector search, prompt engineering and streaming responses from
+                LLM APIs, and AI video avatars with Tavus AI.
               </p>
               <div class="chip-row">
-                <span class="chip">Claude API</span>
+                <span class="chip">LLM APIs</span>
                 <span class="chip">RAG</span>
                 <span class="chip">Vector Search</span>
                 <span class="chip">Tavus AI</span>
@@ -832,7 +825,7 @@
                 AI / LLM
               </dt>
               <dd class="chip-row">
-                <span class="chip chip-md">Claude API</span>
+                <span class="chip chip-md">LLM APIs</span>
                 <span class="chip chip-md">RAG</span>
                 <span class="chip chip-md">Embeddings</span>
                 <span class="chip chip-md">Vector Search</span>
@@ -886,6 +879,9 @@
               </span>
               My Experience
             </h2>
+            <p class="section-lead">
+              <strong>Four companies since February 2023.</strong> Two internships, then two full-time roles.
+            </p>
           </div>
         </header>
 
@@ -1005,101 +1001,230 @@
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Projects: three case studies in summary, each linking to its own page, then a grid of the rest -->
     <section class="section" id="projects">
       <div class="container">
         <header class="section-head">
           <div>
-            <p class="eyebrow">Quality Work</p>
+            <p class="eyebrow">Selected Work</p>
             <h2 class="section-title inline-icon">
               <span class="icon-badge">
                 <svg class="icon" aria-hidden="true"><use href="#i-code" /></svg>
               </span>
               My Projects
             </h2>
+            <p class="section-lead">
+              <strong>Three projects up close, each with its own page.</strong> More are in the grid below.
+            </p>
           </div>
-          <p class="section-count" aria-live="polite" data-project-count>25 projects</p>
+          <p class="section-count">18 projects</p>
         </header>
 
-        <!-- Search and filter: run by the script, so the stylesheet hides them when JavaScript is off -->
-        <div class="project-toolbar">
-          <div class="search-field">
-            <label for="project-search" class="visually-hidden">Search projects</label>
-            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-search" /></svg>
-            <input id="project-search" type="search" class="form-input"
-              placeholder="Search projects — try React, Stripe or AI" autocomplete="off" data-project-search />
-          </div>
-          <button type="button" class="filter-toggle" aria-pressed="false" data-project-filter="live">
-            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-external" /></svg>
-            Live sites
-          </button>
-          <button type="button" class="filter-toggle" aria-pressed="false" data-project-filter="code">
-            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
-            Source code
-          </button>
-        </div>
-
-        <div class="project-group" data-project-group>
-          <p class="subhead eyebrow eyebrow-sm">Featured</p>
-          <ul class="card-grid featured-grid" data-project-list>
+        <div class="project-group">
+          <p class="subhead eyebrow eyebrow-sm">Case studies</p>
+          <ul class="case-list">
+            <!-- 01 -->
             <li>
-              <article class="glass-card featured-card">
+              <article class="glass-card case-card" id="psych-gpt">
                 <div class="glass-shine" aria-hidden="true"></div>
-                <div class="featured-body">
-                  <span class="featured-icon" aria-hidden="true">
-                    <svg class="icon icon-xl"><use href="#i-sparkles" /></svg>
-                  </span>
-                  <div class="featured-content">
-                    <div class="featured-head">
+                <div class="case-body">
+                  <header class="case-head">
+                    <div class="case-heading">
+                      <span class="featured-icon case-no" aria-hidden="true">01</span>
                       <div>
                         <p class="eyebrow eyebrow-sm">AI Clinical Interview Assistant</p>
                         <h3 class="featured-title">Psych-GPT</h3>
+                        <p class="case-deck">
+                          An AI video avatar that takes a patient's medical history before the consultation begins.
+                        </p>
                       </div>
                     </div>
-                    <ul class="bullet-list">
-                      <li>
-                        AI-powered clinical interview assistant, built by integrating Tavus AI video avatars and
-                        clinical conversation workflows.
-                      </li>
-                      <li>
-                        Real-time interview sessions and clinician-review summaries support medical-history
-                        collection before consultations.
-                      </li>
-                    </ul>
+                    <div class="featured-actions">
+                      <a href="projects/psych-gpt/" class="btn-primary btn-sm group">
+                        Project details
+                        <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+                      </a>
+                    </div>
+                  </header>
+
+                  <div class="case-diagram">
+                    <p class="eyebrow eyebrow-sm pmap-label">What's inside</p>
+                    <!-- The project on top, its parts below, and what each part holds -->
+                    <figure class="case-figure">
+                      <div class="pmap pmap-compact" style="--count: 3">
+                        <div class="pmap-root">
+                          <p class="pmap-root-title">Psych-GPT</p>
+                        </div>
+                        <ul class="pmap-parts">
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-user" /></svg>
+                              </span>
+                              For the patient
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">An interview before the visit</p></li>
+                              <li><p class="pmap-item-title">A video avatar to talk to</p></li>
+                            </ul>
+                          </li>
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-sparkles" /></svg>
+                              </span>
+                              Inside Psych-GPT
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Live conversation</p></li>
+                              <li><p class="pmap-item-title">Clinical workflow</p></li>
+                            </ul>
+                          </li>
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-shield" /></svg>
+                              </span>
+                              For the clinician
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Session summary</p></li>
+                              <li><p class="pmap-item-title">Ready before the consultation</p></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </figure>
+                  </div>
+
+                  <footer class="case-foot">
                     <div class="chip-row">
                       <span class="chip">Tavus AI</span>
                       <span class="chip">Video Avatars</span>
                       <span class="chip">Real-Time Sessions</span>
                       <span class="chip">Clinical Workflows</span>
                     </div>
-                  </div>
+                    <p class="note">
+                      <svg class="icon icon-sm" aria-hidden="true"><use href="#i-lock" /></svg>
+                      <span>Private: source code and internal screens are not public.</span>
+                    </p>
+                  </footer>
                 </div>
               </article>
             </li>
+
+            <!-- 02 -->
             <li>
-              <article class="glass-card featured-card">
+              <article class="glass-card case-card" id="nabtt">
                 <div class="glass-shine" aria-hidden="true"></div>
-                <div class="featured-body">
-                  <span class="featured-icon" aria-hidden="true">
-                    <svg class="icon icon-xl"><use href="#i-tv" /></svg>
-                  </span>
-                  <div class="featured-content">
-                    <div class="featured-head">
+                <div class="case-body">
+                  <header class="case-head">
+                    <div class="case-heading">
+                      <span class="featured-icon case-no" aria-hidden="true">02</span>
                       <div>
                         <p class="eyebrow eyebrow-sm">OTT Platform</p>
                         <h3 class="featured-title">NABTT</h3>
+                        <p class="case-deck">
+                          An OTT platform with family profiles, parental controls, subscriptions and advertising.
+                        </p>
                       </div>
                     </div>
-                    <ul class="bullet-list">
-                      <li>
-                        Real-time analytics, event tracking, dynamic ad insertion, and video-level ad mapping for
-                        OTT content workflows.
-                      </li>
-                      <li>
-                        RBAC, Stripe subscriptions with region-based pricing and webhook validation, and Firebase
-                        FCM notifications.
-                      </li>
-                    </ul>
+                    <div class="featured-actions">
+                      <a href="projects/nabtt/" class="btn-primary btn-sm group">
+                        Project details
+                        <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+                      </a>
+                      <a href="https://user.nabtt.com" class="btn-ghost btn-sm group" target="_blank"
+                        rel="noopener noreferrer">
+                        View live
+                        <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                      </a>
+                    </div>
+                  </header>
+
+                  <div class="case-diagram">
+                    <p class="eyebrow eyebrow-sm pmap-label">What's inside</p>
+                    <!-- The project on top, its parts below, and what each part holds -->
+                    <figure class="case-figure">
+                      <div class="pmap pmap-compact" style="--count: 5">
+                        <div class="pmap-root">
+                          <p class="pmap-root-title">NABTT</p>
+                        </div>
+                        <ul class="pmap-parts">
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-user" /></svg>
+                              </span>
+                              Getting in
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Accounts</p></li>
+                              <li><p class="pmap-item-title">Profiles</p></li>
+                              <li><p class="pmap-item-title">Profile PIN</p></li>
+                            </ul>
+                          </li>
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-tv" /></svg>
+                              </span>
+                              Watching
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Home</p></li>
+                              <li><p class="pmap-item-title">Title pages</p></li>
+                              <li><p class="pmap-item-title">Playback</p></li>
+                              <li class="pmap-more"><p class="pmap-item-title">+3 more</p></li>
+                            </ul>
+                          </li>
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-shield" /></svg>
+                              </span>
+                              Parent oversight
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Child profiles</p></li>
+                              <li><p class="pmap-item-title">Age filter</p></li>
+                              <li><p class="pmap-item-title">Screen time</p></li>
+                              <li><p class="pmap-item-title">Watchlist-only mode</p></li>
+                            </ul>
+                          </li>
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-card" /></svg>
+                              </span>
+                              Monetisation
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Paid plans</p></li>
+                              <li><p class="pmap-item-title">Regional pricing</p></li>
+                              <li><p class="pmap-item-title">Payment checks</p></li>
+                              <li class="pmap-more"><p class="pmap-item-title">+2 more</p></li>
+                            </ul>
+                          </li>
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-database" /></svg>
+                              </span>
+                              Behind the scenes
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Live analytics</p></li>
+                              <li><p class="pmap-item-title">Roles and access</p></li>
+                              <li><p class="pmap-item-title">Notifications</p></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </figure>
+                  </div>
+
+                  <footer class="case-foot">
                     <div class="chip-row">
                       <span class="chip">Real-Time Analytics</span>
                       <span class="chip">Dynamic Ad Insertion</span>
@@ -1107,45 +1232,99 @@
                       <span class="chip">Stripe</span>
                       <span class="chip">Firebase FCM</span>
                     </div>
-                  </div>
+                    <p class="note">
+                      <svg class="icon icon-sm" aria-hidden="true"><use href="#i-lock" /></svg>
+                      <span>Live, behind a subscriber sign-in.</span>
+                    </p>
+                  </footer>
                 </div>
               </article>
             </li>
+
+            <!-- 03 -->
             <li>
-              <article class="glass-card featured-card">
+              <article class="glass-card case-card" id="prem-packaging-store">
                 <div class="glass-shine" aria-hidden="true"></div>
-                <div class="featured-body">
-                  <span class="featured-icon" aria-hidden="true">
-                    <svg class="icon icon-xl"><use href="#i-bag" /></svg>
-                  </span>
-                  <div class="featured-content">
-                    <div class="featured-head">
+                <div class="case-body">
+                  <header class="case-head">
+                    <div class="case-heading">
+                      <span class="featured-icon case-no" aria-hidden="true">03</span>
                       <div>
                         <p class="eyebrow eyebrow-sm">E-commerce Platform</p>
-                        <h3 class="featured-title">store.prempackaging.com</h3>
-                      </div>
-                      <div class="featured-actions">
-                        <a href="projects/prem-packaging-store/" class="btn-primary btn-sm group">
-                          Project details
-                          <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
-                        </a>
-                        <a href="https://store.prempackaging.com" class="btn-ghost btn-sm group" target="_blank"
-                          rel="noopener noreferrer">
-                          View live
-                          <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-                        </a>
+                        <h3 class="featured-title">store.<wbr />prempackaging.<wbr />com</h3>
+                        <p class="case-deck">
+                          An online packaging store, and the custom CMS its team runs it from.
+                        </p>
                       </div>
                     </div>
-                    <ul class="bullet-list">
-                      <li>
-                        Full-stack e-commerce platform and custom CMS for catalog, inventory, order, and fulfilment
-                        management.
-                      </li>
-                      <li>
-                        Node.js/Express APIs and a React admin dashboard, with Razorpay webhooks, deployed on AWS
-                        EC2 and Amplify.
-                      </li>
-                    </ul>
+                    <div class="featured-actions">
+                      <a href="projects/prem-packaging-store/" class="btn-primary btn-sm group">
+                        Project details
+                        <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+                      </a>
+                      <a href="https://store.prempackaging.com" class="btn-ghost btn-sm group" target="_blank"
+                        rel="noopener noreferrer">
+                        View live
+                        <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                      </a>
+                    </div>
+                  </header>
+
+                  <div class="case-diagram">
+                    <p class="eyebrow eyebrow-sm pmap-label">What's inside</p>
+                    <!-- The project on top, its parts below, and what each part holds -->
+                    <figure class="case-figure">
+                      <div class="pmap pmap-compact" style="--count: 3">
+                        <div class="pmap-root">
+                          <p class="pmap-root-title">store.<wbr />prempackaging.<wbr />com</p>
+                        </div>
+                        <ul class="pmap-parts">
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-bag" /></svg>
+                              </span>
+                              For customers
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Catalogue and search</p></li>
+                              <li><p class="pmap-item-title">Size filters</p></li>
+                              <li><p class="pmap-item-title">Cart and checkout</p></li>
+                              <li><p class="pmap-item-title">Custom orders</p></li>
+                            </ul>
+                          </li>
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-cloud" /></svg>
+                              </span>
+                              Under the hood
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Payments</p></li>
+                              <li><p class="pmap-item-title">One back end</p></li>
+                              <li><p class="pmap-item-title">Hosting</p></li>
+                            </ul>
+                          </li>
+                          <li class="pmap-part">
+                            <p class="pmap-part-title inline-icon">
+                              <span class="section-icon">
+                                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-layers" /></svg>
+                              </span>
+                              For the team
+                            </p>
+                            <ul class="pmap-list">
+                              <li><p class="pmap-item-title">Orders and fulfilment</p></li>
+                              <li><p class="pmap-item-title">Catalog and inventory</p></li>
+                              <li><p class="pmap-item-title">Admin dashboard</p></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </figure>
+                  </div>
+
+                  <footer class="case-foot">
                     <div class="chip-row">
                       <span class="chip">Node.js / Express</span>
                       <span class="chip">React</span>
@@ -1153,7 +1332,11 @@
                       <span class="chip">Razorpay</span>
                       <span class="chip">AWS EC2 &amp; Amplify</span>
                     </div>
-                  </div>
+                    <p class="note">
+                      <svg class="icon icon-sm" aria-hidden="true"><use href="#i-briefcase" /></svg>
+                      <span>Full Stack Developer, Prem Industries India Limited.</span>
+                    </p>
+                  </footer>
                 </div>
               </article>
             </li>
@@ -1168,32 +1351,204 @@
           </p>
         </div>
 
-        <div class="project-group" data-project-group>
-          <p class="subhead eyebrow eyebrow-sm">More projects</p>
-          <!-- The first six show at once; "View more" reveals the .project-extra items six at a time -->
-          <ul class="project-grid" id="project-list" data-project-list>
-            <li>
-              <a href="https://premindustries.in" class="project-card glass-card glass-card-lite card-interactive group"
-                target="_blank" rel="noopener noreferrer">
+        <!-- Every other project as a card; the buttons narrow the grid to one kind (they need the script) -->
+        <div class="project-group" data-more>
+          <div class="more-head">
+            <p class="eyebrow eyebrow-sm">More projects</p>
+            <div class="more-tabs" role="group" aria-label="Show projects of one kind">
+            <button type="button" class="filter-toggle" aria-pressed="true" data-more-filter="all">
+              All
+              <span class="more-count">15</span>
+            </button>
+            <button type="button" class="filter-toggle" aria-pressed="false" data-more-filter="website">
+              Websites
+              <span class="more-count">8</span>
+            </button>
+            <button type="button" class="filter-toggle" aria-pressed="false" data-more-filter="webapp">
+              Web apps
+              <span class="more-count">5</span>
+            </button>
+            <button type="button" class="filter-toggle" aria-pressed="false" data-more-filter="personal">
+              Personal
+              <span class="more-count">2</span>
+            </button>
+            </div>
+          </div>
+
+          <ul class="more-grid">
+            <li data-category="website">
+              <a href="https://scaleopedia.com/" class="glass-card glass-card-lite more-card more-card-link group" target="_blank"
+                rel="noopener noreferrer">
                 <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+                  </span>
+                  <span class="project-action">
+                    Visit
+                    <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                  </span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Company site</span>
+                <h3 class="card-title">scaleopedia.com</h3>
+                <span class="more-text">Site for Scaleopedia, a software development company: services, white-label products and portfolio.</span>
+                <span class="chip-row">
+                  <span class="chip">Marketing Site</span>
+                </span>
+              </a>
+            </li>
+            <li data-category="website">
+              <a href="https://premindustries.in" class="glass-card glass-card-lite more-card more-card-link group" target="_blank"
+                rel="noopener noreferrer">
+                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+                  </span>
+                  <span class="project-action">
+                    Visit
+                    <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                  </span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Corporate site</span>
                 <h3 class="card-title">premindustries.in</h3>
-                <p class="project-text">Corporate site for Prem Industries — services, portfolio and contact.</p>
+                <span class="more-text">Corporate site for Prem Industries: services, portfolio and contact.</span>
                 <span class="chip-row">
                   <span class="chip">Marketing Site</span>
                   <span class="chip">SEO</span>
                 </span>
-                <span class="project-action">
-                  View live
-                  <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+              </a>
+            </li>
+            <li data-category="website">
+              <a href="https://prempackaging.com" class="glass-card glass-card-lite more-card more-card-link group" target="_blank"
+                rel="noopener noreferrer">
+                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+                  </span>
+                  <span class="project-action">
+                    Visit
+                    <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                  </span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Brand site</span>
+                <h3 class="card-title">prempackaging.com</h3>
+                <span class="more-text">Main brand website for Prem Packaging: product lines and company info.</span>
+                <span class="chip-row">
+                  <span class="chip">Brand</span>
                 </span>
               </a>
             </li>
-            <li>
-              <article class="project-card glass-card glass-card-lite">
+            <li data-category="website">
+              <a href="https://phsteel.in" class="glass-card glass-card-lite more-card more-card-link group" target="_blank"
+                rel="noopener noreferrer">
                 <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+                  </span>
+                  <span class="project-action">
+                    Visit
+                    <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                  </span>
+                </span>
+                <span class="eyebrow eyebrow-sm">B2B site</span>
+                <h3 class="card-title">phsteel.in</h3>
+                <span class="more-text">Site for PH Steels, a steel trading company: product range, services and brochure.</span>
+                <span class="chip-row">
+                  <span class="chip">B2B</span>
+                </span>
+              </a>
+            </li>
+            <li data-category="website">
+              <a href="https://apisindia.com" class="glass-card glass-card-lite more-card more-card-link group" target="_blank"
+                rel="noopener noreferrer">
+                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+                  </span>
+                  <span class="project-action">
+                    Visit
+                    <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                  </span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Company site</span>
+                <h3 class="card-title">apisindia.com</h3>
+                <span class="more-text">Company site for Apis India Limited, a food company: products, investors and media.</span>
+                <span class="chip-row">
+                  <span class="chip">Company Site</span>
+                </span>
+              </a>
+            </li>
+            <li data-category="website">
+              <a href="https://brightairways.in" class="glass-card glass-card-lite more-card more-card-link group" target="_blank"
+                rel="noopener noreferrer">
+                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+                  </span>
+                  <span class="project-action">
+                    Visit
+                    <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                  </span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Services site</span>
+                <h3 class="card-title">brightairways.in</h3>
+                <span class="more-text">Aviation and travel site, with service information and contact.</span>
+                <span class="chip-row">
+                  <span class="chip">Services</span>
+                </span>
+              </a>
+            </li>
+            <li data-category="website">
+              <article class="glass-card glass-card-lite more-card">
+                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+                  </span>
+                  <span class="more-status">Not public</span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Agency site</span>
+                <h3 class="card-title">Intrafy</h3>
+                <span class="more-text">Agency site to attract clients and collect project leads.</span>
+                <span class="chip-row">
+                  <span class="chip">Agency</span>
+                </span>
+              </article>
+            </li>
+            <li data-category="website">
+              <article class="glass-card glass-card-lite more-card">
+                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-globe" /></svg>
+                  </span>
+                  <span class="more-status">Offline</span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Marketplace site</span>
+                <h3 class="card-title">bharatsoftsuppliers.com</h3>
+                <span class="more-text">Supplier and marketplace site, with product listings and enquiry forms.</span>
+                <span class="chip-row">
+                  <span class="chip">Marketplace</span>
+                </span>
+              </article>
+            </li>
+            <li data-category="webapp">
+              <article class="glass-card glass-card-lite more-card">
+                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+                  </span>
+                  <span class="more-status">Not public</span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Dashboard</span>
                 <h3 class="card-title">Hudii Dashboard</h3>
-                <p class="project-text">Dashboard development with API integration for data visualization and
-                  management.</p>
+                <span class="more-text">Dashboard development with API integration for data visualization and management.</span>
                 <span class="chip-row">
                   <span class="chip">React</span>
                   <span class="chip">Dashboard</span>
@@ -1201,303 +1556,126 @@
                 </span>
               </article>
             </li>
-            <li>
-              <a href="https://prempackaging.com" class="project-card glass-card glass-card-lite card-interactive group"
-                target="_blank" rel="noopener noreferrer">
+            <li data-category="webapp">
+              <article class="glass-card glass-card-lite more-card">
                 <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">prempackaging.com</h3>
-                <p class="project-text">Main brand website for Prem Packaging — product lines and company info.</p>
-                <span class="chip-row">
-                  <span class="chip">Brand</span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+                  </span>
+                  <span class="more-status">Not public</span>
                 </span>
-                <span class="project-action">
-                  View live
-                  <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://phsteel.in" class="project-card glass-card glass-card-lite card-interactive group"
-                target="_blank" rel="noopener noreferrer">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">phsteel.in</h3>
-                <p class="project-text">Manufacturer / supplier site showcasing products and contact channels.</p>
-                <span class="chip-row">
-                  <span class="chip">B2B</span>
-                </span>
-                <span class="project-action">
-                  View live
-                  <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://brightairways.in" class="project-card glass-card glass-card-lite card-interactive group"
-                target="_blank" rel="noopener noreferrer">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">brightairways.in</h3>
-                <p class="project-text">Aviation / travel related site — service information and contact.</p>
-                <span class="chip-row">
-                  <span class="chip">Services</span>
-                </span>
-                <span class="project-action">
-                  View live
-                  <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="https://apisindia.com" class="project-card glass-card glass-card-lite card-interactive group"
-                target="_blank" rel="noopener noreferrer">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">apisindia.com</h3>
-                <p class="project-text">API-related product / company site.</p>
-                <span class="chip-row">
-                  <span class="chip">APIs</span>
-                </span>
-                <span class="project-action">
-                  View live
-                  <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-                </span>
-              </a>
-            </li>
-            <li class="project-extra">
-              <a href="https://bharatsoftsuppliers.com"
-                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
-                rel="noopener noreferrer">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">bharatsoftsuppliers.com</h3>
-                <p class="project-text">Supplier / marketplace site — product listings and enquiry forms.</p>
-                <span class="chip-row">
-                  <span class="chip">Marketplace</span>
-                </span>
-                <span class="project-action">
-                  View live
-                  <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-                </span>
-              </a>
-            </li>
-            <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Book Store (MERN)</h3>
-                <p class="project-text">Full MERN stack bookstore with auth, CRUD, and search.</p>
-                <span class="chip-row">
-                  <span class="chip">MERN</span>
-                  <span class="chip">Authentication</span>
-                </span>
-              </article>
-            </li>
-            <li class="project-extra">
-              <!-- Two destinations: the whole card opens the live site, and "Code" sits above that link -->
-              <article class="project-card glass-card glass-card-lite card-interactive group">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">QR Code Generator</h3>
-                <p class="project-text">Generate downloadable QR codes from URLs or text.</p>
-                <span class="chip-row">
-                  <span class="chip">React</span>
-                  <span class="chip">Canvas</span>
-                </span>
-                <span class="project-actions">
-                  <a href="https://gagan-qrcode.vercel.app/" class="project-action stretched-link" target="_blank"
-                    rel="noopener noreferrer">
-                    View live
-                    <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-                  </a>
-                  <a href="https://github.com/gagan257/QR-Code-Generator" class="project-action project-action-extra"
-                    target="_blank" rel="noopener noreferrer">
-                    <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
-                    Code
-                  </a>
-                </span>
-              </article>
-            </li>
-            <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Email Sending API (Express)</h3>
-                <p class="project-text">Express API for transactional emails with templates and rate-limiting.</p>
-                <span class="chip-row">
-                  <span class="chip">Express</span>
-                  <span class="chip">Node.js</span>
-                </span>
-              </article>
-            </li>
-            <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Fuel Expense Webapp</h3>
-                <p class="project-text">Internal app to track fuel usage, costs and reports.</p>
-                <span class="chip-row">
-                  <span class="chip">Internal</span>
-                </span>
-              </article>
-            </li>
-            <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Image Capture Webapp</h3>
-                <p class="project-text">Live camera capture and person tracking for monitoring use-cases.</p>
-                <span class="chip-row">
-                  <span class="chip">WebRTC</span>
-                  <span class="chip">Computer Vision</span>
-                </span>
-              </article>
-            </li>
-            <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Cash Allowance Webapp</h3>
-                <p class="project-text">Internal cash management between users with approvals and logs.</p>
-                <span class="chip-row">
-                  <span class="chip">Internal</span>
-                  <span class="chip">MERN</span>
-                </span>
-              </article>
-            </li>
-            <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
-                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="eyebrow eyebrow-sm">Admin dashboard</span>
                 <h3 class="card-title">E-commerce Admin Panel</h3>
-                <p class="project-text">Admin dashboard for orders, products, users and analytics.</p>
+                <span class="more-text">Admin dashboard for orders, products, users and analytics.</span>
                 <span class="chip-row">
                   <span class="chip">React</span>
                   <span class="chip">Dashboard</span>
                 </span>
               </article>
             </li>
-            <li class="project-extra">
-              <a href="https://github.com/gagan257/Orbit"
-                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
-                rel="noopener noreferrer">
+            <li data-category="webapp">
+              <article class="glass-card glass-card-lite more-card">
                 <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Orbit (Educative platform)</h3>
-                <p class="project-text">Platform with login, courses and video streaming support.</p>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+                  </span>
+                  <span class="more-status">Not public</span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Monitoring tool</span>
+                <h3 class="card-title">Image Capture Webapp</h3>
+                <span class="more-text">Live camera capture and person tracking for monitoring use-cases.</span>
                 <span class="chip-row">
-                  <span class="chip">Next.js</span>
-                  <span class="chip">Streaming</span>
-                </span>
-                <span class="project-action">
-                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
-                  View code
-                </span>
-              </a>
-            </li>
-            <li class="project-extra">
-              <a href="https://github.com/gagan257/Brain-Flows"
-                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
-                rel="noopener noreferrer">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Brain Flows</h3>
-                <p class="project-text">Notes webapp with AI-powered search and organisation.</p>
-                <span class="chip-row">
-                  <span class="chip">AI</span>
-                  <span class="chip">Notes</span>
-                </span>
-                <span class="project-action">
-                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
-                  View code
-                </span>
-              </a>
-            </li>
-            <li class="project-extra">
-              <a href="https://github.com/gagan257/Github-Explorer-App"
-                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
-                rel="noopener noreferrer">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">GitHub Explorer</h3>
-                <p class="project-text">Explore GitHub users, repos and activity with clean UI.</p>
-                <span class="chip-row">
-                  <span class="chip">React</span>
-                  <span class="chip">REST</span>
-                </span>
-                <span class="project-action">
-                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
-                  View code
-                </span>
-              </a>
-            </li>
-            <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Intrafy (Agency)</h3>
-                <p class="project-text">Agency site to attract clients and collect project leads.</p>
-                <span class="chip-row">
-                  <span class="chip">Agency</span>
+                  <span class="chip">WebRTC</span>
+                  <span class="chip">Computer Vision</span>
                 </span>
               </article>
             </li>
-            <li class="project-extra">
-              <article class="project-card glass-card glass-card-lite">
+            <li data-category="webapp">
+              <article class="glass-card glass-card-lite more-card">
                 <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Link Shortener (MERN)</h3>
-                <p class="project-text">Shorten and track links with analytics and custom aliases.</p>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+                  </span>
+                  <span class="more-status">Not public</span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Internal tool</span>
+                <h3 class="card-title">Fuel Expense Webapp</h3>
+                <span class="more-text">Internal app to track fuel usage, costs and reports.</span>
                 <span class="chip-row">
+                  <span class="chip">Internal</span>
+                </span>
+              </article>
+            </li>
+            <li data-category="webapp">
+              <article class="glass-card glass-card-lite more-card">
+                <span class="glass-shine" aria-hidden="true"></span>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+                  </span>
+                  <span class="more-status">Not public</span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Internal tool</span>
+                <h3 class="card-title">Cash Allowance Webapp</h3>
+                <span class="more-text">Internal cash management between users, with approvals and logs.</span>
+                <span class="chip-row">
+                  <span class="chip">Internal</span>
                   <span class="chip">MERN</span>
                 </span>
               </article>
             </li>
-            <li class="project-extra">
-              <a href="https://github.com/gagan257/TicTacToe"
-                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
-                rel="noopener noreferrer">
+            <li data-category="personal">
+              <article class="glass-card glass-card-lite more-card">
                 <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">TicTacToe (React)</h3>
-                <p class="project-text">Classic TicTacToe implemented in React with local multiplayer.</p>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-code" /></svg>
+                  </span>
+                  <span class="more-status">Personal build</span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Learning platform</span>
+                <h3 class="card-title">Orbit</h3>
+                <span class="more-text">Educative platform with login, courses and video streaming support.</span>
                 <span class="chip-row">
-                  <span class="chip">React</span>
+                  <span class="chip">Next.js</span>
+                  <span class="chip">Streaming</span>
                 </span>
-                <span class="project-action">
-                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
-                  View code
-                </span>
-              </a>
+              </article>
             </li>
-            <li class="project-extra">
-              <a href="https://github.com/gagan257/IQ-Test-Website"
-                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
-                rel="noopener noreferrer">
+            <li data-category="personal">
+              <article class="glass-card glass-card-lite more-card">
                 <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">IQ Test Website</h3>
-                <p class="project-text">Timed IQ tests with scoring and question randomisation.</p>
+                <span class="more-card-top">
+                  <span class="icon-badge">
+                    <svg class="icon" aria-hidden="true"><use href="#i-code" /></svg>
+                  </span>
+                  <span class="more-status">Personal build</span>
+                </span>
+                <span class="eyebrow eyebrow-sm">Notes app</span>
+                <h3 class="card-title">Brain Flows</h3>
+                <span class="more-text">Notes webapp with AI-powered search and organisation.</span>
                 <span class="chip-row">
-                  <span class="chip">Vanilla JS</span>
+                  <span class="chip">AI</span>
+                  <span class="chip">Notes</span>
                 </span>
-                <span class="project-action">
-                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
-                  View code
-                </span>
-              </a>
-            </li>
-            <li class="project-extra">
-              <a href="https://github.com/gagan257/Slot-Machine-Game"
-                class="project-card glass-card glass-card-lite card-interactive group" target="_blank"
-                rel="noopener noreferrer">
-                <span class="glass-shine" aria-hidden="true"></span>
-                <h3 class="card-title">Slot Machine Mini Game</h3>
-                <p class="project-text">Simple 3-reel slot game — match 3 to win.</p>
-                <span class="chip-row">
-                  <span class="chip">Game</span>
-                  <span class="chip">JS</span>
-                </span>
-                <span class="project-action">
-                  <svg class="icon icon-sm" aria-hidden="true"><use href="#i-github" /></svg>
-                  View code
-                </span>
-              </a>
+              </article>
             </li>
           </ul>
 
-          <div class="project-more">
-            <button type="button" class="btn-ghost" aria-controls="project-list" data-projects-more>View more</button>
-          </div>
-        </div>
-
-        <div class="glass-card project-empty" data-project-empty hidden>
-          <div class="glass-shine" aria-hidden="true"></div>
-          <p class="card-title">No projects found</p>
-          <p class="card-text">Try a different search, or clear the filters to see everything.</p>
-          <button type="button" class="btn-primary" data-project-clear>Clear filters</button>
+          <!-- Pages of six, built by the script; without JavaScript every card simply shows -->
+          <nav class="more-pager" aria-label="More projects pages" data-more-pager hidden>
+            <button type="button" class="icon-button glass-panel" aria-label="Previous page" data-more-prev>
+              <svg class="icon icon-flip" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+            </button>
+            <ol class="more-pages" data-more-pages></ol>
+            <button type="button" class="icon-button glass-panel" aria-label="Next page" data-more-next>
+              <svg class="icon" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+            </button>
+            <p class="more-range" aria-live="polite" data-more-range></p>
+          </nav>
         </div>
       </div>
     </section>
@@ -1514,6 +1692,9 @@
               </span>
               My Mobile Apps
             </h2>
+            <p class="section-lead">
+              <strong>On the side, I publish my own Android apps.</strong> One live, one in testing, one on the way.
+            </p>
           </div>
           <a href="https://apps.gagandev.in/" class="btn-ghost btn-sm group" target="_blank" rel="noopener">
             apps.gagandev.in
@@ -1705,16 +1886,17 @@
           </div>
         </header>
 
-        <ol class="card-grid education-grid">
-          <li>
+        <!-- Education and the award on one timeline, newest first -->
+        <ol class="timeline">
+          <li class="timeline-item">
+            <p class="timeline-year">2020 – 2024</p>
             <article class="glass-card timeline-card">
               <div class="glass-shine" aria-hidden="true"></div>
               <div class="card-body">
                 <div class="timeline-head">
-                  <p class="timeline-year">2020 – 2024</p>
+                  <p class="eyebrow eyebrow-sm">Inderprastha Engineering College</p>
                   <span class="chip chip-accent">CGPA 7.56</span>
                 </div>
-                <p class="eyebrow eyebrow-sm">Inderprastha Engineering College</p>
                 <h3 class="card-title">Bachelor of Technology in Information Technology</h3>
                 <p class="card-text">
                   Graduated in Information Technology (November 2020 – June 2024). Skilled in the MERN stack,
@@ -1724,14 +1906,37 @@
               </div>
             </article>
           </li>
-          <li>
+          <li class="timeline-item">
+            <p class="timeline-year">2023</p>
             <article class="glass-card timeline-card">
               <div class="glass-shine" aria-hidden="true"></div>
               <div class="card-body">
                 <div class="timeline-head">
-                  <p class="timeline-year">2020</p>
+                  <p class="eyebrow eyebrow-sm inline-icon">
+                    <svg class="icon icon-sm" aria-hidden="true"><use href="#i-award" /></svg>
+                    Honors &amp; Awards
+                  </p>
                 </div>
-                <p class="eyebrow eyebrow-sm">Ramagya School</p>
+                <h3 class="card-title">1st Place, Webkriti Front-End Design Competition</h3>
+                <p class="card-text">
+                  Built a responsive React and Tailwind CSS web application under strict time constraints.
+                </p>
+                <a href="https://drive.google.com/file/d/1FvhbtKJT4dTJaD78sba3-8WrAZps2oVs/view"
+                  class="btn-ghost btn-sm group timeline-action" target="_blank" rel="noopener noreferrer">
+                  View certificate
+                  <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
+                </a>
+              </div>
+            </article>
+          </li>
+          <li class="timeline-item">
+            <p class="timeline-year">2020</p>
+            <article class="glass-card timeline-card">
+              <div class="glass-shine" aria-hidden="true"></div>
+              <div class="card-body">
+                <div class="timeline-head">
+                  <p class="eyebrow eyebrow-sm">Ramagya School</p>
+                </div>
                 <h3 class="card-title">12th Standard CBSE</h3>
                 <p class="card-text">
                   Completed 12th Standard with Physics, Chemistry, and Mathematics (PCM). Built a strong foundation
@@ -1740,14 +1945,14 @@
               </div>
             </article>
           </li>
-          <li>
+          <li class="timeline-item">
+            <p class="timeline-year">2018</p>
             <article class="glass-card timeline-card">
               <div class="glass-shine" aria-hidden="true"></div>
               <div class="card-body">
                 <div class="timeline-head">
-                  <p class="timeline-year">2018</p>
+                  <p class="eyebrow eyebrow-sm">Ramagya School</p>
                 </div>
-                <p class="eyebrow eyebrow-sm">Ramagya School</p>
                 <h3 class="card-title">10th Standard CBSE</h3>
                 <p class="card-text">
                   Completed 10th Standard with distinction, gaining a strong academic foundation and essential
@@ -1757,27 +1962,6 @@
             </article>
           </li>
         </ol>
-
-        <article class="glass-card award-card">
-          <div class="glass-shine" aria-hidden="true"></div>
-          <div class="award-body">
-            <span class="featured-icon" aria-hidden="true">
-              <svg class="icon icon-xl"><use href="#i-award" /></svg>
-            </span>
-            <div class="award-content">
-              <p class="eyebrow eyebrow-sm">Honors &amp; Awards · 2023</p>
-              <h3 class="featured-title">1st Place, Webkriti Front-End Design Competition</h3>
-              <p class="card-text">
-                Built a responsive React and Tailwind CSS web application under strict time constraints.
-              </p>
-            </div>
-            <a href="https://drive.google.com/file/d/1FvhbtKJT4dTJaD78sba3-8WrAZps2oVs/view"
-              class="btn-ghost btn-sm group" target="_blank" rel="noopener noreferrer">
-              View certificate
-              <svg class="icon icon-sm chevron-nudge" aria-hidden="true"><use href="#i-external" /></svg>
-            </a>
-          </div>
-        </article>
       </div>
     </section>
 

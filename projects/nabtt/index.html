@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>NABTT | OTT Platform | Gagan Arora</title>
+  <meta name="description"
+    content="How Gagan Arora built subscriptions, advertising and analytics for NABTT, an OTT platform: Stripe, dynamic ad insertion, real-time analytics and RBAC." />
+  <meta name="author" content="Gagan Arora" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://gagandev.in/projects/nabtt/" />
+
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0c0f14" />
+
+  <!-- Link previews (social cards, chat apps) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:url" content="https://gagandev.in/projects/nabtt/" />
+  <meta property="og:site_name" content="Gagan Arora" />
+  <meta property="og:title" content="NABTT | OTT Platform" />
+  <meta property="og:description"
+    content="Subscriptions, advertising and analytics for an OTT platform, built with Stripe, dynamic ad insertion, real-time analytics and Firebase." />
+  <meta property="og:image" content="https://gagandev.in/assets/images/og-card.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Gagan Arora, Full Stack Software Engineer" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Structured data: where this page sits in the site, and who wrote it. Update "dateModified" with the content. -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://gagandev.in/projects/nabtt/#webpage",
+          "url": "https://gagandev.in/projects/nabtt/",
+          "name": "NABTT | OTT Platform | Gagan Arora",
+          "description": "How the subscriptions, advertising and analytics behind NABTT, an OTT platform, were built.",
+          "inLanguage": "en",
+          "dateModified": "2026-10-14",
+          "isPartOf": { "@id": "https://gagandev.in/#website" },
+          "author": { "@id": "https://gagandev.in/#person" },
+          "primaryImageOfPage": "https://gagandev.in/assets/images/og-card.jpg"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Gagan Arora", "item": "https://gagandev.in/" },
+            { "@type": "ListItem", "position": 2, "name": "NABTT" }
+          ]
+        }
+      ]
+    }
+  </script>
+
+  <link rel="icon" href="../../favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="96x96" href="../../assets/images/icons/favicon-96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="../../assets/images/icons/icon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/images/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="../../site.webmanifest" />
+
+  <!-- Same pre-paint setup as the home page: JavaScript marker, saved theme, hero reveal, iOS press styles -->
+  <script>
+    (function () { var d = document.documentElement; d.classList.add("js"); try { var t = localStorage.getItem("theme"); if (t === "dark") { d.classList.add("dark"); d.style.colorScheme = "dark" } } catch (e) { } try { if (sessionStorage.getItem("hero-seen")) d.classList.add("hero-seen") } catch (e) { } document.addEventListener("touchstart", function () { }, { passive: true }) })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" />
+  <link rel="stylesheet" href="../../assets/css/site.css" />
+
+  <script src="../../assets/js/site.js" defer></script>
+</head>
+
+<body class="page-shell">
+  <!-- Icon sprite: the icons this page uses, referenced with <use href="#i-…"> -->
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1" />
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z" />
+      <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z" />
+    </symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18" />
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14" />
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="M3 7l9 6 9-6" />
+    </symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14 5h5v5M10 14L19 5M19 14v5H5V5h5" />
+    </symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 6l6 6-6 6" />
+    </symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M11 6l-6 6 6 6" />
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 11v5M12 8h.01" />
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 6l12 12M18 6L6 18" />
+    </symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M6 11l6-6 6 6" />
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="11" width="14" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </symbol>
+    <symbol id="i-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="7" y="2.5" width="10" height="19" rx="2" />
+      <path d="M11 18h2" />
+    </symbol>
+    <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5.5" width="18" height="13" rx="2" />
+      <path d="M3 10h18M7 15h3" />
+    </symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l9 5-9 5-9-5 9-5z" />
+      <path d="M3 12l9 5 9-5M3 17l9 5 9-5" />
+    </symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17.5 19a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 6.34 11.5 4 4 0 0 0 7 19h10.5z" />
+    </symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 8h12l1 12H5L6 8z" />
+      <path d="M9 8V7a3 3 0 0 1 6 0v1" />
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 8v4M12 16h.01" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 13l4 4L19 7" />
+    </symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 3L5 13.5h6L10 21l8-10.5h-6L13 3z" />
+    </symbol>
+    <symbol id="i-database" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="12" cy="6" rx="8" ry="3" />
+      <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+    </symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="12" rx="2" />
+      <path d="M8 21h8M10.5 8.75v4.5l3.75-2.25z" />
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l8 3v6c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V6l8-3z" />
+      <path d="M9 12l2 2 4-4" />
+    </symbol>
+  </svg>
+
+  <div class="ambient-bg" aria-hidden="true"></div>
+
+  <header class="site-header glass-header">
+    <div class="container site-header-inner">
+      <a href="../../" class="brand">
+        <span class="brand-eyebrow inline-icon">
+          <svg class="icon icon-xs" aria-hidden="true"><use href="#i-briefcase" /></svg>
+          Portfolio
+        </span>
+        <span class="brand-name">Gagan Arora</span>
+      </a>
+
+      <div class="site-header-actions">
+        <nav class="site-nav" aria-label="Main">
+          <a href="../../#about">About</a>
+          <a href="../../#skills">Skills</a>
+          <a href="../../#experience">Experience</a>
+          <a href="../../#projects" aria-current="true">Projects</a>
+          <a href="../../#apps">Apps</a>
+          <a href="../../#education">Education</a>
+          <a href="../../#contact">Contact</a>
+        </nav>
+
+        <button type="button" class="icon-button glass-panel menu-button" aria-expanded="false"
+          aria-controls="mobile-menu" aria-label="Open menu" data-menu-open>
+          <svg class="icon" aria-hidden="true"><use href="#i-menu" /></svg>
+        </button>
+
+        <button type="button" class="icon-button theme-toggle glass-panel" aria-label="Switch to dark mode"
+          data-theme-toggle>
+          <span class="theme-toggle-icon theme-toggle-moon">
+            <svg class="icon" aria-hidden="true"><use href="#i-moon" /></svg>
+          </span>
+          <span class="theme-toggle-icon theme-toggle-sun">
+            <svg class="icon" aria-hidden="true"><use href="#i-sun" /></svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Fills along the header's bottom edge as the page scrolls -->
+    <div class="scroll-progress" aria-hidden="true" data-scroll-progress></div>
+  </header>
+
+  <div class="mobile-menu-root" id="mobile-menu" data-state="closed" hidden>
+    <button type="button" class="mobile-menu-backdrop" aria-label="Close menu" tabindex="-1"
+      data-menu-close></button>
+    <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Site menu" tabindex="-1">
+      <div class="mobile-menu-panel-inner">
+        <div class="mobile-menu-top">
+          <p class="eyebrow eyebrow-sm">Menu</p>
+          <button type="button" class="dialog-close" aria-label="Close menu" data-menu-close>
+            <svg class="icon" aria-hidden="true"><use href="#i-x" /></svg>
+          </button>
+        </div>
+
+        <nav class="mobile-menu-nav" aria-label="Mobile main">
+          <a href="../../#about" class="mobile-menu-item group">
+            <span class="icon-badge icon-badge-lg">
+              <svg class="icon" aria-hidden="true"><use href="#i-user" /></svg>
+            </span>
+            <span class="mobile-menu-item-text">
+              <span class="mobile-menu-item-label">Who I am</span>
+              <span class="mobile-menu-item-title">About</span>
+            </span>
+            <svg class="icon chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+          </a>
+          <a href="../../#skills" class="mobile-menu-item group">
+            <span class="icon-badge icon-badge-lg">
+              <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+            </span>
+            <span class="mobile-menu-item-text">
+              <span class="mobile-menu-item-label">Technologies</span>
+              <span class="mobile-menu-item-title">Skills</span>
+            </span>
+            <svg class="icon chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+          </a>
+          <a href="../../#experience" class="mobile-menu-item group">
+            <span class="icon-badge icon-badge-lg">
+              <svg class="icon" aria-hidden="true"><use href="#i-briefcase" /></svg>
+            </span>
+            <span class="mobile-menu-item-text">
+              <span class="mobile-menu-item-label">Involvement</span>
+              <span class="mobile-menu-item-title">Experience</span>
+            </span>
+            <svg class="icon chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+          </a>
+          <a href="../../#projects" class="mobile-menu-item group">
+            <span class="icon-badge icon-badge-lg">
+              <svg class="icon" aria-hidden="true"><use href="#i-code" /></svg>
+            </span>
+            <span class="mobile-menu-item-text">
+              <span class="mobile-menu-item-label">Quality Work</span>
+              <span class="mobile-menu-item-title">Projects</span>
+            </span>
+            <svg class="icon chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+          </a>
+          <a href="../../#apps" class="mobile-menu-item group">
+            <span class="icon-badge icon-badge-lg">
+              <svg class="icon" aria-hidden="true"><use href="#i-smartphone" /></svg>
+            </span>
+            <span class="mobile-menu-item-text">
+              <span class="mobile-menu-item-label">On Android</span>
+              <span class="mobile-menu-item-title">Mobile Apps</span>
+            </span>
+            <svg class="icon chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+          </a>
+          <a href="../../#education" class="mobile-menu-item group">
+            <span class="icon-badge icon-badge-lg">
+              <svg class="icon" aria-hidden="true"><use href="#i-book" /></svg>
+            </span>
+            <span class="mobile-menu-item-text">
+              <span class="mobile-menu-item-label">Learning</span>
+              <span class="mobile-menu-item-title">Education</span>
+            </span>
+            <svg class="icon chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+          </a>
+          <a href="../../#contact" class="mobile-menu-item group">
+            <span class="icon-badge icon-badge-lg">
+              <svg class="icon" aria-hidden="true"><use href="#i-mail" /></svg>
+            </span>
+            <span class="mobile-menu-item-text">
+              <span class="mobile-menu-item-label">Let's Connect</span>
+              <span class="mobile-menu-item-title">Contact</span>
+            </span>
+            <svg class="icon chevron-nudge" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+          </a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Page hero -->
+    <section class="hero-gradient">
+      <div class="container page-hero">
+        <a href="../../#projects" class="back-link hero-reveal" style="--i: 0">
+          <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow-left" /></svg>
+          All projects
+        </a>
+        <p class="eyebrow hero-reveal" style="--i: 1">Project · OTT Platform</p>
+        <h1 class="page-title hero-reveal" style="--i: 2">NABTT</h1>
+        <p class="page-lead hero-reveal" style="--i: 3">
+          An OTT platform with family profiles, parental controls, subscriptions priced by region, adverts mapped to
+          individual videos, and real-time analytics behind it.
+        </p>
+        <div class="page-actions hero-reveal" style="--i: 4">
+          <a href="https://user.nabtt.com" class="btn-primary" target="_blank" rel="noopener noreferrer">
+            Open the live platform
+            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-external" /></svg>
+          </a>
+          <a href="../../#contact" class="btn-ghost">
+            <svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail" /></svg>
+            Ask me about it
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!--
+      Still to add, in Gagan's own words: the problem as the client described it, why
+      each decision was made, and any results that can be shared. What is here comes
+      from the CV only.
+    -->
+    <!-- What's inside: the project's parts, and what each one holds -->
+    <section class="section" id="whats-inside">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">At a glance</p>
+            <h2 class="section-title inline-icon">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+              </span>
+              What's Inside
+            </h2>
+            <p class="section-lead">
+              <strong>What is where, and how it connects.</strong> Select any node to read more about it.
+            </p>
+          </div>
+        </header>
+
+        <div class="glass-card">
+          <div class="glass-shine" aria-hidden="true"></div>
+          <div class="card-body card-body-lg">
+            <!--
+              The project as a graph: one node for the project, one per part, one per item. Every node is a
+              button: its detail opens in the panel beside the graph, or in place on a phone. The script draws
+              the lines from each node's data attributes; without it the nodes and details are simply listed.
+            -->
+            <figure class="case-figure">
+              <div class="fgraph" data-graph>
+                <div class="fgraph-canvas" data-graph-canvas>
+                  <svg class="fgraph-edges" aria-hidden="true" focusable="false" data-graph-edges>
+                    <defs>
+                      <marker id="fgraph-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7"
+                        orient="auto-start-reverse">
+                        <path d="M1 1l6 3-6 3z" />
+                      </marker>
+                    </defs>
+                  </svg>
+
+                  <div class="fgraph-tree">
+                    <div class="fgraph-item" id="map-root">
+                      <button type="button" class="fgraph-node fgraph-node-root" aria-expanded="false" data-graph-node>
+                        <span class="featured-icon" aria-hidden="true">
+                          <svg class="icon icon-xl"><use href="#i-tv" /></svg>
+                        </span>
+                        <span class="fgraph-node-text">
+                          <span class="fgraph-node-title">NABTT</span>
+                          <span class="fgraph-node-sub">OTT platform</span>
+                        </span>
+                      </button>
+                      <div class="fgraph-detail" data-graph-detail>
+                        <p class="eyebrow eyebrow-sm">The project</p>
+                        <p class="fgraph-detail-title">NABTT</p>
+                        <p class="card-text">
+                          An OTT platform. Viewers sign in, choose a profile and watch movies, series and shorts;
+                          parents set limits for their children; and subscriptions, adverts and analytics run behind
+                          it.
+                        </p>
+                        <dl class="fgraph-links">
+                          <div>
+                            <dt class="eyebrow eyebrow-sm">Its parts</dt>
+                            <dd class="chip-row">
+                              <a href="#map-part-1" class="chip" data-graph-go="map-part-1">Getting in</a>
+                              <a href="#map-part-2" class="chip" data-graph-go="map-part-2">Watching</a>
+                              <a href="#map-part-3" class="chip" data-graph-go="map-part-3">Parent oversight</a>
+                              <a href="#map-part-4" class="chip" data-graph-go="map-part-4">Monetisation</a>
+                              <a href="#map-part-5" class="chip" data-graph-go="map-part-5">Behind the scenes</a>
+                            </dd>
+                          </div>
+                        </dl>
+                      </div>
+                    </div>
+
+                    <ol class="fgraph-stages">
+                      <li class="fgraph-stage">
+                        <div class="fgraph-item" id="map-part-1" data-graph-from="map-root">
+                          <button type="button" class="fgraph-node fgraph-node-stage" aria-expanded="false" data-graph-node>
+                            <span class="section-icon">
+                              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-user" /></svg>
+                            </span>
+                            <span class="fgraph-node-text">
+                              <span class="fgraph-node-sub">Part 1</span>
+                              <span class="fgraph-node-title">Getting in</span>
+                            </span>
+                          </button>
+                          <div class="fgraph-detail" data-graph-detail>
+                            <p class="eyebrow eyebrow-sm">NABTT · Part 1 of 5</p>
+                            <p class="fgraph-detail-title">Getting in</p>
+                            <p class="card-text">
+                              What a viewer meets first: an account, a profile to watch as, and a PIN on it if one is
+                              set.
+                            </p>
+                            <dl class="fgraph-links">
+                              <div>
+                                <dt class="eyebrow eyebrow-sm">Holds</dt>
+                                <dd class="chip-row">
+                                  <a href="#map-accounts" class="chip" data-graph-go="map-accounts">Accounts</a>
+                                  <a href="#map-profiles" class="chip" data-graph-go="map-profiles">Profiles</a>
+                                  <a href="#map-pin" class="chip" data-graph-go="map-pin">Profile PIN</a>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
+                        <ul class="fgraph-leaves">
+                          <li class="fgraph-item" id="map-accounts" data-graph-from="map-part-1" data-graph-leads="map-profiles">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Accounts</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Getting in</p>
+                              <p class="fgraph-detail-title">Accounts</p>
+                              <p class="card-text">
+                                A viewer creates an account and signs in by email.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>Sign-up asks for an email, gender, date of birth and an optional phone number with
+                                its country code.</li>
+                                <li>Sign-in is by email and password, with a forgot-password route.</li>
+                                <li>A language selector sits on the sign-in screens.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-profiles" class="chip" data-graph-go="map-profiles">Profiles</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-profiles" data-graph-from="map-part-1" data-graph-leads="map-pin">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Profiles</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Getting in</p>
+                              <p class="fgraph-detail-title">Profiles</p>
+                              <p class="card-text">
+                                After signing in, the viewer chooses who is watching.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>One account holds several profiles.</li>
+                                <li>A profile can be a kids profile.</li>
+                                <li>Profiles are added and managed from the same screen.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-accounts" class="chip" data-graph-go="map-accounts">Accounts</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-pin" class="chip" data-graph-go="map-pin">Profile PIN</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-pin" data-graph-from="map-part-1" data-graph-leads="map-home">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Profile PIN</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Getting in</p>
+                              <p class="fgraph-detail-title">Profile PIN</p>
+                              <p class="card-text">
+                                A profile can be locked, so opening it needs a four-digit PIN.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>The PIN can be shown while it is typed.</li>
+                                <li>A forgotten PIN is reset with the account password.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-profiles" class="chip" data-graph-go="map-profiles">Profiles</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-home" class="chip" data-graph-go="map-home">Home</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="fgraph-stage">
+                        <div class="fgraph-item" id="map-part-2" data-graph-from="map-root">
+                          <button type="button" class="fgraph-node fgraph-node-stage" aria-expanded="false" data-graph-node>
+                            <span class="section-icon">
+                              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-tv" /></svg>
+                            </span>
+                            <span class="fgraph-node-text">
+                              <span class="fgraph-node-sub">Part 2</span>
+                              <span class="fgraph-node-title">Watching</span>
+                            </span>
+                          </button>
+                          <div class="fgraph-detail" data-graph-detail>
+                            <p class="eyebrow eyebrow-sm">NABTT · Part 2 of 5</p>
+                            <p class="fgraph-detail-title">Watching</p>
+                            <p class="card-text">
+                              The viewing itself: a home screen of titles, a page for each one, the player, and the
+                              lists and downloads that go with them.
+                            </p>
+                            <dl class="fgraph-links">
+                              <div>
+                                <dt class="eyebrow eyebrow-sm">Holds</dt>
+                                <dd class="chip-row">
+                                  <a href="#map-home" class="chip" data-graph-go="map-home">Home</a>
+                                  <a href="#map-titles" class="chip" data-graph-go="map-titles">Title pages</a>
+                                  <a href="#map-playback" class="chip" data-graph-go="map-playback">Playback</a>
+                                  <a href="#map-watchlists" class="chip" data-graph-go="map-watchlists">Watchlists</a>
+                                  <a href="#map-downloads" class="chip" data-graph-go="map-downloads">Downloads</a>
+                                  <a href="#map-shorts" class="chip" data-graph-go="map-shorts">Shorts</a>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
+                        <ul class="fgraph-leaves">
+                          <li class="fgraph-item" id="map-home" data-graph-from="map-part-2" data-graph-leads="map-titles">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Home</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Watching</p>
+                              <p class="fgraph-detail-title">Home</p>
+                              <p class="card-text">
+                                The home screen opens with a featured title and rows of content to browse.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>Rows include Most Viewed, Arabic Animation, English Animation and Preschool
+                                Time.</li>
+                                <li>The featured title offers Watch Now and My List.</li>
+                                <li>Episodes that are free to watch are marked.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-pin" class="chip" data-graph-go="map-pin">Profile PIN</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-titles" class="chip" data-graph-go="map-titles">Title pages</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-titles" data-graph-from="map-part-2" data-graph-leads="map-playback map-watchlists">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Title pages</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Watching</p>
+                              <p class="fgraph-detail-title">Title pages</p>
+                              <p class="card-text">
+                                Every movie or series has its own page, with a description, genres and running time.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>Series list their episodes by season.</li>
+                                <li>A title can be liked, shared, or added to a list.</li>
+                                <li>Shorts linked to the title appear on its page.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-home" class="chip" data-graph-go="map-home">Home</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-playback" class="chip" data-graph-go="map-playback">Playback</a>
+                                    <a href="#map-watchlists" class="chip" data-graph-go="map-watchlists">Watchlists</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-playback" data-graph-from="map-part-2" data-graph-leads="map-analytics">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Playback</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Watching</p>
+                              <p class="fgraph-detail-title">Playback</p>
+                              <p class="card-text">
+                                Pressing Watch Now plays the video, streamed over HLS through signed URLs.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-titles" class="chip" data-graph-go="map-titles">Title pages</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-analytics" class="chip" data-graph-go="map-analytics">Live analytics</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">HLS Streaming</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-watchlists" data-graph-from="map-part-2">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Watchlists</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Watching</p>
+                              <p class="fgraph-detail-title">Watchlists</p>
+                              <p class="card-text">
+                                Titles saved with My List are kept in a watchlist.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>Each child profile has a watchlist of its own.</li>
+                                <li>A title can be added to a child's list from its page.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-titles" class="chip" data-graph-go="map-titles">Title pages</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-downloads" data-graph-from="map-part-2">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Downloads</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Watching</p>
+                              <p class="fgraph-detail-title">Downloads</p>
+                              <p class="card-text">
+                                Movies can be downloaded, and the Downloads screen lists them.
+                              </p>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-shorts" data-graph-from="map-part-2">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Shorts</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Watching</p>
+                              <p class="fgraph-detail-title">Shorts</p>
+                              <p class="card-text">
+                                A Shorts section holds short clips, which also appear on the page of the title they
+                                belong to.
+                              </p>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="fgraph-stage">
+                        <div class="fgraph-item" id="map-part-3" data-graph-from="map-root">
+                          <button type="button" class="fgraph-node fgraph-node-stage" aria-expanded="false" data-graph-node>
+                            <span class="section-icon">
+                              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-shield" /></svg>
+                            </span>
+                            <span class="fgraph-node-text">
+                              <span class="fgraph-node-sub">Part 3</span>
+                              <span class="fgraph-node-title">Parent oversight</span>
+                            </span>
+                          </button>
+                          <div class="fgraph-detail" data-graph-detail>
+                            <p class="eyebrow eyebrow-sm">NABTT · Part 3 of 5</p>
+                            <p class="fgraph-detail-title">Parent oversight</p>
+                            <p class="card-text">
+                              What a parent controls for a child's profile: what it may show, and for how long.
+                            </p>
+                            <dl class="fgraph-links">
+                              <div>
+                                <dt class="eyebrow eyebrow-sm">Holds</dt>
+                                <dd class="chip-row">
+                                  <a href="#map-child" class="chip" data-graph-go="map-child">Child profiles</a>
+                                  <a href="#map-age" class="chip" data-graph-go="map-age">Age filter</a>
+                                  <a href="#map-screen" class="chip" data-graph-go="map-screen">Screen time</a>
+                                  <a href="#map-only" class="chip" data-graph-go="map-only">Watchlist-only mode</a>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
+                        <ul class="fgraph-leaves">
+                          <li class="fgraph-item" id="map-child" data-graph-from="map-part-3" data-graph-leads="map-age">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Child profiles</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Parent oversight</p>
+                              <p class="fgraph-detail-title">Child profiles</p>
+                              <p class="card-text">
+                                A parent creates a child profile, and a watchlist for it, from the Parent Oversight
+                                screen.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-age" class="chip" data-graph-go="map-age">Age filter</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-age" data-graph-from="map-part-3" data-graph-leads="map-screen">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Age filter</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Parent oversight</p>
+                              <p class="fgraph-detail-title">Age filter</p>
+                              <p class="card-text">
+                                Each child profile has an age filter that limits what it can show.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>Left at Any Age, the profile has no age restriction.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-child" class="chip" data-graph-go="map-child">Child profiles</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-screen" class="chip" data-graph-go="map-screen">Screen time</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-screen" data-graph-from="map-part-3" data-graph-leads="map-only">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Screen time</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Parent oversight</p>
+                              <p class="fgraph-detail-title">Screen time</p>
+                              <p class="card-text">
+                                Viewing time on a child profile can be limited in one of two ways.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>A number of minutes a day, set for each day of the week.</li>
+                                <li>Or scheduled hours for each day.</li>
+                                <li>Times follow the timezone chosen on the screen.</li>
+                                <li>With neither set, the profile has unlimited screen time.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-age" class="chip" data-graph-go="map-age">Age filter</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-only" class="chip" data-graph-go="map-only">Watchlist-only mode</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-only" data-graph-from="map-part-3">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Watchlist-only mode</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Parent oversight</p>
+                              <p class="fgraph-detail-title">Watchlist-only mode</p>
+                              <p class="card-text">
+                                A child profile can be restricted to the content in the parent's watchlist.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-screen" class="chip" data-graph-go="map-screen">Screen time</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="fgraph-stage">
+                        <div class="fgraph-item" id="map-part-4" data-graph-from="map-root">
+                          <button type="button" class="fgraph-node fgraph-node-stage" aria-expanded="false" data-graph-node>
+                            <span class="section-icon">
+                              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-card" /></svg>
+                            </span>
+                            <span class="fgraph-node-text">
+                              <span class="fgraph-node-sub">Part 4</span>
+                              <span class="fgraph-node-title">Monetisation</span>
+                            </span>
+                          </button>
+                          <div class="fgraph-detail" data-graph-detail>
+                            <p class="eyebrow eyebrow-sm">NABTT · Part 4 of 5</p>
+                            <p class="fgraph-detail-title">Monetisation</p>
+                            <p class="card-text">
+                              How the platform earns: Stripe subscriptions priced by region, and adverts placed in the
+                              videos.
+                            </p>
+                            <dl class="fgraph-links">
+                              <div>
+                                <dt class="eyebrow eyebrow-sm">Holds</dt>
+                                <dd class="chip-row">
+                                  <a href="#map-plans" class="chip" data-graph-go="map-plans">Paid plans</a>
+                                  <a href="#map-pricing" class="chip" data-graph-go="map-pricing">Regional pricing</a>
+                                  <a href="#map-checks" class="chip" data-graph-go="map-checks">Payment checks</a>
+                                  <a href="#map-insertion" class="chip" data-graph-go="map-insertion">Ad insertion</a>
+                                  <a href="#map-mapping" class="chip" data-graph-go="map-mapping">Per-video adverts</a>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
+                        <ul class="fgraph-leaves">
+                          <li class="fgraph-item" id="map-plans" data-graph-from="map-part-4" data-graph-leads="map-pricing">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Paid plans</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Monetisation</p>
+                              <p class="fgraph-detail-title">Paid plans</p>
+                              <p class="card-text">
+                                Watching is paid for by subscription, and the subscriptions run on Stripe.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>An Upgrade Plan option sits in the main menu.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-pricing" class="chip" data-graph-go="map-pricing">Regional pricing</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Stripe</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-pricing" data-graph-from="map-part-4" data-graph-leads="map-checks">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Regional pricing</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Monetisation</p>
+                              <p class="fgraph-detail-title">Regional pricing</p>
+                              <p class="card-text">
+                                The price of a plan depends on the viewer's region.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-plans" class="chip" data-graph-go="map-plans">Paid plans</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-checks" class="chip" data-graph-go="map-checks">Payment checks</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Stripe</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-checks" data-graph-from="map-part-4">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Payment checks</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Monetisation</p>
+                              <p class="fgraph-detail-title">Payment checks</p>
+                              <p class="card-text">
+                                Stripe reports each payment event by webhook, and every incoming webhook is validated
+                                before it is acted on.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-pricing" class="chip" data-graph-go="map-pricing">Regional pricing</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Webhooks</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-insertion" data-graph-from="map-part-4" data-graph-leads="map-mapping">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Ad insertion</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Monetisation</p>
+                              <p class="fgraph-detail-title">Ad insertion</p>
+                              <p class="card-text">
+                                Adverts are inserted into videos dynamically.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-mapping" class="chip" data-graph-go="map-mapping">Per-video adverts</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Dynamic Ad Insertion</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-mapping" data-graph-from="map-part-4">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Per-video adverts</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Monetisation</p>
+                              <p class="fgraph-detail-title">Per-video adverts</p>
+                              <p class="card-text">
+                                Adverts are mapped at the level of the individual video, so each video carries the
+                                adverts chosen for it.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-insertion" class="chip" data-graph-go="map-insertion">Ad insertion</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Video-Level Ad Mapping</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="fgraph-stage">
+                        <div class="fgraph-item" id="map-part-5" data-graph-from="map-root">
+                          <button type="button" class="fgraph-node fgraph-node-stage" aria-expanded="false" data-graph-node>
+                            <span class="section-icon">
+                              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-database" /></svg>
+                            </span>
+                            <span class="fgraph-node-text">
+                              <span class="fgraph-node-sub">Part 5</span>
+                              <span class="fgraph-node-title">Behind the scenes</span>
+                            </span>
+                          </button>
+                          <div class="fgraph-detail" data-graph-detail>
+                            <p class="eyebrow eyebrow-sm">NABTT · Part 5 of 5</p>
+                            <p class="fgraph-detail-title">Behind the scenes</p>
+                            <p class="card-text">
+                              What runs out of the viewer's sight: analytics, access by role, and notifications.
+                            </p>
+                            <dl class="fgraph-links">
+                              <div>
+                                <dt class="eyebrow eyebrow-sm">Holds</dt>
+                                <dd class="chip-row">
+                                  <a href="#map-analytics" class="chip" data-graph-go="map-analytics">Live analytics</a>
+                                  <a href="#map-roles" class="chip" data-graph-go="map-roles">Roles and access</a>
+                                  <a href="#map-push" class="chip" data-graph-go="map-push">Notifications</a>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
+                        <ul class="fgraph-leaves">
+                          <li class="fgraph-item" id="map-analytics" data-graph-from="map-part-5">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Live analytics</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Behind the scenes</p>
+                              <p class="fgraph-detail-title">Live analytics</p>
+                              <p class="card-text">
+                                What viewers do is tracked as events, and the analytics update in real time.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-playback" class="chip" data-graph-go="map-playback">Playback</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Event Tracking</span>
+                                    <span class="chip">Real-Time Analytics</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-roles" data-graph-from="map-part-5">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Roles and access</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Behind the scenes</p>
+                              <p class="fgraph-detail-title">Roles and access</p>
+                              <p class="card-text">
+                                Access is governed by roles: what someone can do depends on the role they hold.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">RBAC</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-push" data-graph-from="map-part-5">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Notifications</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">NABTT · Behind the scenes</p>
+                              <p class="fgraph-detail-title">Notifications</p>
+                              <p class="card-text">
+                                Notifications are pushed to viewers through Firebase Cloud Messaging.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>A viewer's account also keeps a list of their notifications.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Firebase FCM</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+
+                <!-- The reading panel: the script fills it with the selected node's detail -->
+                <div class="fgraph-reader" data-graph-reader hidden>
+                  <div class="fgraph-reader-bar">
+                    <p class="fgraph-position" data-graph-position></p>
+                    <div class="fgraph-reader-nav">
+                      <button type="button" class="icon-button glass-panel" aria-label="Previous node" data-graph-prev>
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow-left" /></svg>
+                      </button>
+                      <button type="button" class="icon-button glass-panel" aria-label="Next node" data-graph-next>
+                        <svg class="icon" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="fgraph-reader-body" aria-live="polite" data-graph-reader-body></div>
+                </div>
+              </div>
+              <figcaption class="shot-caption">
+                NABTT as a graph: the platform, its five parts, and what each part holds. Lines show what belongs where; select a node to see what it leads to.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The story: problem, solution, decisions, outcome -->
+    <section class="section" id="story">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Case study</p>
+            <h2 class="section-title inline-icon">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-info" /></svg>
+              </span>
+              The Story
+            </h2>
+          </div>
+        </header>
+
+        <div class="glass-card">
+          <div class="glass-shine" aria-hidden="true"></div>
+          <div class="card-body card-body-lg">
+            <div class="case-story">
+              <div class="case-step">
+                <span class="icon-badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-alert" /></svg>
+                </span>
+                <h3 class="case-step-title">Problem</h3>
+                <p class="card-text">
+                  NABTT is a subscription OTT platform. Around the player it needs profiles for a whole family with
+                  controls for parents, paid plans priced by region, adverts matched to individual videos, and a live
+                  picture of what viewers are doing.
+                </p>
+              </div>
+              <div class="case-step">
+                <span class="icon-badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-user" /></svg>
+                </span>
+                <h3 class="case-step-title">Solution</h3>
+                <p class="card-text">
+                  A platform with viewer accounts and profiles, parental oversight with age filters and screen-time
+                  limits, Stripe subscriptions priced by region, dynamic ad insertion with video-level ad mapping,
+                  real-time analytics and event tracking, role-based access control, and push notifications through
+                  Firebase Cloud Messaging.
+                </p>
+              </div>
+              <div class="case-step">
+                <span class="icon-badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+                </span>
+                <h3 class="case-step-title">Technical decisions</h3>
+                <ul class="bullet-list">
+                  <li>Video is streamed over HLS, through signed URLs.</li>
+              <li>Each child profile carries its own age filter and screen-time limits.</li>
+              <li>Stripe subscriptions use region-based pricing.</li>
+                  <li>Incoming Stripe webhooks are validated.</li>
+                  <li>Adverts are mapped to individual videos and inserted dynamically.</li>
+                  <li>Access is governed by roles (RBAC).</li>
+                </ul>
+              </div>
+              <div class="case-step">
+                <span class="icon-badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>
+                </span>
+                <h3 class="case-step-title">Outcome</h3>
+                <p class="card-text">
+                  Live for subscribers at user.nabtt.com.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next step -->
+    <section class="section">
+      <div class="container">
+        <div class="glass-card">
+          <div class="glass-shine" aria-hidden="true"></div>
+          <div class="cta">
+            <div>
+              <h2 class="featured-title">Want to know more about this build?</h2>
+              <p class="card-text">I'm glad to walk through how it works behind the scenes.</p>
+            </div>
+            <div class="cta-actions">
+              <a href="../../#contact" class="btn-primary">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail" /></svg>
+                Get in touch
+              </a>
+              <a href="../../#projects" class="btn-ghost">All projects</a>
+            </div>
+          </div>
+        </div>
+
+        <p class="note shot-note">
+          <svg class="icon icon-sm" aria-hidden="true"><use href="#i-lock" /></svg>
+          <span>The source code and internal screens of this project are not public.</span>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer glass-panel">
+    <div class="container site-footer-inner">
+      <p>
+        &copy; <span data-year>2026</span>
+        <a href="https://github.com/gagan257" target="_blank" rel="noopener noreferrer">Gagan Arora</a>.
+        All rights reserved.
+      </p>
+      <div class="text-icon-row">
+        <span>Questions?</span>
+        <a href="../../#contact" class="inline-icon">
+          <svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail" /></svg>
+          Contact
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#top" class="icon-button glass-panel back-to-top" aria-label="Back to top" data-back-to-top>
+    <svg class="icon" aria-hidden="true"><use href="#i-arrow-up" /></svg>
+  </a>
+</body>
+
+</html>

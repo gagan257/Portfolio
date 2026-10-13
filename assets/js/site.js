@@ -1,8 +1,8 @@
 /*
- * Portfolio interactions: theme toggle, the hero's rotating word, card
- * spotlight, mobile menu, section highlighting, project search and "View
- * more", the mobile apps showcase, scroll reveal, stat counters, the contact
- * form, and the scroll progress bar with its back-to-top button.
+ * Portfolio interactions: theme toggle, the hero's rotating word, mobile
+ * menu, section highlighting, the More projects filter, the feature graph
+ * on project pages, the mobile apps showcase, scroll reveal, stat counters,
+ * the contact form, and the scroll progress bar with its back-to-top button.
  * No dependencies. The page stays fully readable without this file.
  */
 (function () {
@@ -169,33 +169,6 @@
     }, ROTATOR_INTERVAL_MS);
   }
 
-  /* ------------------------------------------------------- Card spotlight */
-
-  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
-
-  // Keeps each card's glow (`.glass-card::before` in site.css) under the pointer.
-  if (finePointer.matches) {
-    let frame = 0;
-
-    document.addEventListener(
-      "pointermove",
-      (event) => {
-        if (frame) return;
-
-        frame = window.requestAnimationFrame(() => {
-          frame = 0;
-          const card = event.target instanceof Element ? event.target.closest(".glass-card") : null;
-          if (!card) return;
-
-          const box = card.getBoundingClientRect();
-          card.style.setProperty("--mx", `${event.clientX - box.left}px`);
-          card.style.setProperty("--my", `${event.clientY - box.top}px`);
-        });
-      },
-      { passive: true },
-    );
-  }
-
   /* ---------------------------------------------------------- Mobile menu */
 
   /** Matches the `.mobile-menu-root[data-state="closed"]` transitions in site.css. */
@@ -330,100 +303,240 @@
     });
   }
 
-  /* ------------------------------------------------------------- Projects */
+  /* -------------------------------------------------------- More projects */
 
-  const PROJECTS_PER_LOAD = 6;
+  /** Cards shown at a time. */
+  const MORE_PAGE_SIZE = 6;
 
-  const projects = document.getElementById("projects");
+  const more = document.querySelector("[data-more]");
 
-  if (projects) {
-    const moreButton = projects.querySelector("[data-projects-more]");
-    const moreRow = moreButton.parentElement;
-    const search = projects.querySelector("[data-project-search]");
-    const toggles = Array.from(projects.querySelectorAll("[data-project-filter]"));
-    const count = projects.querySelector("[data-project-count]");
-    const emptyState = projects.querySelector("[data-project-empty]");
-    const groups = Array.from(projects.querySelectorAll("[data-project-group]"));
-    const items = Array.from(projects.querySelectorAll("[data-project-list] > li"));
+  if (more) {
+    const filters = Array.from(more.querySelectorAll("[data-more-filter]"));
+    const cards = Array.from(more.querySelectorAll("[data-category]"));
+    const pager = more.querySelector("[data-more-pager]");
+    const pageList = more.querySelector("[data-more-pages]");
+    const previous = more.querySelector("[data-more-prev]");
+    const next = more.querySelector("[data-more-next]");
+    const range = more.querySelector("[data-more-range]");
+    let kind = "all";
+    let page = 0;
 
-    /** What a search looks through, read once: each project's title, description and tags. */
-    const searchText = new Map(items.map((item) => [item, item.textContent.toLowerCase()]));
+    const matching = () => cards.filter((card) => kind === "all" || card.dataset.category === kind);
+    const pageCount = () => Math.max(1, Math.ceil(matching().length / MORE_PAGE_SIZE));
 
-    const hiddenExtras = () =>
-      Array.from(projects.querySelectorAll(".project-extra:not(.is-shown)"));
+    /** Shows the current page of the current kind, and brings the controls in line with it. */
+    function show() {
+      const list = matching();
+      const start = page * MORE_PAGE_SIZE;
 
-    /** What each filter button looks for on a project: a live site, or a link to its code. */
-    const FILTERS = {
-      live: (item) => item.querySelector("a[href^='http']:not([href*='github.com'])") !== null,
-      code: (item) => item.querySelector("a[href*='github.com']") !== null,
-    };
-
-    const isPressed = (toggle) => toggle.getAttribute("aria-pressed") === "true";
-
-    function update() {
-      const terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
-      const active = toggles.filter(isPressed).map((toggle) => FILTERS[toggle.dataset.projectFilter]);
-      const filtering = terms.length > 0 || active.length > 0;
-      let matches = 0;
-
-      items.forEach((item) => {
-        const text = searchText.get(item);
-        const match =
-          terms.every((term) => text.includes(term)) && active.every((test) => test(item));
-
-        item.hidden = filtering && !match;
-        if (match) matches += 1;
+      cards.forEach((card) => {
+        const at = list.indexOf(card);
+        card.hidden = at < start || at >= start + MORE_PAGE_SIZE;
       });
 
-      // A search looks through every project, so "View more" paging steps aside while it is active.
-      projects.classList.toggle("is-filtering", filtering);
-      moreRow.hidden = filtering || hiddenExtras().length === 0;
-      groups.forEach((group) => {
-        group.hidden =
-          filtering && group.querySelector("[data-project-list] > li:not([hidden])") === null;
+      Array.from(pageList.querySelectorAll("button")).forEach((button, index) => {
+        if (index === page) button.setAttribute("aria-current", "page");
+        else button.removeAttribute("aria-current");
       });
-      emptyState.hidden = matches > 0;
-      count.textContent = filtering
-        ? `${matches} of ${items.length}`
-        : `${items.length} projects`;
+      previous.disabled = page === 0;
+      next.disabled = page === pageCount() - 1;
+      range.textContent = `${start + 1}–${Math.min(start + MORE_PAGE_SIZE, list.length)} of ${list.length}`;
     }
 
-    moreButton.addEventListener("click", () => {
-      const batch = hiddenExtras().slice(0, PROJECTS_PER_LOAD);
+    function goTo(index) {
+      page = Math.min(Math.max(index, 0), pageCount() - 1);
+      show();
 
-      batch.forEach((item, index) => {
-        item.style.setProperty("--i", index);
-        item.classList.add("is-shown", "list-enter");
+      // A shorter page pulls the grid up; keep its top in view rather than leaving the visitor below it.
+      if (more.getBoundingClientRect().top < 0) {
+        more.scrollIntoView({ block: "start", behavior: reducedMotion.matches ? "auto" : "smooth" });
+      }
+    }
+
+    /** One numbered button per page of the current kind; a single page needs no controls. */
+    function buildPages() {
+      const count = pageCount();
+
+      pageList.replaceChildren(
+        ...Array.from({ length: count }, (_unused, index) => {
+          const item = document.createElement("li");
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "more-page";
+          button.textContent = String(index + 1);
+          button.setAttribute("aria-label", `Page ${index + 1}`);
+          button.addEventListener("click", () => goTo(index));
+          item.append(button);
+          return item;
+        }),
+      );
+      pager.hidden = count < 2;
+    }
+
+    // One kind at a time: the pressed button names it, and "all" shows every card.
+    filters.forEach((filter) => {
+      filter.addEventListener("click", () => {
+        kind = filter.dataset.moreFilter;
+        page = 0;
+        filters.forEach((other) => other.setAttribute("aria-pressed", String(other === filter)));
+        buildPages();
+        show();
+      });
+    });
+
+    previous.addEventListener("click", () => goTo(page - 1));
+    next.addEventListener("click", () => goTo(page + 1));
+
+    buildPages();
+    show();
+  }
+
+  /* -------------------------------------------------------- Feature graph */
+
+  /** From this width the graph has its lines and a reading panel beside it (`.fgraph` in site.css). */
+  const graphWide = window.matchMedia("(min-width: 900px)");
+  const SVG_NS = "http://www.w3.org/2000/svg";
+
+  document.querySelectorAll("[data-graph]").forEach((graph) => {
+    const canvas = graph.querySelector("[data-graph-canvas]");
+    const reader = graph.querySelector("[data-graph-reader]");
+    const readerBody = graph.querySelector("[data-graph-reader-body]");
+    const position = graph.querySelector("[data-graph-position]");
+    const items = Array.from(graph.querySelectorAll(".fgraph-item"));
+    const nodes = items.map((item) => item.querySelector("[data-graph-node]"));
+    const indexOf = new Map(items.map((item, index) => [item.id, index]));
+    let active = -1;
+
+    // Two kinds of line: a branch from each node's parent, and a link on to whatever it leads to.
+    const edges = [];
+    items.forEach((item) => {
+      if (item.dataset.graphFrom) {
+        edges.push({ from: item.dataset.graphFrom, to: item.id, kind: "branch" });
+      }
+      (item.dataset.graphLeads || "")
+        .split(" ")
+        .filter(Boolean)
+        .forEach((to) => edges.push({ from: item.id, to, kind: "flow" }));
+    });
+
+    const layer = document.createElementNS(SVG_NS, "g");
+    graph.querySelector("[data-graph-edges]").append(layer);
+
+    /** Lines touching the selected node take the accent. */
+    function markEdges() {
+      const id = active >= 0 ? items[active].id : "";
+      layer.querySelectorAll("path").forEach((path) => {
+        path.classList.toggle("is-on", id !== "" && (path.dataset.from === id || path.dataset.to === id));
+      });
+    }
+
+    /** Redraws every line from where the nodes are now. */
+    function draw() {
+      layer.replaceChildren();
+      if (!graphWide.matches) return;
+
+      const frame = canvas.getBoundingClientRect();
+      const place = (id) => {
+        const box = nodes[indexOf.get(id)].getBoundingClientRect();
+        return {
+          left: box.left - frame.left,
+          right: box.right - frame.left,
+          y: box.top - frame.top + box.height / 2,
+        };
+      };
+
+      edges.forEach((edge) => {
+        const a = place(edge.from);
+        const b = place(edge.to);
+        let d;
+
+        if (edge.kind === "branch") {
+          // Out of the parent's right side and into the child's left, easing through the gap between columns.
+          const bend = (b.left - a.right) / 2;
+          d = `M${a.right} ${a.y} C${a.right + bend} ${a.y} ${b.left - bend} ${b.y} ${b.left} ${b.y}`;
+        } else {
+          // Both ends sit in the last column, so the link loops out to the right: wider the further it travels.
+          const edgeX = Math.max(a.right, b.right);
+          const reach = Math.min(16 + Math.abs(b.y - a.y) * 0.1, 26);
+          d = `M${a.right} ${a.y} C${edgeX + reach} ${a.y} ${edgeX + reach} ${b.y} ${b.right + 6} ${b.y}`;
+        }
+
+        const path = document.createElementNS(SVG_NS, "path");
+        path.setAttribute("d", d);
+        path.setAttribute("class", `fgraph-edge fgraph-edge-${edge.kind}`);
+        if (edge.kind === "flow") path.setAttribute("marker-end", "url(#fgraph-arrow)");
+        path.dataset.from = edge.from;
+        path.dataset.to = edge.to;
+        layer.append(path);
       });
 
-      // Keyboard and screen-reader users continue from the first newly shown project.
-      const firstTarget = batch[0] && batch[0].querySelector("a, .project-card");
-      if (firstTarget) {
-        if (!firstTarget.matches("a")) firstTarget.tabIndex = -1;
-        firstTarget.focus({ preventScroll: true });
+      markEdges();
+    }
+
+    function select(index, { reveal = false } = {}) {
+      active = index;
+
+      items.forEach((item, at) => {
+        item.classList.toggle("is-active", at === index);
+        nodes[at].setAttribute("aria-expanded", String(at === index));
+      });
+
+      if (index >= 0) {
+        // The panel shows a copy of the node's own detail, which stays in place for phones.
+        readerBody.innerHTML = items[index].querySelector("[data-graph-detail]").innerHTML;
+        position.textContent = `${index + 1} of ${items.length}`;
+
+        if (reveal) {
+          nodes[index].scrollIntoView({
+            block: "nearest",
+            behavior: reducedMotion.matches ? "auto" : "smooth",
+          });
+        }
       }
 
-      update();
-    });
+      markEdges();
+    }
 
-    search.addEventListener("input", update);
-
-    toggles.forEach((toggle) => {
-      toggle.addEventListener("click", () => {
-        toggle.setAttribute("aria-pressed", String(!isPressed(toggle)));
-        update();
+    nodes.forEach((node, index) => {
+      node.addEventListener("click", () => {
+        // On a phone, tapping the open node closes it; the reading panel always shows one.
+        select(index === active && !graphWide.matches ? -1 : index);
       });
     });
 
-    projects.querySelector("[data-project-clear]").addEventListener("click", () => {
-      search.value = "";
-      toggles.forEach((toggle) => toggle.setAttribute("aria-pressed", "false"));
-      update();
-      search.focus();
+    // "Its parts", "Comes after" and "Leads to" jump to that node, from the panel or from a detail in place.
+    graph.addEventListener("click", (event) => {
+      const link = event.target instanceof Element ? event.target.closest("[data-graph-go]") : null;
+      if (!link || !indexOf.has(link.dataset.graphGo)) return;
+
+      event.preventDefault();
+      select(indexOf.get(link.dataset.graphGo), { reveal: true });
     });
 
-    update();
-  }
+    const step = (offset) => (Math.max(active, 0) + offset + items.length) % items.length;
+    graph.querySelector("[data-graph-prev]").addEventListener("click", () => select(step(-1), { reveal: true }));
+    graph.querySelector("[data-graph-next]").addEventListener("click", () => select(step(1), { reveal: true }));
+
+    reader.hidden = false;
+    // The panel opens on the project itself; on a phone everything starts closed.
+    if (graphWide.matches) select(0);
+    draw();
+
+    graphWide.addEventListener("change", () => {
+      if (graphWide.matches && active < 0) select(0);
+      draw();
+    });
+
+    // The nodes move when the canvas changes size or the web font arrives.
+    if ("ResizeObserver" in window) {
+      let frame = 0;
+      new ResizeObserver(() => {
+        window.cancelAnimationFrame(frame);
+        frame = window.requestAnimationFrame(draw);
+      }).observe(canvas);
+    }
+    if (document.fonts) document.fonts.ready.then(draw);
+  });
 
   /* ------------------------------------------------- Mobile apps showcase */
 
@@ -525,7 +638,7 @@
   /* -------------------------------------------------------- Scroll reveal */
 
   const REVEAL_SELECTOR =
-    ".section-head, .section .glass-card, .profile-panel, .contact-option, .project-toolbar, .phone-stage, .app-tabs";
+    ".section-head, .section .glass-card, .profile-panel, .contact-option, .more-head, .phone-stage, .app-tabs";
 
   /** Delay between items that come into view together, for up to this many of them. */
   const REVEAL_STAGGER_MS = 70;
@@ -558,9 +671,9 @@
     );
 
     document.querySelectorAll(REVEAL_SELECTOR).forEach((element) => {
-      // Leave alone what is hidden, what "View more" pages in, the app cards (the
-      // showcase shows one at a time) and what is already on screen.
-      if (element.closest("[hidden], .project-extra, .app-panels")) return;
+      // Leave alone what is hidden, the app cards (the showcase shows one at a
+      // time) and what is already on screen.
+      if (element.closest("[hidden], .app-panels")) return;
       if (element.getBoundingClientRect().top < window.innerHeight) return;
 
       element.classList.add("reveal");

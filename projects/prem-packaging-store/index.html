@@ -42,7 +42,7 @@
           "name": "Prem Packaging Store | E-commerce Platform | Gagan Arora",
           "description": "How store.prempackaging.com, a full-stack e-commerce platform and custom CMS, was built.",
           "inLanguage": "en",
-          "dateModified": "2026-10-13",
+          "dateModified": "2026-10-14",
           "isPartOf": { "@id": "https://gagandev.in/#website" },
           "author": { "@id": "https://gagandev.in/#person" },
           "primaryImageOfPage": "https://gagandev.in/assets/images/projects/prem-packaging-store/home.jpg"
@@ -171,6 +171,15 @@
       stroke-linecap="round" stroke-linejoin="round">
       <path d="M6 8h12l1 12H5L6 8z" />
       <path d="M9 8V7a3 3 0 0 1 6 0v1" />
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+      stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 8v4M12 16h.01" />
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 13l4 4L19 7" />
     </symbol>
   </svg>
 
@@ -331,32 +340,6 @@
             Ask me about it
           </a>
         </div>
-
-        <dl class="meta-grid hero-reveal" style="--i: 5">
-          <div class="glass-card glass-card-lite meta-item">
-            <dt class="eyebrow eyebrow-sm">My role</dt>
-            <dd class="meta-value">Full Stack Developer</dd>
-          </div>
-          <div class="glass-card glass-card-lite meta-item">
-            <dt class="eyebrow eyebrow-sm">Company</dt>
-            <dd class="meta-value">Prem Industries India Limited, Greater Noida</dd>
-          </div>
-          <div class="glass-card glass-card-lite meta-item">
-            <dt class="eyebrow eyebrow-sm">When</dt>
-            <dd class="meta-value">During my time there, January 2024 – November 2025</dd>
-          </div>
-          <div class="glass-card glass-card-lite meta-item">
-            <dt class="eyebrow eyebrow-sm">Stack</dt>
-            <dd class="chip-row">
-              <span class="chip">Node.js</span>
-              <span class="chip">Express</span>
-              <span class="chip">React</span>
-              <span class="chip">Razorpay</span>
-              <span class="chip">AWS EC2</span>
-              <span class="chip">AWS Amplify</span>
-            </dd>
-          </div>
-        </dl>
       </div>
     </section>
 
@@ -418,12 +401,546 @@
       </div>
     </section>
 
+    <!-- What's inside: the project's parts, and what each one holds -->
+    <section class="section" id="whats-inside">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">At a glance</p>
+            <h2 class="section-title inline-icon">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+              </span>
+              What's Inside
+            </h2>
+            <p class="section-lead">
+              <strong>What is where, and how it connects.</strong> Select any node to read more about it.
+            </p>
+          </div>
+        </header>
+
+        <div class="glass-card">
+          <div class="glass-shine" aria-hidden="true"></div>
+          <div class="card-body card-body-lg">
+            <!--
+              The project as a graph: one node for the project, one per part, one per item. Every node is a
+              button: its detail opens in the panel beside the graph, or in place on a phone. The script draws
+              the lines from each node's data attributes; without it the nodes and details are simply listed.
+            -->
+            <figure class="case-figure">
+              <div class="fgraph" data-graph>
+                <div class="fgraph-canvas" data-graph-canvas>
+                  <svg class="fgraph-edges" aria-hidden="true" focusable="false" data-graph-edges>
+                    <defs>
+                      <marker id="fgraph-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7"
+                        orient="auto-start-reverse">
+                        <path d="M1 1l6 3-6 3z" />
+                      </marker>
+                    </defs>
+                  </svg>
+
+                  <div class="fgraph-tree">
+                    <div class="fgraph-item" id="map-root">
+                      <button type="button" class="fgraph-node fgraph-node-root" aria-expanded="false" data-graph-node>
+                        <span class="featured-icon" aria-hidden="true">
+                          <svg class="icon icon-xl"><use href="#i-bag" /></svg>
+                        </span>
+                        <span class="fgraph-node-text">
+                          <span class="fgraph-node-title">store.<wbr />prempackaging.<wbr />com</span>
+                          <span class="fgraph-node-sub">E-commerce platform</span>
+                        </span>
+                      </button>
+                      <div class="fgraph-detail" data-graph-detail>
+                        <p class="eyebrow eyebrow-sm">The project</p>
+                        <p class="fgraph-detail-title">store.<wbr />prempackaging.<wbr />com</p>
+                        <p class="card-text">
+                          A full-stack e-commerce platform for Prem Industries India Limited: the store customers shop
+                          on, the APIs and payments underneath, and the custom CMS the team runs it from.
+                        </p>
+                        <dl class="fgraph-links">
+                          <div>
+                            <dt class="eyebrow eyebrow-sm">Its parts</dt>
+                            <dd class="chip-row">
+                              <a href="#map-part-1" class="chip" data-graph-go="map-part-1">For customers</a>
+                              <a href="#map-part-2" class="chip" data-graph-go="map-part-2">Under the hood</a>
+                              <a href="#map-part-3" class="chip" data-graph-go="map-part-3">For the team</a>
+                            </dd>
+                          </div>
+                        </dl>
+                      </div>
+                    </div>
+
+                    <ol class="fgraph-stages">
+                      <li class="fgraph-stage">
+                        <div class="fgraph-item" id="map-part-1" data-graph-from="map-root">
+                          <button type="button" class="fgraph-node fgraph-node-stage" aria-expanded="false" data-graph-node>
+                            <span class="section-icon">
+                              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-bag" /></svg>
+                            </span>
+                            <span class="fgraph-node-text">
+                              <span class="fgraph-node-sub">Part 1</span>
+                              <span class="fgraph-node-title">For customers</span>
+                            </span>
+                          </button>
+                          <div class="fgraph-detail" data-graph-detail>
+                            <p class="eyebrow eyebrow-sm">store.prempackaging.com · Part 1 of 3</p>
+                            <p class="fgraph-detail-title">For customers</p>
+                            <p class="card-text">
+                              The shop itself: finding a product, choosing a size and checking out, plus enquiries for
+                              custom packaging.
+                            </p>
+                            <dl class="fgraph-links">
+                              <div>
+                                <dt class="eyebrow eyebrow-sm">Holds</dt>
+                                <dd class="chip-row">
+                                  <a href="#map-catalogue" class="chip" data-graph-go="map-catalogue">Catalogue and search</a>
+                                  <a href="#map-filters" class="chip" data-graph-go="map-filters">Size filters</a>
+                                  <a href="#map-cart" class="chip" data-graph-go="map-cart">Cart and checkout</a>
+                                  <a href="#map-custom" class="chip" data-graph-go="map-custom">Custom orders</a>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
+                        <ul class="fgraph-leaves">
+                          <li class="fgraph-item" id="map-catalogue" data-graph-from="map-part-1" data-graph-leads="map-filters">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Catalogue and search</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · For customers</p>
+                              <p class="fgraph-detail-title">Catalogue and search</p>
+                              <p class="card-text">
+                                Customers browse packaging by category, or search for a product.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>Categories include corrugated boxes, paper bags and poly bags, plus the PACKPRO
+                                and ROLLABEL ranges.</li>
+                                <li>Results can be sorted.</li>
+                                <li>Boxes are also listed for sellers on Amazon, Flipkart and Ajio.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-filters" class="chip" data-graph-go="map-filters">Size filters</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-filters" data-graph-from="map-part-1" data-graph-leads="map-cart">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Size filters</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · For customers</p>
+                              <p class="fgraph-detail-title">Size filters</p>
+                              <p class="card-text">
+                                Boxes are filtered by length, breadth and height.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>Sizes switch between inches and millimetres.</li>
+                                <li>A brand filter narrows the list further.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-catalogue" class="chip" data-graph-go="map-catalogue">Catalogue and search</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-cart" class="chip" data-graph-go="map-cart">Cart and checkout</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-cart" data-graph-from="map-part-1" data-graph-leads="map-payments">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Cart and checkout</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · For customers</p>
+                              <p class="fgraph-detail-title">Cart and checkout</p>
+                              <p class="card-text">
+                                A product page shows the pack size, stock status and quantity before it goes in the
+                                cart.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>Products can also be saved to a wishlist.</li>
+                                <li>A promo code is applied at checkout.</li>
+                                <li>Customers sign up, sign in and follow their past orders.</li>
+                              </ul>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-filters" class="chip" data-graph-go="map-filters">Size filters</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-payments" class="chip" data-graph-go="map-payments">Payments</a>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-custom" data-graph-from="map-part-1">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Custom orders</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · For customers</p>
+                              <p class="fgraph-detail-title">Custom orders</p>
+                              <p class="card-text">
+                                For packaging that is not in the catalogue, an enquiry form takes the details.
+                              </p>
+                              <ul class="bullet-list">
+                                <li>It asks for the company, product category, minimum order quantity and contact
+                                details.</li>
+                              </ul>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="fgraph-stage">
+                        <div class="fgraph-item" id="map-part-2" data-graph-from="map-root">
+                          <button type="button" class="fgraph-node fgraph-node-stage" aria-expanded="false" data-graph-node>
+                            <span class="section-icon">
+                              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-cloud" /></svg>
+                            </span>
+                            <span class="fgraph-node-text">
+                              <span class="fgraph-node-sub">Part 2</span>
+                              <span class="fgraph-node-title">Under the hood</span>
+                            </span>
+                          </button>
+                          <div class="fgraph-detail" data-graph-detail>
+                            <p class="eyebrow eyebrow-sm">store.prempackaging.com · Part 2 of 3</p>
+                            <p class="fgraph-detail-title">Under the hood</p>
+                            <p class="card-text">
+                              What the shop runs on: payments, one back end, and hosting.
+                            </p>
+                            <dl class="fgraph-links">
+                              <div>
+                                <dt class="eyebrow eyebrow-sm">Holds</dt>
+                                <dd class="chip-row">
+                                  <a href="#map-payments" class="chip" data-graph-go="map-payments">Payments</a>
+                                  <a href="#map-backend" class="chip" data-graph-go="map-backend">One back end</a>
+                                  <a href="#map-hosting" class="chip" data-graph-go="map-hosting">Hosting</a>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
+                        <ul class="fgraph-leaves">
+                          <li class="fgraph-item" id="map-payments" data-graph-from="map-part-2" data-graph-leads="map-backend">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Payments</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · Under the hood</p>
+                              <p class="fgraph-detail-title">Payments</p>
+                              <p class="card-text">
+                                Payments run through Razorpay, which reports back through its webhooks.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-cart" class="chip" data-graph-go="map-cart">Cart and checkout</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-backend" class="chip" data-graph-go="map-backend">One back end</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Razorpay</span>
+                                    <span class="chip">Webhooks</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-backend" data-graph-from="map-part-2" data-graph-leads="map-orders">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">One back end</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · Under the hood</p>
+                              <p class="fgraph-detail-title">One back end</p>
+                              <p class="card-text">
+                                Node.js and Express REST APIs serve both the store customers use and the dashboard the
+                                team uses.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-payments" class="chip" data-graph-go="map-payments">Payments</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-orders" class="chip" data-graph-go="map-orders">Orders and fulfilment</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Node.js / Express</span>
+                                    <span class="chip">REST APIs</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-hosting" data-graph-from="map-part-2">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Hosting</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · Under the hood</p>
+                              <p class="fgraph-detail-title">Hosting</p>
+                              <p class="card-text">
+                                The platform runs on AWS, using EC2 and Amplify.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">AWS EC2 &amp; Amplify</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="fgraph-stage">
+                        <div class="fgraph-item" id="map-part-3" data-graph-from="map-root">
+                          <button type="button" class="fgraph-node fgraph-node-stage" aria-expanded="false" data-graph-node>
+                            <span class="section-icon">
+                              <svg class="icon icon-sm" aria-hidden="true"><use href="#i-layers" /></svg>
+                            </span>
+                            <span class="fgraph-node-text">
+                              <span class="fgraph-node-sub">Part 3</span>
+                              <span class="fgraph-node-title">For the team</span>
+                            </span>
+                          </button>
+                          <div class="fgraph-detail" data-graph-detail>
+                            <p class="eyebrow eyebrow-sm">store.prempackaging.com · Part 3 of 3</p>
+                            <p class="fgraph-detail-title">For the team</p>
+                            <p class="card-text">
+                              What the team works in: a custom CMS for orders, fulfilment, catalog and inventory.
+                            </p>
+                            <dl class="fgraph-links">
+                              <div>
+                                <dt class="eyebrow eyebrow-sm">Holds</dt>
+                                <dd class="chip-row">
+                                  <a href="#map-orders" class="chip" data-graph-go="map-orders">Orders and fulfilment</a>
+                                  <a href="#map-inventory" class="chip" data-graph-go="map-inventory">Catalog and inventory</a>
+                                  <a href="#map-dashboard" class="chip" data-graph-go="map-dashboard">Admin dashboard</a>
+                                </dd>
+                              </div>
+                            </dl>
+                          </div>
+                        </div>
+                        <ul class="fgraph-leaves">
+                          <li class="fgraph-item" id="map-orders" data-graph-from="map-part-3" data-graph-leads="map-inventory">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Orders and fulfilment</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · For the team</p>
+                              <p class="fgraph-detail-title">Orders and fulfilment</p>
+                              <p class="card-text">
+                                Orders reach the team in the admin dashboard, where they are managed through to
+                                fulfilment.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-backend" class="chip" data-graph-go="map-backend">One back end</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Leads to</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-inventory" class="chip" data-graph-go="map-inventory">Catalog and inventory</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Custom CMS</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-inventory" data-graph-from="map-part-3">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Catalog and inventory</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · For the team</p>
+                              <p class="fgraph-detail-title">Catalog and inventory</p>
+                              <p class="card-text">
+                                The team manages the catalog and its inventory in the same custom CMS.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Comes after</dt>
+                                  <dd class="chip-row">
+                                    <a href="#map-orders" class="chip" data-graph-go="map-orders">Orders and fulfilment</a>
+                                  </dd>
+                                </div>
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">Custom CMS</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="fgraph-item" id="map-dashboard" data-graph-from="map-part-3">
+                            <button type="button" class="fgraph-node" aria-expanded="false" data-graph-node>
+                              <span class="fgraph-node-title">Admin dashboard</span>
+                            </button>
+                            <div class="fgraph-detail" data-graph-detail>
+                              <p class="eyebrow eyebrow-sm">store.prempackaging.com · For the team</p>
+                              <p class="fgraph-detail-title">Admin dashboard</p>
+                              <p class="card-text">
+                                The CMS is a custom admin dashboard, built with React.
+                              </p>
+                              <dl class="fgraph-links">
+                                <div>
+                                  <dt class="eyebrow eyebrow-sm">Built with</dt>
+                                  <dd class="chip-row">
+                                    <span class="chip">React</span>
+                                  </dd>
+                                </div>
+                              </dl>
+                            </div>
+                          </li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+
+                <!-- The reading panel: the script fills it with the selected node's detail -->
+                <div class="fgraph-reader" data-graph-reader hidden>
+                  <div class="fgraph-reader-bar">
+                    <p class="fgraph-position" data-graph-position></p>
+                    <div class="fgraph-reader-nav">
+                      <button type="button" class="icon-button glass-panel" aria-label="Previous node" data-graph-prev>
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow-left" /></svg>
+                      </button>
+                      <button type="button" class="icon-button glass-panel" aria-label="Next node" data-graph-next>
+                        <svg class="icon" aria-hidden="true"><use href="#i-chevron-right" /></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="fgraph-reader-body" aria-live="polite" data-graph-reader-body></div>
+                </div>
+              </div>
+              <figcaption class="shot-caption">
+                The store as a graph: the platform, its three parts, and what each part holds. Lines show what belongs where; select a node to see what it leads to.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The story: problem, solution, decisions, outcome -->
+    <section class="section" id="story">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow">Case study</p>
+            <h2 class="section-title inline-icon">
+              <span class="icon-badge">
+                <svg class="icon" aria-hidden="true"><use href="#i-info" /></svg>
+              </span>
+              The Story
+            </h2>
+          </div>
+        </header>
+
+        <div class="glass-card">
+          <div class="glass-shine" aria-hidden="true"></div>
+          <div class="card-body card-body-lg">
+            <div class="case-story">
+              <div class="case-step">
+                <span class="icon-badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-alert" /></svg>
+                </span>
+                <h3 class="case-step-title">Problem</h3>
+                <p class="card-text">
+                  Prem Industries India Limited sells packaging: corrugated boxes, paper bags, poly bags and its
+                  PACKPRO and ROLLABEL ranges. Its store has two sides: what customers shop on, and what the team uses
+                  to manage catalog, inventory, orders and fulfilment.
+                </p>
+              </div>
+              <div class="case-step">
+                <span class="icon-badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-user" /></svg>
+                </span>
+                <h3 class="case-step-title">Solution</h3>
+                <p class="card-text">
+                  A full-stack platform: the storefront, the Node.js and Express APIs behind it, and a custom CMS for
+                  the team, as a React admin dashboard.
+                </p>
+              </div>
+              <div class="case-step">
+                <span class="icon-badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
+                </span>
+                <h3 class="case-step-title">Technical decisions</h3>
+                <ul class="bullet-list">
+                  <li>One Express back end serves both the store and the admin dashboard.</li>
+                  <li>Payments run through Razorpay and are reported back through its webhooks.</li>
+                  <li>Hosted on AWS, using EC2 and Amplify.</li>
+                </ul>
+              </div>
+              <div class="case-step">
+                <span class="icon-badge">
+                  <svg class="icon" aria-hidden="true"><use href="#i-check" /></svg>
+                </span>
+                <h3 class="case-step-title">Outcome</h3>
+                <p class="card-text">
+                  Live at store.prempackaging.com, where customers browse by category, filter boxes by size in inches
+                  or millimetres, check stock, apply a promo code and check out.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- What I built -->
     <section class="section">
       <div class="container">
         <header class="section-head">
           <div>
-            <p class="eyebrow">My part</p>
+            <p class="eyebrow">The platform</p>
             <h2 class="section-title inline-icon">
               <span class="icon-badge">
                 <svg class="icon" aria-hidden="true"><use href="#i-layers" /></svg>
